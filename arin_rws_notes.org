@@ -1,0 +1,72 @@
+| Template Method               | RESTful Method   |
+|-------------------------------+------------------|
+| reallocate                    | NET - Reallocate |
+| network modification - remove | NET - Delete     |
+| reassign simple - new         | NET - Reassign   |
+| reassign simple - remove      | NET - Delete     |
+
+* call sequences
+
+** reallocate
+   1. Net - Get
+   2. POC - Create (POC payload)
+   3. Net - Create Recipient Org (Org payload with POC admin/tech/abuse)
+   4. Net - Reallocate (Net payload)
+   5. Delegation - Get
+   6. Delegation - Modify
+
+** delete reallocation
+   1. Net - Get
+   2. Net - Delete
+   3. Org - Get
+   4. Org - Delete
+   5. Delegation - Get
+   6. Delegation - Modify
+
+** reassign
+   1. Net - Get
+   2. Net - Create Recipient Customer (Customer payload)
+   3. Net - Reassign (Net payload)
+   4. Delegation - Get
+   5. Delegation - Modify
+
+** delete reassignment
+   1. Net - Get
+   2. Net - Delete
+   3. Customer - Get
+   4. Customer - Delete
+   5. Delegation - Get
+   6. Delegation - Modify
+
+* payloads
+  - Customer
+  - Net
+  - Delegation
+  - POC
+  - Org
+
+* generate w3c xml schema from relax ng compact schema
+  1. modify rnc files that refer to dateTime but don't define it (ApiKeyPayload.rnc)
+     : dateTime = \string
+  2. simplify schema to remove externalRefs
+     : for i in *.rnc; do java -jar ~/Downloads/jing-20090818/bin/jing.jar -sc $i > $(basename $i .rnc).rng; echo $? $i; done
+  3. convert rng files to xsd
+     : for i in *.rng; do java -jar ~/Downloads/trang-20091111/trang.jar $i $(basename $i .rng).xsd; done
+
+* generate PyXB binding classes
+  for each payload needed:
+  : pyxbgen -u OrgPayload.xsd -m OrgPayload
+
+* rws advantages over e-mail templates
+  1. rDNS delegation
+  2. direct, automatic error detection
+
+* testing & evaluation issues
+  - whois query
+  - create instances in python
+
+* arinrws package
+** whois pkg
+** reg pkg
+*** payload pkg
+*** submittor module
