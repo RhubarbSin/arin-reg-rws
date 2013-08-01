@@ -18,12 +18,10 @@
 ** delete reallocation
    1. Net - Get
    2. Net - Delete
-   3. Org - Get
-   4. Org - Delete
-   5. POC - Get
-   6. POC - Delete
-   7. Delegation - Get
-   8. Delegation - Modify
+   3. Org - Delete
+   4. POC - Delete
+   5. Delegation - Get
+   6. Delegation - Modify
 
 ** reassign
    1. Net - Get
@@ -35,10 +33,9 @@
 ** delete reassignment
    1. Net - Get
    2. Net - Delete
-   3. Customer - Get
-   4. Customer - Delete
-   5. Delegation - Get
-   6. Delegation - Modify
+   3. Customer - Delete
+   4. Delegation - Get
+   5. Delegation - Modify
 
 * payloads
   - Customer
