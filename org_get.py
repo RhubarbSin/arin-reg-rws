@@ -35,3 +35,7 @@ Registration date: %s
          orgpayload.iso3166_2[0],
          orgpayload.postalCode[0],
          orgpayload.iso3166_1[0].name[0])
+
+    print '\nAssociated POCs:'
+    for poc_link_ref in orgpayload.pocLinks[0].get_pocLinkRef():
+        print poc_link_ref.description, poc_link_ref.handle
