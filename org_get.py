@@ -28,8 +28,8 @@ Registration date: %s
 ''' % (orgpayload.orgName[0],
        orgpayload.handle[0],
        orgpayload.registrationDate[0])
-    for line in orgpayload.streetAddress[0].get_line():
-        print line.get_valueOf_()
+    for line in orgpayload.streetAddress[0].line:
+        print line.valueOf_
     print '''%s, %s %s
 %s''' % (orgpayload.city[0],
          orgpayload.iso3166_2[0],
@@ -37,5 +37,5 @@ Registration date: %s
          orgpayload.iso3166_1[0].name[0])
 
     print '\nAssociated POCs:'
-    for poc_link_ref in orgpayload.pocLinks[0].get_pocLinkRef():
+    for poc_link_ref in orgpayload.pocLinks[0].pocLinkRef:
         print poc_link_ref.description, poc_link_ref.handle

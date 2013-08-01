@@ -28,8 +28,8 @@ Registration date: %s
 ''' % (custpayload.customerName[0],
        custpayload.parentOrgHandle[0],
        custpayload.registrationDate[0])
-    for line in custpayload.streetAddress[0].get_line():
-        print line.get_valueOf_()
+    for line in custpayload.streetAddress[0].line:
+        print line.valueOf_
     print '''%s, %s %s
 %s''' % (custpayload.city[0],
          custpayload.iso3166_2[0],
