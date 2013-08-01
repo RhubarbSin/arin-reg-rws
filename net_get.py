@@ -1,10 +1,10 @@
 #!/usr/bin/env python 
 
 import sys
-import urllib2
 from BaseHTTPServer import BaseHTTPRequestHandler
 
 import ipaddr
+import requests
 
 from apikey import APIKEY
 from whoisrws import network
@@ -16,28 +16,27 @@ if len(sys.argv) != 2:
 
 net = ipaddr.IPNetwork(sys.argv[1])
 url = 'http://whois.arin.net/rest/cidr/%s' % net
-try:
-    response = urllib2.urlopen(url).read()
-except urllib2.HTTPError as exc:
-    print exc.code, BaseHTTPRequestHandler.responses[exc.code][1]
+r = requests.get(url)
+if r.status_code != requests.codes.ok:
+    print r.status_code, BaseHTTPRequestHandler.responses[r.status_code][1]
     sys.exit(1)
 else:
-    whoispayload = network.parseString(response)
+    whoispayload = network.parseString(r.content)
 
 nethandle = whoispayload.handle
 print '''
 Net name: %s
 Net handle: %s
 ''' % (whoispayload.name, nethandle)
-url = 'https://reg.arin.net/rest/net/%s?apikey=%s' % (nethandle, APIKEY)
-try:
-    response = urllib2.urlopen(url).read()
-except urllib2.HTTPError as exc:
-    errorpayload = ErrorPayload.parseString(exc.read())
-    print errorpayload.message[0]
+url = 'https://reg.arin.net/rest/net/%s' % nethandle
+qargs = {'apikey': APIKEY}
+r = requests.get(url, params=qargs)
+if r.status_code != requests.codes.ok:
+    errorpayload = ErrorPayload.parseString(r.content)
+    print r.status_code, errorpayload.message[0]
     sys.exit(1)
 else:
-    netpayload = NetPayload.parseString(response)
+    netpayload = NetPayload.parseString(r.content)
     print '''
 CIDR length: %s
 Address range: %s - %s

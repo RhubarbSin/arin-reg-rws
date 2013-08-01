@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 import sys
-import urllib2
+
+import requests
 
 from apikey import APIKEY
 from regrws import PocPayload, ErrorPayload
@@ -11,15 +12,15 @@ if len(sys.argv) != 2:
     sys.exit(2)
 
 pochandle = sys.argv[1]
-url = 'https://reg.arin.net/rest/poc/%s?apikey=%s' % (pochandle, APIKEY)
-try:
-    response = urllib2.urlopen(url).read()
-except urllib2.HTTPError as exc:
-    errorpayload = ErrorPayload.parseString(exc.read())
-    print errorpayload.message
+url = 'https://reg.arin.net/rest/poc/%s' % pochandle
+qargs = {'apikey': APIKEY}
+r = requests.get(url, params=qargs)
+if r.status_code != requests.codes.ok:
+    errorpayload = ErrorPayload.parseString(r.content)
+    print r.status_code, errorpayload.message[0]
     sys.exit(1)
 else:
-    pocpayload = PocPayload.parseString(response)
+    pocpayload = PocPayload.parseString(r.content)
     name = ''
     if pocpayload.firstName:
         name += pocpayload.firstName[0]
