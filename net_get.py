@@ -16,7 +16,11 @@ if len(sys.argv) != 2:
 
 net = ipaddr.IPNetwork(sys.argv[1])
 url = 'http://whois.arin.net/rest/cidr/%s' % net
-r = requests.get(url)
+try:
+    r = requests.get(url)
+except requests.exceptions.RequestException as e:
+    print 'ERROR:', e[0]
+    sys.exit(1)
 if r.status_code != requests.codes.ok:
     print r.status_code, BaseHTTPRequestHandler.responses[r.status_code][1]
     sys.exit(1)
@@ -30,7 +34,11 @@ Net handle: %s
 ''' % (whoispayload.name, nethandle)
 url = 'https://reg.arin.net/rest/net/%s' % nethandle
 qargs = {'apikey': APIKEY}
-r = requests.get(url, params=qargs)
+try:
+    r = requests.get(url, params=qargs)
+except requests.exceptions.RequestException as e:
+    print 'ERROR:', e[0]
+    sys.exit(1)
 if r.status_code != requests.codes.ok:
     errorpayload = ErrorPayload.parseString(r.content)
     print r.status_code, errorpayload.message[0]

@@ -14,7 +14,11 @@ if len(sys.argv) != 2:
 orghandle = sys.argv[1]
 url = 'https://reg.arin.net/rest/org/%s' % orghandle
 qargs = {'apikey': APIKEY}
-r = requests.get(url, params=qargs)
+try:
+    r = requests.get(url, params=qargs)
+except requests.exceptions.RequestException as e:
+    print 'ERROR:', e[0]
+    sys.exit(1)
 if r.status_code != requests.codes.ok:
     errorpayload = ErrorPayload.parseString(r.content)
     print r.status_code, errorpayload.message[0]
