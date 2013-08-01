@@ -1,1194 +1,1950 @@
-# ./NetPayload.py
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# PyXB bindings for NM:514f13e3f1b2b4088cde1fa16b1c0c6121fb4d3d
-# Generated 2013-07-11 15:17:53.206489 by PyXB version 1.2.2
-# Namespace http://www.arin.net/regrws/core/v1
 
-import pyxb
-import pyxb.binding
-import pyxb.binding.saxer
-import StringIO
-import pyxb.utils.utility
-import pyxb.utils.domutils
+#
+# Generated Thu Aug  1 12:21:20 2013 by generateDS.py version 2.10a.
+#
+
 import sys
-
-# Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:9589a982-ea5e-11e2-8b90-10ddb19be936')
-
-# Version of PyXB used to generate the bindings
-_PyXBVersion = '1.2.2'
-# Generated bindings are not compatible across PyXB versions
-if pyxb.__version__ != _PyXBVersion:
-    raise pyxb.PyXBVersionError(_PyXBVersion)
-
-# Import bindings for namespaces imported into schema
-import pyxb.binding.datatypes
-
-# NOTE: All namespace declarations are reserved within the binding
-Namespace = pyxb.namespace.NamespaceForURI(u'http://www.arin.net/regrws/core/v1', create_if_missing=True)
-Namespace.configureCategories(['typeBinding', 'elementBinding'])
-
-def CreateFromDocument (xml_text, default_namespace=None, location_base=None):
-    """Parse the given XML and use the document element to create a
-    Python instance.
-    
-    @kw default_namespace The L{pyxb.Namespace} instance to use as the
-    default namespace where there is no default namespace in scope.
-    If unspecified or C{None}, the namespace of the module containing
-    this function will be used.
-
-    @keyword location_base: An object to be recorded as the base of all
-    L{pyxb.utils.utility.Location} instances associated with events and
-    objects handled by the parser.  You might pass the URI from which
-    the document was obtained.
-    """
-
-    if pyxb.XMLStyle_saxer != pyxb._XMLStyle:
-        dom = pyxb.utils.domutils.StringToDOM(xml_text)
-        return CreateFromDOM(dom.documentElement)
-    if default_namespace is None:
-        default_namespace = Namespace.fallbackNamespace()
-    saxer = pyxb.binding.saxer.make_parser(fallback_namespace=default_namespace, location_base=location_base)
-    handler = saxer.getContentHandler()
-    saxer.parse(StringIO.StringIO(xml_text))
-    instance = handler.rootObject()
-    return instance
-
-def CreateFromDOM (node, default_namespace=None):
-    """Create a Python instance from the given DOM node.
-    The node tag must correspond to an element declaration in this module.
-
-    @deprecated: Forcing use of DOM interface is unnecessary; use L{CreateFromDocument}."""
-    if default_namespace is None:
-        default_namespace = Namespace.fallbackNamespace()
-    return pyxb.binding.basis.element.AnyCreateFromDOM(node, default_namespace)
-
-
-# Atomic simple type: [anonymous]
-class STD_ANON (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
-
-    """An atomic simple type."""
-
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 37, 8)
-    _Documentation = None
-STD_ANON._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=STD_ANON, enum_prefix=None)
-STD_ANON.AD = STD_ANON._CF_enumeration.addEnumeration(unicode_value=u'AD', tag=u'AD')
-STD_ANON.AB = STD_ANON._CF_enumeration.addEnumeration(unicode_value=u'AB', tag=u'AB')
-STD_ANON.N = STD_ANON._CF_enumeration.addEnumeration(unicode_value=u'N', tag=u'N')
-STD_ANON.T = STD_ANON._CF_enumeration.addEnumeration(unicode_value=u'T', tag=u'T')
-STD_ANON._InitializeFacetMap(STD_ANON._CF_enumeration)
-
-# Atomic simple type: [anonymous]
-class STD_ANON_ (pyxb.binding.datatypes.token, pyxb.binding.basis.enumeration_mixin):
-
-    """An atomic simple type."""
-
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 77, 4)
-    _Documentation = None
-STD_ANON_._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=STD_ANON_, enum_prefix=None)
-STD_ANON_.n4 = STD_ANON_._CF_enumeration.addEnumeration(unicode_value=u'4', tag=u'n4')
-STD_ANON_.n6 = STD_ANON_._CF_enumeration.addEnumeration(unicode_value=u'6', tag=u'n6')
-STD_ANON_._InitializeFacetMap(STD_ANON_._CF_enumeration)
-
-# Atomic simple type: [anonymous]
-class STD_ANON_2 (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
-
-    """An atomic simple type."""
-
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 101, 4)
-    _Documentation = None
-STD_ANON_2._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=STD_ANON_2, enum_prefix=None)
-STD_ANON_2.IU = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'IU', tag=u'IU')
-STD_ANON_2.IR = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'IR', tag=u'IR')
-STD_ANON_2.AF = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'AF', tag=u'AF')
-STD_ANON_2.AP = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'AP', tag=u'AP')
-STD_ANON_2.AR = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'AR', tag=u'AR')
-STD_ANON_2.LN = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'LN', tag=u'LN')
-STD_ANON_2.RN = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'RN', tag=u'RN')
-STD_ANON_2.RD = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'RD', tag=u'RD')
-STD_ANON_2.PV = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'PV', tag=u'PV')
-STD_ANON_2.AV = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'AV', tag=u'AV')
-STD_ANON_2.RV = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'RV', tag=u'RV')
-STD_ANON_2.LX = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'LX', tag=u'LX')
-STD_ANON_2.PX = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'PX', tag=u'PX')
-STD_ANON_2.RX = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'RX', tag=u'RX')
-STD_ANON_2.FX = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'FX', tag=u'FX')
-STD_ANON_2.DA = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'DA', tag=u'DA')
-STD_ANON_2.DS = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'DS', tag=u'DS')
-STD_ANON_2.A = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'A', tag=u'A')
-STD_ANON_2.S = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'S', tag=u'S')
-STD_ANON_2._InitializeFacetMap(STD_ANON_2._CF_enumeration)
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 4, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}customerHandle uses Python identifier customerHandle
-    __customerHandle = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'customerHandle'), 'customerHandle', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1customerHandle', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 49, 2), )
-
-    
-    customerHandle = property(__customerHandle.value, __customerHandle.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}netBlocks uses Python identifier netBlocks
-    __netBlocks = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'netBlocks'), 'netBlocks', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1netBlocks', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 50, 2), )
-
-    
-    netBlocks = property(__netBlocks.value, __netBlocks.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}handle uses Python identifier handle
-    __handle = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'handle'), 'handle', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1handle', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 57, 2), )
-
-    
-    handle = property(__handle.value, __handle.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}netName uses Python identifier netName
-    __netName = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'netName'), 'netName', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1netName', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 58, 2), )
-
-    
-    netName = property(__netName.value, __netName.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}orgHandle uses Python identifier orgHandle
-    __orgHandle = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'orgHandle'), 'orgHandle', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1orgHandle', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 59, 2), )
-
-    
-    orgHandle = property(__orgHandle.value, __orgHandle.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}originASes uses Python identifier originASes
-    __originASes = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'originASes'), 'originASes', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1originASes', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 60, 2), )
-
-    
-    originASes = property(__originASes.value, __originASes.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}parentNetHandle uses Python identifier parentNetHandle
-    __parentNetHandle = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'parentNetHandle'), 'parentNetHandle', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1parentNetHandle', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 67, 2), )
-
-    
-    parentNetHandle = property(__parentNetHandle.value, __parentNetHandle.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}registrationDate uses Python identifier registrationDate
-    __registrationDate = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'registrationDate'), 'registrationDate', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1registrationDate', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 68, 2), )
-
-    
-    registrationDate = property(__registrationDate.value, __registrationDate.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}pocLinks uses Python identifier pocLinks
-    __pocLinks = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'pocLinks'), 'pocLinks', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1pocLinks', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 69, 2), )
-
-    
-    pocLinks = property(__pocLinks.value, __pocLinks.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}version uses Python identifier version
-    __version = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'version'), 'version', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1version', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 76, 2), )
-
-    
-    version = property(__version.value, __version.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}comment uses Python identifier comment
-    __comment = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'comment'), 'comment', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1comment', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 84, 2), )
-
-    
-    comment = property(__comment.value, __comment.set, None, None)
-
-    _HasWildcardElement = True
-    _ElementMap.update({
-        __customerHandle.name() : __customerHandle,
-        __netBlocks.name() : __netBlocks,
-        __handle.name() : __handle,
-        __netName.name() : __netName,
-        __orgHandle.name() : __orgHandle,
-        __originASes.name() : __originASes,
-        __parentNetHandle.name() : __parentNetHandle,
-        __registrationDate.name() : __registrationDate,
-        __pocLinks.name() : __pocLinks,
-        __version.name() : __version,
-        __comment.name() : __comment
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON_ (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 22, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}cidrLength uses Python identifier cidrLength
-    __cidrLength = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'cidrLength'), 'cidrLength', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1cidrLength', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 96, 2), )
-
-    
-    cidrLength = property(__cidrLength.value, __cidrLength.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}description uses Python identifier description
-    __description = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'description'), 'description', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1description', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 97, 2), )
-
-    
-    description = property(__description.value, __description.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}endAddress uses Python identifier endAddress
-    __endAddress = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'endAddress'), 'endAddress', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1endAddress', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 98, 2), )
-
-    
-    endAddress = property(__endAddress.value, __endAddress.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}startAddress uses Python identifier startAddress
-    __startAddress = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'startAddress'), 'startAddress', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1startAddress', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 99, 2), )
-
-    
-    startAddress = property(__startAddress.value, __startAddress.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}type uses Python identifier type
-    __type = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'type'), 'type', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1type', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 100, 2), )
-
-    
-    type = property(__type.value, __type.set, None, None)
-
-    _HasWildcardElement = True
-    _ElementMap.update({
-        __cidrLength.name() : __cidrLength,
-        __description.name() : __description,
-        __endAddress.name() : __endAddress,
-        __startAddress.name() : __startAddress,
-        __type.name() : __type
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON_2 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 51, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}netBlock uses Python identifier netBlock
-    __netBlock = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'netBlock'), 'netBlock', '__httpwww_arin_netregrwscorev1_CTD_ANON_2_httpwww_arin_netregrwscorev1netBlock', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 21, 2), )
-
-    
-    netBlock = property(__netBlock.value, __netBlock.set, None, None)
-
-    _ElementMap.update({
-        __netBlock.name() : __netBlock
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON_3 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 61, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}originAS uses Python identifier originAS
-    __originAS = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'originAS'), 'originAS', '__httpwww_arin_netregrwscorev1_CTD_ANON_3_httpwww_arin_netregrwscorev1originAS', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 130, 2), )
-
-    
-    originAS = property(__originAS.value, __originAS.set, None, None)
-
-    _ElementMap.update({
-        __originAS.name() : __originAS
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON_4 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 70, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}pocLinkRef uses Python identifier pocLinkRef
-    __pocLinkRef = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'pocLinkRef'), 'pocLinkRef', '__httpwww_arin_netregrwscorev1_CTD_ANON_4_httpwww_arin_netregrwscorev1pocLinkRef', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 33, 2), )
-
-    
-    pocLinkRef = property(__pocLinkRef.value, __pocLinkRef.set, None, None)
-
-    _ElementMap.update({
-        __pocLinkRef.name() : __pocLinkRef
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON_5 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 85, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}line uses Python identifier line
-    __line = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'line'), 'line', '__httpwww_arin_netregrwscorev1_CTD_ANON_5_httpwww_arin_netregrwscorev1line', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 131, 2), )
-
-    
-    line = property(__line.value, __line.set, None, None)
-
-    _ElementMap.update({
-        __line.name() : __line
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type SIMPLE
-class CTD_ANON_6 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type SIMPLE"""
-    _TypeDefinition = pyxb.binding.datatypes.string
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_SIMPLE
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 132, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.string
-    
-    # Attribute number uses Python identifier number
-    __number = pyxb.binding.content.AttributeUse(pyxb.namespace.ExpandedName(None, u'number'), 'number', '__httpwww_arin_netregrwscorev1_CTD_ANON_6_number', pyxb.binding.datatypes.integer, required=True)
-    __number._DeclarationLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 135, 10)
-    __number._UseLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 135, 10)
-    
-    number = property(__number.value, __number.set, None, None)
-
-    _ElementMap.update({
-        
-    })
-    _AttributeMap.update({
-        __number.name() : __number
-    })
-
-
-
-# Complex type [anonymous] with content type EMPTY
-class CTD_ANON_7 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type EMPTY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_EMPTY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 34, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Attribute handle uses Python identifier handle
-    __handle = pyxb.binding.content.AttributeUse(pyxb.namespace.ExpandedName(None, u'handle'), 'handle', '__httpwww_arin_netregrwscorev1_CTD_ANON_7_handle', pyxb.binding.datatypes.string)
-    __handle._DeclarationLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 35, 6)
-    __handle._UseLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 35, 6)
-    
-    handle = property(__handle.value, __handle.set, None, None)
-
-    
-    # Attribute function uses Python identifier function
-    __function = pyxb.binding.content.AttributeUse(pyxb.namespace.ExpandedName(None, u'function'), 'function', '__httpwww_arin_netregrwscorev1_CTD_ANON_7_function', STD_ANON, required=True)
-    __function._DeclarationLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 36, 6)
-    __function._UseLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 36, 6)
-    
-    function = property(__function.value, __function.set, None, None)
-
-    
-    # Attribute description uses Python identifier description
-    __description = pyxb.binding.content.AttributeUse(pyxb.namespace.ExpandedName(None, u'description'), 'description', '__httpwww_arin_netregrwscorev1_CTD_ANON_7_description', pyxb.binding.datatypes.string)
-    __description._DeclarationLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 46, 6)
-    __description._UseLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 46, 6)
-    
-    description = property(__description.value, __description.set, None, None)
-
-    _ElementMap.update({
-        
-    })
-    _AttributeMap.update({
-        __handle.name() : __handle,
-        __function.name() : __function,
-        __description.name() : __description
-    })
-
-
-
-customerHandle = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'customerHandle'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 49, 2))
-Namespace.addCategoryObject('elementBinding', customerHandle.name().localName(), customerHandle)
-
-handle = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'handle'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 57, 2))
-Namespace.addCategoryObject('elementBinding', handle.name().localName(), handle)
-
-netName = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'netName'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 58, 2))
-Namespace.addCategoryObject('elementBinding', netName.name().localName(), netName)
-
-orgHandle = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'orgHandle'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 59, 2))
-Namespace.addCategoryObject('elementBinding', orgHandle.name().localName(), orgHandle)
-
-parentNetHandle = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'parentNetHandle'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 67, 2))
-Namespace.addCategoryObject('elementBinding', parentNetHandle.name().localName(), parentNetHandle)
-
-registrationDate = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'registrationDate'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 68, 2))
-Namespace.addCategoryObject('elementBinding', registrationDate.name().localName(), registrationDate)
-
-cidrLength = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'cidrLength'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 96, 2))
-Namespace.addCategoryObject('elementBinding', cidrLength.name().localName(), cidrLength)
-
-description = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'description'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 97, 2))
-Namespace.addCategoryObject('elementBinding', description.name().localName(), description)
-
-endAddress = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'endAddress'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 98, 2))
-Namespace.addCategoryObject('elementBinding', endAddress.name().localName(), endAddress)
-
-startAddress = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'startAddress'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 99, 2))
-Namespace.addCategoryObject('elementBinding', startAddress.name().localName(), startAddress)
-
-originAS = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'originAS'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 130, 2))
-Namespace.addCategoryObject('elementBinding', originAS.name().localName(), originAS)
-
-net = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'net'), CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 3, 2))
-Namespace.addCategoryObject('elementBinding', net.name().localName(), net)
-
-netBlock = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'netBlock'), CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 21, 2))
-Namespace.addCategoryObject('elementBinding', netBlock.name().localName(), netBlock)
-
-netBlocks = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'netBlocks'), CTD_ANON_2, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 50, 2))
-Namespace.addCategoryObject('elementBinding', netBlocks.name().localName(), netBlocks)
-
-originASes = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'originASes'), CTD_ANON_3, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 60, 2))
-Namespace.addCategoryObject('elementBinding', originASes.name().localName(), originASes)
-
-pocLinks = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'pocLinks'), CTD_ANON_4, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 69, 2))
-Namespace.addCategoryObject('elementBinding', pocLinks.name().localName(), pocLinks)
-
-version = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'version'), STD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 76, 2))
-Namespace.addCategoryObject('elementBinding', version.name().localName(), version)
-
-comment = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'comment'), CTD_ANON_5, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 84, 2))
-Namespace.addCategoryObject('elementBinding', comment.name().localName(), comment)
-
-type = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'type'), STD_ANON_2, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 100, 2))
-Namespace.addCategoryObject('elementBinding', type.name().localName(), type)
-
-line = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'line'), CTD_ANON_6, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 131, 2))
-Namespace.addCategoryObject('elementBinding', line.name().localName(), line)
-
-pocLinkRef = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'pocLinkRef'), CTD_ANON_7, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 33, 2))
-Namespace.addCategoryObject('elementBinding', pocLinkRef.name().localName(), pocLinkRef)
-
-
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'customerHandle'), pyxb.binding.datatypes.string, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 49, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'netBlocks'), CTD_ANON_2, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 50, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'handle'), pyxb.binding.datatypes.string, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 57, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'netName'), pyxb.binding.datatypes.string, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 58, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'orgHandle'), pyxb.binding.datatypes.string, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 59, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'originASes'), CTD_ANON_3, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 60, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'parentNetHandle'), pyxb.binding.datatypes.string, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 67, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'registrationDate'), pyxb.binding.datatypes.string, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 68, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'pocLinks'), CTD_ANON_4, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 69, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'version'), STD_ANON_, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 76, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'comment'), CTD_ANON_5, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 84, 2)))
-
-def _BuildAutomaton ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton
-    del _BuildAutomaton
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 5, 6))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'customerHandle')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 6, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'netBlocks')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 7, 8))
-    st_1 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_1)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'handle')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 8, 8))
-    st_2 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_2)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'netName')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 9, 8))
-    st_3 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_3)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'orgHandle')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 10, 8))
-    st_4 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_4)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'originASes')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 11, 8))
-    st_5 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_5)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'parentNetHandle')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 12, 8))
-    st_6 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_6)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'registrationDate')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 13, 8))
-    st_7 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_7)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'pocLinks')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 14, 8))
-    st_8 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_8)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'version')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 15, 8))
-    st_9 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_9)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'comment')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 16, 8))
-    st_10 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_10)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.WildcardUse(pyxb.binding.content.Wildcard(process_contents=pyxb.binding.content.Wildcard.PC_skip, namespace_constraint=pyxb.binding.content.Wildcard.NC_any), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 93, 6))
-    st_11 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_11)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_1._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_2._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_3._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_4._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_5._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_6._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_7._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_8._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_9._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_10._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_6, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_7, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_8, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_9, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_10, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_11, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_11._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON._Automaton = _BuildAutomaton()
-
-
-
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'cidrLength'), pyxb.binding.datatypes.string, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 96, 2)))
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'description'), pyxb.binding.datatypes.string, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 97, 2)))
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'endAddress'), pyxb.binding.datatypes.string, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 98, 2)))
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'startAddress'), pyxb.binding.datatypes.string, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 99, 2)))
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'type'), STD_ANON_2, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 100, 2)))
-
-def _BuildAutomaton_ ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_
-    del _BuildAutomaton_
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 23, 6))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'cidrLength')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 24, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'description')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 25, 8))
-    st_1 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_1)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'endAddress')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 26, 8))
-    st_2 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_2)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'startAddress')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 27, 8))
-    st_3 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_3)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'type')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 28, 8))
-    st_4 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_4)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.WildcardUse(pyxb.binding.content.Wildcard(process_contents=pyxb.binding.content.Wildcard.PC_skip, namespace_constraint=pyxb.binding.content.Wildcard.NC_any), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 127, 6))
-    st_5 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_5)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_1._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_2._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_3._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_4._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_4, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_5, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_5._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON_._Automaton = _BuildAutomaton_()
-
-
-
-
-CTD_ANON_2._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'netBlock'), CTD_ANON_, scope=CTD_ANON_2, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 21, 2)))
-
-def _BuildAutomaton_2 ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_2
-    del _BuildAutomaton_2
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 53, 8))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_2._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'netBlock')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 53, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON_2._Automaton = _BuildAutomaton_2()
-
-
-
-
-CTD_ANON_3._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'originAS'), pyxb.binding.datatypes.string, scope=CTD_ANON_3, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 130, 2)))
-
-def _BuildAutomaton_3 ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_3
-    del _BuildAutomaton_3
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 63, 8))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_3._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'originAS')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 63, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON_3._Automaton = _BuildAutomaton_3()
-
-
-
-
-CTD_ANON_4._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'pocLinkRef'), CTD_ANON_7, scope=CTD_ANON_4, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 33, 2)))
-
-def _BuildAutomaton_4 ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_4
-    del _BuildAutomaton_4
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 72, 8))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_4._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'pocLinkRef')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 72, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON_4._Automaton = _BuildAutomaton_4()
-
-
-
-
-CTD_ANON_5._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'line'), CTD_ANON_6, scope=CTD_ANON_5, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 131, 2)))
-
-def _BuildAutomaton_5 ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_5
-    del _BuildAutomaton_5
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 87, 8))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_5._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'line')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/NetPayload.xsd', 87, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON_5._Automaton = _BuildAutomaton_5()
-
+import getopt
+import re as re_
+import base64
+import datetime as datetime_
+
+etree_ = None
+Verbose_import_ = False
+(
+    XMLParser_import_none, XMLParser_import_lxml,
+    XMLParser_import_elementtree
+) = range(3)
+XMLParser_import_library = None
+try:
+    # lxml
+    from lxml import etree as etree_
+    XMLParser_import_library = XMLParser_import_lxml
+    if Verbose_import_:
+        print("running with lxml.etree")
+except ImportError:
+    try:
+        # cElementTree from Python 2.5+
+        import xml.etree.cElementTree as etree_
+        XMLParser_import_library = XMLParser_import_elementtree
+        if Verbose_import_:
+            print("running with cElementTree on Python 2.5+")
+    except ImportError:
+        try:
+            # ElementTree from Python 2.5+
+            import xml.etree.ElementTree as etree_
+            XMLParser_import_library = XMLParser_import_elementtree
+            if Verbose_import_:
+                print("running with ElementTree on Python 2.5+")
+        except ImportError:
+            try:
+                # normal cElementTree install
+                import cElementTree as etree_
+                XMLParser_import_library = XMLParser_import_elementtree
+                if Verbose_import_:
+                    print("running with cElementTree")
+            except ImportError:
+                try:
+                    # normal ElementTree install
+                    import elementtree.ElementTree as etree_
+                    XMLParser_import_library = XMLParser_import_elementtree
+                    if Verbose_import_:
+                        print("running with ElementTree")
+                except ImportError:
+                    raise ImportError(
+                        "Failed to import ElementTree from any known place")
+
+
+def parsexml_(*args, **kwargs):
+    if (XMLParser_import_library == XMLParser_import_lxml and
+            'parser' not in kwargs):
+        # Use the lxml ElementTree compatible parser so that, e.g.,
+        #   we ignore comments.
+        kwargs['parser'] = etree_.ETCompatXMLParser()
+    doc = etree_.parse(*args, **kwargs)
+    return doc
+
+#
+# User methods
+#
+# Calls to the methods in these classes are generated by generateDS.py.
+# You can replace these methods by re-implementing the following class
+#   in a module named generatedssuper.py.
+
+try:
+    from generatedssuper import GeneratedsSuper
+except ImportError, exp:
+
+    class GeneratedsSuper(object):
+        tzoff_pattern = re_.compile(r'(\+|-)((0\d|1[0-3]):[0-5]\d|14:00)$')
+        class _FixedOffsetTZ(datetime_.tzinfo):
+            def __init__(self, offset, name):
+                self.__offset = datetime_.timedelta(minutes=offset)
+                self.__name = name
+            def utcoffset(self, dt):
+                return self.__offset
+            def tzname(self, dt):
+                return self.__name
+            def dst(self, dt):
+                return None
+        def gds_format_string(self, input_data, input_name=''):
+            return input_data
+        def gds_validate_string(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_base64(self, input_data, input_name=''):
+            return base64.b64encode(input_data)
+        def gds_validate_base64(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_integer(self, input_data, input_name=''):
+            return '%d' % input_data
+        def gds_validate_integer(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_integer_list(self, input_data, input_name=''):
+            return '%s' % input_data
+        def gds_validate_integer_list(self, input_data, node, input_name=''):
+            values = input_data.split()
+            for value in values:
+                try:
+                    float(value)
+                except (TypeError, ValueError):
+                    raise_parse_error(node, 'Requires sequence of integers')
+            return input_data
+        def gds_format_float(self, input_data, input_name=''):
+            return '%f' % input_data
+        def gds_validate_float(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_float_list(self, input_data, input_name=''):
+            return '%s' % input_data
+        def gds_validate_float_list(self, input_data, node, input_name=''):
+            values = input_data.split()
+            for value in values:
+                try:
+                    float(value)
+                except (TypeError, ValueError):
+                    raise_parse_error(node, 'Requires sequence of floats')
+            return input_data
+        def gds_format_double(self, input_data, input_name=''):
+            return '%e' % input_data
+        def gds_validate_double(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_double_list(self, input_data, input_name=''):
+            return '%s' % input_data
+        def gds_validate_double_list(self, input_data, node, input_name=''):
+            values = input_data.split()
+            for value in values:
+                try:
+                    float(value)
+                except (TypeError, ValueError):
+                    raise_parse_error(node, 'Requires sequence of doubles')
+            return input_data
+        def gds_format_boolean(self, input_data, input_name=''):
+            return ('%s' % input_data).lower()
+        def gds_validate_boolean(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_boolean_list(self, input_data, input_name=''):
+            return '%s' % input_data
+        def gds_validate_boolean_list(self, input_data, node, input_name=''):
+            values = input_data.split()
+            for value in values:
+                if value not in ('true', '1', 'false', '0', ):
+                    raise_parse_error(
+                        node,
+                        'Requires sequence of booleans '
+                        '("true", "1", "false", "0")')
+            return input_data
+        def gds_validate_datetime(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_datetime(self, input_data, input_name=''):
+            if input_data.microsecond == 0:
+                _svalue = '%04d-%02d-%02dT%02d:%02d:%02d' % (
+                    input_data.year,
+                    input_data.month,
+                    input_data.day,
+                    input_data.hour,
+                    input_data.minute,
+                    input_data.second,
+                )
+            else:
+                _svalue = '%04d-%02d-%02dT%02d:%02d:%02d.%s' % (
+                    input_data.year,
+                    input_data.month,
+                    input_data.day,
+                    input_data.hour,
+                    input_data.minute,
+                    input_data.second,
+                    ('%f' % (float(input_data.microsecond) / 1000000))[2:],
+                )
+            if input_data.tzinfo is not None:
+                tzoff = input_data.tzinfo.utcoffset(input_data)
+                if tzoff is not None:
+                    total_seconds = tzoff.seconds + (86400 * tzoff.days)
+                    if total_seconds == 0:
+                        _svalue += 'Z'
+                    else:
+                        if total_seconds < 0:
+                            _svalue += '-'
+                            total_seconds *= -1
+                        else:
+                            _svalue += '+'
+                        hours = total_seconds // 3600
+                        minutes = (total_seconds - (hours * 3600)) // 60
+                        _svalue += '{0:02d}:{1:02d}'.format(hours, minutes)
+            return _svalue
+        @classmethod
+        def gds_parse_datetime(cls, input_data):
+            tz = None
+            if input_data[-1] == 'Z':
+                tz = GeneratedsSuper._FixedOffsetTZ(0, 'GMT')
+                input_data = input_data[:-1]
+            else:
+                results = GeneratedsSuper.tzoff_pattern.search(input_data)
+                if results is not None:
+                    tzoff_parts = results.group(2).split(':')
+                    tzoff = int(tzoff_parts[0]) * 60 + int(tzoff_parts[1])
+                    if results.group(1) == '-':
+                        tzoff *= -1
+                    tz = GeneratedsSuper._FixedOffsetTZ(
+                        tzoff, results.group(0))
+                    input_data = input_data[:-6]
+            if len(input_data.split('.')) > 1:
+                dt = datetime_.datetime.strptime(
+                    input_data, '%Y-%m-%dT%H:%M:%S.%f')
+            else:
+                dt = datetime_.datetime.strptime(
+                    input_data, '%Y-%m-%dT%H:%M:%S')
+            dt = dt.replace(tzinfo=tz)
+            return dt
+        def gds_validate_date(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_date(self, input_data, input_name=''):
+            _svalue = '%04d-%02d-%02d' % (
+                input_data.year,
+                input_data.month,
+                input_data.day,
+            )
+            try:
+                if input_data.tzinfo is not None:
+                    tzoff = input_data.tzinfo.utcoffset(input_data)
+                    if tzoff is not None:
+                        total_seconds = tzoff.seconds + (86400 * tzoff.days)
+                        if total_seconds == 0:
+                            _svalue += 'Z'
+                        else:
+                            if total_seconds < 0:
+                                _svalue += '-'
+                                total_seconds *= -1
+                            else:
+                                _svalue += '+'
+                            hours = total_seconds // 3600
+                            minutes = (total_seconds - (hours * 3600)) // 60
+                            _svalue += '{0:02d}:{1:02d}'.format(hours, minutes)
+            except AttributeError:
+                pass
+            return _svalue
+        @classmethod
+        def gds_parse_date(cls, input_data):
+            tz = None
+            if input_data[-1] == 'Z':
+                tz = GeneratedsSuper._FixedOffsetTZ(0, 'GMT')
+                input_data = input_data[:-1]
+            else:
+                results = GeneratedsSuper.tzoff_pattern.search(input_data)
+                if results is not None:
+                    tzoff_parts = results.group(2).split(':')
+                    tzoff = int(tzoff_parts[0]) * 60 + int(tzoff_parts[1])
+                    if results.group(1) == '-':
+                        tzoff *= -1
+                    tz = GeneratedsSuper._FixedOffsetTZ(
+                        tzoff, results.group(0))
+                    input_data = input_data[:-6]
+            dt = datetime_.datetime.strptime(input_data, '%Y-%m-%d')
+            dt = dt.replace(tzinfo=tz)
+            return dt.date()
+        def gds_validate_time(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_time(self, input_data, input_name=''):
+            if input_data.microsecond == 0:
+                _svalue = '%02d:%02d:%02d' % (
+                    input_data.hour,
+                    input_data.minute,
+                    input_data.second,
+                )
+            else:
+                _svalue = '%02d:%02d:%02d.%s' % (
+                    input_data.hour,
+                    input_data.minute,
+                    input_data.second,
+                    ('%f' % (float(input_data.microsecond) / 1000000))[2:],
+                )
+            if input_data.tzinfo is not None:
+                tzoff = input_data.tzinfo.utcoffset(input_data)
+                if tzoff is not None:
+                    total_seconds = tzoff.seconds + (86400 * tzoff.days)
+                    if total_seconds == 0:
+                        _svalue += 'Z'
+                    else:
+                        if total_seconds < 0:
+                            _svalue += '-'
+                            total_seconds *= -1
+                        else:
+                            _svalue += '+'
+                        hours = total_seconds // 3600
+                        minutes = (total_seconds - (hours * 3600)) // 60
+                        _svalue += '{0:02d}:{1:02d}'.format(hours, minutes)
+            return _svalue
+        @classmethod
+        def gds_parse_time(cls, input_data):
+            tz = None
+            if input_data[-1] == 'Z':
+                tz = GeneratedsSuper._FixedOffsetTZ(0, 'GMT')
+                input_data = input_data[:-1]
+            else:
+                results = GeneratedsSuper.tzoff_pattern.search(input_data)
+                if results is not None:
+                    tzoff_parts = results.group(2).split(':')
+                    tzoff = int(tzoff_parts[0]) * 60 + int(tzoff_parts[1])
+                    if results.group(1) == '-':
+                        tzoff *= -1
+                    tz = GeneratedsSuper._FixedOffsetTZ(
+                        tzoff, results.group(0))
+                    input_data = input_data[:-6]
+            if len(input_data.split('.')) > 1:
+                dt = datetime_.datetime.strptime(input_data, '%H:%M:%S.%f')
+            else:
+                dt = datetime_.datetime.strptime(input_data, '%H:%M:%S')
+            dt = dt.replace(tzinfo=tz)
+            return dt.time()
+        def gds_str_lower(self, instring):
+            return instring.lower()
+        def get_path_(self, node):
+            path_list = []
+            self.get_path_list_(node, path_list)
+            path_list.reverse()
+            path = '/'.join(path_list)
+            return path
+        Tag_strip_pattern_ = re_.compile(r'\{.*\}')
+        def get_path_list_(self, node, path_list):
+            if node is None:
+                return
+            tag = GeneratedsSuper.Tag_strip_pattern_.sub('', node.tag)
+            if tag:
+                path_list.append(tag)
+            self.get_path_list_(node.getparent(), path_list)
+        def get_class_obj_(self, node, default_class=None):
+            class_obj1 = default_class
+            if 'xsi' in node.nsmap:
+                classname = node.get('{%s}type' % node.nsmap['xsi'])
+                if classname is not None:
+                    names = classname.split(':')
+                    if len(names) == 2:
+                        classname = names[1]
+                    class_obj2 = globals().get(classname)
+                    if class_obj2 is not None:
+                        class_obj1 = class_obj2
+            return class_obj1
+        def gds_build_any(self, node, type_name=None):
+            return None
+        @classmethod
+        def gds_reverse_node_mapping(cls, mapping):
+            return dict(((v, k) for k, v in mapping.iteritems()))
+
+
+#
+# If you have installed IPython you can uncomment and use the following.
+# IPython is available from http://ipython.scipy.org/.
+#
+
+## from IPython.Shell import IPShellEmbed
+## args = ''
+## ipshell = IPShellEmbed(args,
+##     banner = 'Dropping into IPython',
+##     exit_msg = 'Leaving Interpreter, back to program.')
+
+# Then use the following line where and when you want to drop into the
+# IPython shell:
+#    ipshell('<some message> -- Entering ipshell.\nHit Ctrl-D to exit')
+
+#
+# Globals
+#
+
+ExternalEncoding = 'ascii'
+Tag_pattern_ = re_.compile(r'({.*})?(.*)')
+String_cleanup_pat_ = re_.compile(r"[\n\r\s]+")
+Namespace_extract_pat_ = re_.compile(r'{(.*)}(.*)')
+
+#
+# Support/utility functions.
+#
+
+
+def showIndent(outfile, level, pretty_print=True):
+    if pretty_print:
+        for idx in range(level):
+            outfile.write('    ')
+
+
+def quote_xml(inStr):
+    if not inStr:
+        return ''
+    s1 = (isinstance(inStr, basestring) and inStr or
+          '%s' % inStr)
+    s1 = s1.replace('&', '&amp;')
+    s1 = s1.replace('<', '&lt;')
+    s1 = s1.replace('>', '&gt;')
+    return s1
+
+
+def quote_attrib(inStr):
+    s1 = (isinstance(inStr, basestring) and inStr or
+          '%s' % inStr)
+    s1 = s1.replace('&', '&amp;')
+    s1 = s1.replace('<', '&lt;')
+    s1 = s1.replace('>', '&gt;')
+    if '"' in s1:
+        if "'" in s1:
+            s1 = '"%s"' % s1.replace('"', "&quot;")
+        else:
+            s1 = "'%s'" % s1
+    else:
+        s1 = '"%s"' % s1
+    return s1
+
+
+def quote_python(inStr):
+    s1 = inStr
+    if s1.find("'") == -1:
+        if s1.find('\n') == -1:
+            return "'%s'" % s1
+        else:
+            return "'''%s'''" % s1
+    else:
+        if s1.find('"') != -1:
+            s1 = s1.replace('"', '\\"')
+        if s1.find('\n') == -1:
+            return '"%s"' % s1
+        else:
+            return '"""%s"""' % s1
+
+
+def get_all_text_(node):
+    if node.text is not None:
+        text = node.text
+    else:
+        text = ''
+    for child in node:
+        if child.tail is not None:
+            text += child.tail
+    return text
+
+
+def find_attr_value_(attr_name, node):
+    attrs = node.attrib
+    attr_parts = attr_name.split(':')
+    value = None
+    if len(attr_parts) == 1:
+        value = attrs.get(attr_name)
+    elif len(attr_parts) == 2:
+        prefix, name = attr_parts
+        namespace = node.nsmap.get(prefix)
+        if namespace is not None:
+            value = attrs.get('{%s}%s' % (namespace, name, ))
+    return value
+
+
+class GDSParseError(Exception):
+    pass
+
+
+def raise_parse_error(node, msg):
+    if XMLParser_import_library == XMLParser_import_lxml:
+        msg = '%s (element %s/line %d)' % (
+            msg, node.tag, node.sourceline, )
+    else:
+        msg = '%s (element %s)' % (msg, node.tag, )
+    raise GDSParseError(msg)
+
+
+class MixedContainer:
+    # Constants for category:
+    CategoryNone = 0
+    CategoryText = 1
+    CategorySimple = 2
+    CategoryComplex = 3
+    # Constants for content_type:
+    TypeNone = 0
+    TypeText = 1
+    TypeString = 2
+    TypeInteger = 3
+    TypeFloat = 4
+    TypeDecimal = 5
+    TypeDouble = 6
+    TypeBoolean = 7
+    TypeBase64 = 8
+    def __init__(self, category, content_type, name, value):
+        self.category = category
+        self.content_type = content_type
+        self.name = name
+        self.value = value
+    def getCategory(self):
+        return self.category
+    def getContenttype(self, content_type):
+        return self.content_type
+    def getValue(self):
+        return self.value
+    def getName(self):
+        return self.name
+    def export(self, outfile, level, name, namespace, pretty_print=True):
+        if self.category == MixedContainer.CategoryText:
+            # Prevent exporting empty content as empty lines.
+            if self.value.strip():
+                outfile.write(self.value)
+        elif self.category == MixedContainer.CategorySimple:
+            self.exportSimple(outfile, level, name)
+        else:    # category == MixedContainer.CategoryComplex
+            self.value.export(outfile, level, namespace, name, pretty_print)
+    def exportSimple(self, outfile, level, name):
+        if self.content_type == MixedContainer.TypeString:
+            outfile.write('<%s>%s</%s>' % (
+                self.name, self.value, self.name))
+        elif self.content_type == MixedContainer.TypeInteger or \
+                self.content_type == MixedContainer.TypeBoolean:
+            outfile.write('<%s>%d</%s>' % (
+                self.name, self.value, self.name))
+        elif self.content_type == MixedContainer.TypeFloat or \
+                self.content_type == MixedContainer.TypeDecimal:
+            outfile.write('<%s>%f</%s>' % (
+                self.name, self.value, self.name))
+        elif self.content_type == MixedContainer.TypeDouble:
+            outfile.write('<%s>%g</%s>' % (
+                self.name, self.value, self.name))
+        elif self.content_type == MixedContainer.TypeBase64:
+            outfile.write('<%s>%s</%s>' % (
+                self.name, base64.b64encode(self.value), self.name))
+    def to_etree(self, element):
+        if self.category == MixedContainer.CategoryText:
+            # Prevent exporting empty content as empty lines.
+            if self.value.strip():
+                if len(element) > 0:
+                    if element[-1].tail is None:
+                        element[-1].tail = self.value
+                    else:
+                        element[-1].tail += self.value
+                else:
+                    if element.text is None:
+                        element.text = self.value
+                    else:
+                        element.text += self.value
+        elif self.category == MixedContainer.CategorySimple:
+            subelement = etree_.SubElement(element, '%s' % self.name)
+            subelement.text = self.to_etree_simple()
+        else:    # category == MixedContainer.CategoryComplex
+            self.value.to_etree(element)
+    def to_etree_simple(self):
+        if self.content_type == MixedContainer.TypeString:
+            text = self.value
+        elif (self.content_type == MixedContainer.TypeInteger or
+                self.content_type == MixedContainer.TypeBoolean):
+            text = '%d' % self.value
+        elif (self.content_type == MixedContainer.TypeFloat or
+                self.content_type == MixedContainer.TypeDecimal):
+            text = '%f' % self.value
+        elif self.content_type == MixedContainer.TypeDouble:
+            text = '%g' % self.value
+        elif self.content_type == MixedContainer.TypeBase64:
+            text = '%s' % base64.b64encode(self.value)
+        return text
+    def exportLiteral(self, outfile, level, name):
+        if self.category == MixedContainer.CategoryText:
+            showIndent(outfile, level)
+            outfile.write(
+                'model_.MixedContainer(%d, %d, "%s", "%s"),\n' % (
+                    self.category, self.content_type, self.name, self.value))
+        elif self.category == MixedContainer.CategorySimple:
+            showIndent(outfile, level)
+            outfile.write(
+                'model_.MixedContainer(%d, %d, "%s", "%s"),\n' % (
+                    self.category, self.content_type, self.name, self.value))
+        else:    # category == MixedContainer.CategoryComplex
+            showIndent(outfile, level)
+            outfile.write(
+                'model_.MixedContainer(%d, %d, "%s",\n' % (
+                    self.category, self.content_type, self.name,))
+            self.value.exportLiteral(outfile, level + 1)
+            showIndent(outfile, level)
+            outfile.write(')\n')
+
+
+class MemberSpec_(object):
+    def __init__(self, name='', data_type='', container=0):
+        self.name = name
+        self.data_type = data_type
+        self.container = container
+    def set_name(self, name): self.name = name
+    def get_name(self): return self.name
+    def set_data_type(self, data_type): self.data_type = data_type
+    def get_data_type_chain(self): return self.data_type
+    def get_data_type(self):
+        if isinstance(self.data_type, list):
+            if len(self.data_type) > 0:
+                return self.data_type[-1]
+            else:
+                return 'xs:string'
+        else:
+            return self.data_type
+    def set_container(self, container): self.container = container
+    def get_container(self): return self.container
+
+
+def _cast(typ, value):
+    if typ is None or value is None:
+        return value
+    return typ(value)
+
+#
+# Data representation classes.
+#
+
+
+class net(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, customerHandle=None, netBlocks=None, handle=None, netName=None, orgHandle=None, originASes=None, parentNetHandle=None, registrationDate=None, pocLinks=None, version=None, comment=None, anytypeobjs_=None):
+        if customerHandle is None:
+            self.customerHandle = []
+        else:
+            self.customerHandle = customerHandle
+        if netBlocks is None:
+            self.netBlocks = []
+        else:
+            self.netBlocks = netBlocks
+        if handle is None:
+            self.handle = []
+        else:
+            self.handle = handle
+        if netName is None:
+            self.netName = []
+        else:
+            self.netName = netName
+        if orgHandle is None:
+            self.orgHandle = []
+        else:
+            self.orgHandle = orgHandle
+        if originASes is None:
+            self.originASes = []
+        else:
+            self.originASes = originASes
+        if parentNetHandle is None:
+            self.parentNetHandle = []
+        else:
+            self.parentNetHandle = parentNetHandle
+        if registrationDate is None:
+            self.registrationDate = []
+        else:
+            self.registrationDate = registrationDate
+        if pocLinks is None:
+            self.pocLinks = []
+        else:
+            self.pocLinks = pocLinks
+        if version is None:
+            self.version = []
+        else:
+            self.version = version
+        if comment is None:
+            self.comment = []
+        else:
+            self.comment = comment
+        self.anytypeobjs_ = anytypeobjs_
+    def factory(*args_, **kwargs_):
+        if net.subclass:
+            return net.subclass(*args_, **kwargs_)
+        else:
+            return net(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_customerHandle(self): return self.customerHandle
+    def set_customerHandle(self, customerHandle): self.customerHandle = customerHandle
+    def add_customerHandle(self, value): self.customerHandle.append(value)
+    def insert_customerHandle(self, index, value): self.customerHandle[index] = value
+    def get_netBlocks(self): return self.netBlocks
+    def set_netBlocks(self, netBlocks): self.netBlocks = netBlocks
+    def add_netBlocks(self, value): self.netBlocks.append(value)
+    def insert_netBlocks(self, index, value): self.netBlocks[index] = value
+    def get_handle(self): return self.handle
+    def set_handle(self, handle): self.handle = handle
+    def add_handle(self, value): self.handle.append(value)
+    def insert_handle(self, index, value): self.handle[index] = value
+    def get_netName(self): return self.netName
+    def set_netName(self, netName): self.netName = netName
+    def add_netName(self, value): self.netName.append(value)
+    def insert_netName(self, index, value): self.netName[index] = value
+    def get_orgHandle(self): return self.orgHandle
+    def set_orgHandle(self, orgHandle): self.orgHandle = orgHandle
+    def add_orgHandle(self, value): self.orgHandle.append(value)
+    def insert_orgHandle(self, index, value): self.orgHandle[index] = value
+    def get_originASes(self): return self.originASes
+    def set_originASes(self, originASes): self.originASes = originASes
+    def add_originASes(self, value): self.originASes.append(value)
+    def insert_originASes(self, index, value): self.originASes[index] = value
+    def get_parentNetHandle(self): return self.parentNetHandle
+    def set_parentNetHandle(self, parentNetHandle): self.parentNetHandle = parentNetHandle
+    def add_parentNetHandle(self, value): self.parentNetHandle.append(value)
+    def insert_parentNetHandle(self, index, value): self.parentNetHandle[index] = value
+    def get_registrationDate(self): return self.registrationDate
+    def set_registrationDate(self, registrationDate): self.registrationDate = registrationDate
+    def add_registrationDate(self, value): self.registrationDate.append(value)
+    def insert_registrationDate(self, index, value): self.registrationDate[index] = value
+    def get_pocLinks(self): return self.pocLinks
+    def set_pocLinks(self, pocLinks): self.pocLinks = pocLinks
+    def add_pocLinks(self, value): self.pocLinks.append(value)
+    def insert_pocLinks(self, index, value): self.pocLinks[index] = value
+    def get_version(self): return self.version
+    def set_version(self, version): self.version = version
+    def add_version(self, value): self.version.append(value)
+    def insert_version(self, index, value): self.version[index] = value
+    def validate_version(self, value):
+        # Validate type version, a restriction on xs:token.
+        pass
+    def get_comment(self): return self.comment
+    def set_comment(self, comment): self.comment = comment
+    def add_comment(self, value): self.comment.append(value)
+    def insert_comment(self, index, value): self.comment[index] = value
+    def get_anytypeobjs_(self): return self.anytypeobjs_
+    def set_anytypeobjs_(self, anytypeobjs_): self.anytypeobjs_ = anytypeobjs_
+    def hasContent_(self):
+        if (
+            self.customerHandle or
+            self.netBlocks or
+            self.handle or
+            self.netName or
+            self.orgHandle or
+            self.originASes or
+            self.parentNetHandle or
+            self.registrationDate or
+            self.pocLinks or
+            self.version or
+            self.comment or
+            self.anytypeobjs_ is not None
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='net', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='net')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='net'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='net', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for customerHandle_ in self.customerHandle:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%scustomerHandle>%s</%scustomerHandle>%s' % (namespace_, self.gds_format_string(quote_xml(customerHandle_).encode(ExternalEncoding), input_name='customerHandle'), namespace_, eol_))
+        for netBlocks_ in self.netBlocks:
+            netBlocks_.export(outfile, level, namespace_, name_='netBlocks', pretty_print=pretty_print)
+        for handle_ in self.handle:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%shandle>%s</%shandle>%s' % (namespace_, self.gds_format_string(quote_xml(handle_).encode(ExternalEncoding), input_name='handle'), namespace_, eol_))
+        for netName_ in self.netName:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%snetName>%s</%snetName>%s' % (namespace_, self.gds_format_string(quote_xml(netName_).encode(ExternalEncoding), input_name='netName'), namespace_, eol_))
+        for orgHandle_ in self.orgHandle:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sorgHandle>%s</%sorgHandle>%s' % (namespace_, self.gds_format_string(quote_xml(orgHandle_).encode(ExternalEncoding), input_name='orgHandle'), namespace_, eol_))
+        for originASes_ in self.originASes:
+            originASes_.export(outfile, level, namespace_, name_='originASes', pretty_print=pretty_print)
+        for parentNetHandle_ in self.parentNetHandle:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sparentNetHandle>%s</%sparentNetHandle>%s' % (namespace_, self.gds_format_string(quote_xml(parentNetHandle_).encode(ExternalEncoding), input_name='parentNetHandle'), namespace_, eol_))
+        for registrationDate_ in self.registrationDate:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sregistrationDate>%s</%sregistrationDate>%s' % (namespace_, self.gds_format_string(quote_xml(registrationDate_).encode(ExternalEncoding), input_name='registrationDate'), namespace_, eol_))
+        for pocLinks_ in self.pocLinks:
+            pocLinks_.export(outfile, level, namespace_, name_='pocLinks', pretty_print=pretty_print)
+        for version_ in self.version:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sversion>%s</%sversion>%s' % (namespace_, self.gds_format_string(quote_xml(version_).encode(ExternalEncoding), input_name='version'), namespace_, eol_))
+        for comment_ in self.comment:
+            comment_.export(outfile, level, namespace_, name_='comment', pretty_print=pretty_print)
+        if self.anytypeobjs_ is not None:
+            self.anytypeobjs_.export(outfile, level, namespace_, pretty_print=pretty_print)
+    def exportLiteral(self, outfile, level, name_='net'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('customerHandle=[\n')
+        level += 1
+        for customerHandle_ in self.customerHandle:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(customerHandle_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('netBlocks=[\n')
+        level += 1
+        for netBlocks_ in self.netBlocks:
+            showIndent(outfile, level)
+            outfile.write('model_.netBlocks(\n')
+            netBlocks_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('handle=[\n')
+        level += 1
+        for handle_ in self.handle:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(handle_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('netName=[\n')
+        level += 1
+        for netName_ in self.netName:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(netName_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('orgHandle=[\n')
+        level += 1
+        for orgHandle_ in self.orgHandle:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(orgHandle_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('originASes=[\n')
+        level += 1
+        for originASes_ in self.originASes:
+            showIndent(outfile, level)
+            outfile.write('model_.originASes(\n')
+            originASes_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('parentNetHandle=[\n')
+        level += 1
+        for parentNetHandle_ in self.parentNetHandle:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(parentNetHandle_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('registrationDate=[\n')
+        level += 1
+        for registrationDate_ in self.registrationDate:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(registrationDate_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('pocLinks=[\n')
+        level += 1
+        for pocLinks_ in self.pocLinks:
+            showIndent(outfile, level)
+            outfile.write('model_.pocLinks(\n')
+            pocLinks_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('version=[\n')
+        level += 1
+        for version_ in self.version:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(version_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('comment=[\n')
+        level += 1
+        for comment_ in self.comment:
+            showIndent(outfile, level)
+            outfile.write('model_.comment(\n')
+            comment_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        if self.anytypeobjs_ is not None:
+            showIndent(outfile, level)
+            outfile.write('anytypeobjs_=model_.anytypeobjs_(\n')
+            self.anytypeobjs_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'customerHandle':
+            customerHandle_ = child_.text
+            customerHandle_ = self.gds_validate_string(customerHandle_, node, 'customerHandle')
+            self.customerHandle.append(customerHandle_)
+        elif nodeName_ == 'netBlocks':
+            obj_ = netBlocks.factory()
+            obj_.build(child_)
+            self.netBlocks.append(obj_)
+        elif nodeName_ == 'handle':
+            handle_ = child_.text
+            handle_ = self.gds_validate_string(handle_, node, 'handle')
+            self.handle.append(handle_)
+        elif nodeName_ == 'netName':
+            netName_ = child_.text
+            netName_ = self.gds_validate_string(netName_, node, 'netName')
+            self.netName.append(netName_)
+        elif nodeName_ == 'orgHandle':
+            orgHandle_ = child_.text
+            orgHandle_ = self.gds_validate_string(orgHandle_, node, 'orgHandle')
+            self.orgHandle.append(orgHandle_)
+        elif nodeName_ == 'originASes':
+            obj_ = originASes.factory()
+            obj_.build(child_)
+            self.originASes.append(obj_)
+        elif nodeName_ == 'parentNetHandle':
+            parentNetHandle_ = child_.text
+            parentNetHandle_ = self.gds_validate_string(parentNetHandle_, node, 'parentNetHandle')
+            self.parentNetHandle.append(parentNetHandle_)
+        elif nodeName_ == 'registrationDate':
+            registrationDate_ = child_.text
+            registrationDate_ = self.gds_validate_string(registrationDate_, node, 'registrationDate')
+            self.registrationDate.append(registrationDate_)
+        elif nodeName_ == 'pocLinks':
+            obj_ = pocLinks.factory()
+            obj_.build(child_)
+            self.pocLinks.append(obj_)
+        elif nodeName_ == 'version':
+            version_ = child_.text
+            version_ = re_.sub(String_cleanup_pat_, " ", version_).strip()
+            version_ = self.gds_validate_string(version_, node, 'version')
+            self.version.append(version_)
+            self.validate_version(self.version)    # validate type version
+        elif nodeName_ == 'comment':
+            obj_ = comment.factory()
+            obj_.build(child_)
+            self.comment.append(obj_)
+        else:
+            obj_ = self.gds_build_any(child_, 'net')
+            if obj_ is not None:
+                self.set_anytypeobjs_(obj_)
+# end class net
+
+
+class netBlock(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, cidrLength=None, description=None, endAddress=None, startAddress=None, type_=None, anytypeobjs_=None):
+        if cidrLength is None:
+            self.cidrLength = []
+        else:
+            self.cidrLength = cidrLength
+        if description is None:
+            self.description = []
+        else:
+            self.description = description
+        if endAddress is None:
+            self.endAddress = []
+        else:
+            self.endAddress = endAddress
+        if startAddress is None:
+            self.startAddress = []
+        else:
+            self.startAddress = startAddress
+        if type_ is None:
+            self.type_ = []
+        else:
+            self.type_ = type_
+        self.anytypeobjs_ = anytypeobjs_
+    def factory(*args_, **kwargs_):
+        if netBlock.subclass:
+            return netBlock.subclass(*args_, **kwargs_)
+        else:
+            return netBlock(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_cidrLength(self): return self.cidrLength
+    def set_cidrLength(self, cidrLength): self.cidrLength = cidrLength
+    def add_cidrLength(self, value): self.cidrLength.append(value)
+    def insert_cidrLength(self, index, value): self.cidrLength[index] = value
+    def get_description(self): return self.description
+    def set_description(self, description): self.description = description
+    def add_description(self, value): self.description.append(value)
+    def insert_description(self, index, value): self.description[index] = value
+    def get_endAddress(self): return self.endAddress
+    def set_endAddress(self, endAddress): self.endAddress = endAddress
+    def add_endAddress(self, value): self.endAddress.append(value)
+    def insert_endAddress(self, index, value): self.endAddress[index] = value
+    def get_startAddress(self): return self.startAddress
+    def set_startAddress(self, startAddress): self.startAddress = startAddress
+    def add_startAddress(self, value): self.startAddress.append(value)
+    def insert_startAddress(self, index, value): self.startAddress[index] = value
+    def get_type(self): return self.type_
+    def set_type(self, type_): self.type_ = type_
+    def add_type(self, value): self.type_.append(value)
+    def insert_type(self, index, value): self.type_[index] = value
+    def validate_type(self, value):
+        # Validate type type, a restriction on xs:string.
+        pass
+    def get_anytypeobjs_(self): return self.anytypeobjs_
+    def set_anytypeobjs_(self, anytypeobjs_): self.anytypeobjs_ = anytypeobjs_
+    def hasContent_(self):
+        if (
+            self.cidrLength or
+            self.description or
+            self.endAddress or
+            self.startAddress or
+            self.type_ or
+            self.anytypeobjs_ is not None
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='netBlock', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='netBlock')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='netBlock'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='netBlock', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for cidrLength_ in self.cidrLength:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%scidrLength>%s</%scidrLength>%s' % (namespace_, self.gds_format_string(quote_xml(cidrLength_).encode(ExternalEncoding), input_name='cidrLength'), namespace_, eol_))
+        for description_ in self.description:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sdescription>%s</%sdescription>%s' % (namespace_, self.gds_format_string(quote_xml(description_).encode(ExternalEncoding), input_name='description'), namespace_, eol_))
+        for endAddress_ in self.endAddress:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sendAddress>%s</%sendAddress>%s' % (namespace_, self.gds_format_string(quote_xml(endAddress_).encode(ExternalEncoding), input_name='endAddress'), namespace_, eol_))
+        for startAddress_ in self.startAddress:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sstartAddress>%s</%sstartAddress>%s' % (namespace_, self.gds_format_string(quote_xml(startAddress_).encode(ExternalEncoding), input_name='startAddress'), namespace_, eol_))
+        for type_ in self.type_:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%stype>%s</%stype>%s' % (namespace_, self.gds_format_string(quote_xml(type_).encode(ExternalEncoding), input_name='type'), namespace_, eol_))
+        if self.anytypeobjs_ is not None:
+            self.anytypeobjs_.export(outfile, level, namespace_, pretty_print=pretty_print)
+    def exportLiteral(self, outfile, level, name_='netBlock'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('cidrLength=[\n')
+        level += 1
+        for cidrLength_ in self.cidrLength:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(cidrLength_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('description=[\n')
+        level += 1
+        for description_ in self.description:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(description_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('endAddress=[\n')
+        level += 1
+        for endAddress_ in self.endAddress:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(endAddress_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('startAddress=[\n')
+        level += 1
+        for startAddress_ in self.startAddress:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(startAddress_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('type_=[\n')
+        level += 1
+        for type_ in self.type_:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(type_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        if self.anytypeobjs_ is not None:
+            showIndent(outfile, level)
+            outfile.write('anytypeobjs_=model_.anytypeobjs_(\n')
+            self.anytypeobjs_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'cidrLength':
+            cidrLength_ = child_.text
+            cidrLength_ = self.gds_validate_string(cidrLength_, node, 'cidrLength')
+            self.cidrLength.append(cidrLength_)
+        elif nodeName_ == 'description':
+            description_ = child_.text
+            description_ = self.gds_validate_string(description_, node, 'description')
+            self.description.append(description_)
+        elif nodeName_ == 'endAddress':
+            endAddress_ = child_.text
+            endAddress_ = self.gds_validate_string(endAddress_, node, 'endAddress')
+            self.endAddress.append(endAddress_)
+        elif nodeName_ == 'startAddress':
+            startAddress_ = child_.text
+            startAddress_ = self.gds_validate_string(startAddress_, node, 'startAddress')
+            self.startAddress.append(startAddress_)
+        elif nodeName_ == 'type':
+            type_ = child_.text
+            type_ = self.gds_validate_string(type_, node, 'type')
+            self.type_.append(type_)
+            self.validate_type(self.type_)    # validate type type
+        else:
+            obj_ = self.gds_build_any(child_, 'netBlock')
+            if obj_ is not None:
+                self.set_anytypeobjs_(obj_)
+# end class netBlock
+
+
+class pocLinkRef(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, function=None, handle=None, description=None):
+        self.function = _cast(None, function)
+        self.handle = _cast(None, handle)
+        self.description = _cast(None, description)
+        pass
+    def factory(*args_, **kwargs_):
+        if pocLinkRef.subclass:
+            return pocLinkRef.subclass(*args_, **kwargs_)
+        else:
+            return pocLinkRef(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_function(self): return self.function
+    def set_function(self, function): self.function = function
+    def get_handle(self): return self.handle
+    def set_handle(self, handle): self.handle = handle
+    def get_description(self): return self.description
+    def set_description(self, description): self.description = description
+    def hasContent_(self):
+        if (
+
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='pocLinkRef', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='pocLinkRef')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='pocLinkRef'):
+        if self.function is not None and 'function' not in already_processed:
+            already_processed.add('function')
+            outfile.write(' function=%s' % (self.gds_format_string(quote_attrib(self.function).encode(ExternalEncoding), input_name='function'), ))
+        if self.handle is not None and 'handle' not in already_processed:
+            already_processed.add('handle')
+            outfile.write(' handle=%s' % (self.gds_format_string(quote_attrib(self.handle).encode(ExternalEncoding), input_name='handle'), ))
+        if self.description is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            outfile.write(' description=%s' % (self.gds_format_string(quote_attrib(self.description).encode(ExternalEncoding), input_name='description'), ))
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='pocLinkRef', fromsubclass_=False, pretty_print=True):
+        pass
+    def exportLiteral(self, outfile, level, name_='pocLinkRef'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        if self.function is not None and 'function' not in already_processed:
+            already_processed.add('function')
+            showIndent(outfile, level)
+            outfile.write('function="%s",\n' % (self.function,))
+        if self.handle is not None and 'handle' not in already_processed:
+            already_processed.add('handle')
+            showIndent(outfile, level)
+            outfile.write('handle="%s",\n' % (self.handle,))
+        if self.description is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            showIndent(outfile, level)
+            outfile.write('description="%s",\n' % (self.description,))
+    def exportLiteralChildren(self, outfile, level, name_):
+        pass
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('function', node)
+        if value is not None and 'function' not in already_processed:
+            already_processed.add('function')
+            self.function = value
+        value = find_attr_value_('handle', node)
+        if value is not None and 'handle' not in already_processed:
+            already_processed.add('handle')
+            self.handle = value
+        value = find_attr_value_('description', node)
+        if value is not None and 'description' not in already_processed:
+            already_processed.add('description')
+            self.description = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        pass
+# end class pocLinkRef
+
+
+class netBlocks(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, netBlock=None):
+        if netBlock is None:
+            self.netBlock = []
+        else:
+            self.netBlock = netBlock
+    def factory(*args_, **kwargs_):
+        if netBlocks.subclass:
+            return netBlocks.subclass(*args_, **kwargs_)
+        else:
+            return netBlocks(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_netBlock(self): return self.netBlock
+    def set_netBlock(self, netBlock): self.netBlock = netBlock
+    def add_netBlock(self, value): self.netBlock.append(value)
+    def insert_netBlock(self, index, value): self.netBlock[index] = value
+    def hasContent_(self):
+        if (
+            self.netBlock
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='netBlocks', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='netBlocks')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='netBlocks'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='netBlocks', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for netBlock_ in self.netBlock:
+            netBlock_.export(outfile, level, namespace_, name_='netBlock', pretty_print=pretty_print)
+    def exportLiteral(self, outfile, level, name_='netBlocks'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('netBlock=[\n')
+        level += 1
+        for netBlock_ in self.netBlock:
+            showIndent(outfile, level)
+            outfile.write('model_.netBlock(\n')
+            netBlock_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'netBlock':
+            obj_ = netBlock.factory()
+            obj_.build(child_)
+            self.netBlock.append(obj_)
+# end class netBlocks
+
+
+class originASes(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, originAS=None):
+        if originAS is None:
+            self.originAS = []
+        else:
+            self.originAS = originAS
+    def factory(*args_, **kwargs_):
+        if originASes.subclass:
+            return originASes.subclass(*args_, **kwargs_)
+        else:
+            return originASes(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_originAS(self): return self.originAS
+    def set_originAS(self, originAS): self.originAS = originAS
+    def add_originAS(self, value): self.originAS.append(value)
+    def insert_originAS(self, index, value): self.originAS[index] = value
+    def hasContent_(self):
+        if (
+            self.originAS
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='originASes', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='originASes')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='originASes'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='originASes', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for originAS_ in self.originAS:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%soriginAS>%s</%soriginAS>%s' % (namespace_, self.gds_format_string(quote_xml(originAS_).encode(ExternalEncoding), input_name='originAS'), namespace_, eol_))
+    def exportLiteral(self, outfile, level, name_='originASes'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('originAS=[\n')
+        level += 1
+        for originAS_ in self.originAS:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(originAS_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'originAS':
+            originAS_ = child_.text
+            originAS_ = self.gds_validate_string(originAS_, node, 'originAS')
+            self.originAS.append(originAS_)
+# end class originASes
+
+
+class pocLinks(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, pocLinkRef=None):
+        if pocLinkRef is None:
+            self.pocLinkRef = []
+        else:
+            self.pocLinkRef = pocLinkRef
+    def factory(*args_, **kwargs_):
+        if pocLinks.subclass:
+            return pocLinks.subclass(*args_, **kwargs_)
+        else:
+            return pocLinks(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_pocLinkRef(self): return self.pocLinkRef
+    def set_pocLinkRef(self, pocLinkRef): self.pocLinkRef = pocLinkRef
+    def add_pocLinkRef(self, value): self.pocLinkRef.append(value)
+    def insert_pocLinkRef(self, index, value): self.pocLinkRef[index] = value
+    def hasContent_(self):
+        if (
+            self.pocLinkRef
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='pocLinks', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='pocLinks')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='pocLinks'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='pocLinks', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for pocLinkRef_ in self.pocLinkRef:
+            pocLinkRef_.export(outfile, level, namespace_, name_='pocLinkRef', pretty_print=pretty_print)
+    def exportLiteral(self, outfile, level, name_='pocLinks'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('pocLinkRef=[\n')
+        level += 1
+        for pocLinkRef_ in self.pocLinkRef:
+            showIndent(outfile, level)
+            outfile.write('model_.pocLinkRef(\n')
+            pocLinkRef_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'pocLinkRef':
+            obj_ = pocLinkRef.factory()
+            obj_.build(child_)
+            self.pocLinkRef.append(obj_)
+# end class pocLinks
+
+
+class version(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self):
+        pass
+    def factory(*args_, **kwargs_):
+        if version.subclass:
+            return version.subclass(*args_, **kwargs_)
+        else:
+            return version(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def hasContent_(self):
+        if (
+
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='version', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='version')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='version'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='version', fromsubclass_=False, pretty_print=True):
+        pass
+    def exportLiteral(self, outfile, level, name_='version'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        pass
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        pass
+# end class version
+
+
+class comment(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, line=None):
+        if line is None:
+            self.line = []
+        else:
+            self.line = line
+    def factory(*args_, **kwargs_):
+        if comment.subclass:
+            return comment.subclass(*args_, **kwargs_)
+        else:
+            return comment(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_line(self): return self.line
+    def set_line(self, line): self.line = line
+    def add_line(self, value): self.line.append(value)
+    def insert_line(self, index, value): self.line[index] = value
+    def hasContent_(self):
+        if (
+            self.line
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='comment', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='comment')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='comment'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='comment', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for line_ in self.line:
+            line_.export(outfile, level, namespace_, name_='line', pretty_print=pretty_print)
+    def exportLiteral(self, outfile, level, name_='comment'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('line=[\n')
+        level += 1
+        for line_ in self.line:
+            showIndent(outfile, level)
+            outfile.write('model_.line(\n')
+            line_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'line':
+            obj_ = line.factory()
+            obj_.build(child_)
+            self.line.append(obj_)
+# end class comment
+
+
+class type_(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self):
+        pass
+    def factory(*args_, **kwargs_):
+        if type_.subclass:
+            return type_.subclass(*args_, **kwargs_)
+        else:
+            return type_(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def hasContent_(self):
+        if (
+
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='type', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='type')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='type'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='type', fromsubclass_=False, pretty_print=True):
+        pass
+    def exportLiteral(self, outfile, level, name_='type'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        pass
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        pass
+# end class type_
+
+
+class line(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, number=None, valueOf_=None):
+        self.number = _cast(int, number)
+        self.valueOf_ = valueOf_
+    def factory(*args_, **kwargs_):
+        if line.subclass:
+            return line.subclass(*args_, **kwargs_)
+        else:
+            return line(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_number(self): return self.number
+    def set_number(self, number): self.number = number
+    def get_valueOf_(self): return self.valueOf_
+    def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
+    def hasContent_(self):
+        if (
+            self.valueOf_
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='line', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='line')
+        if self.hasContent_():
+            outfile.write('>')
+            outfile.write(str(self.valueOf_).encode(ExternalEncoding))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='line'):
+        if self.number is not None and 'number' not in already_processed:
+            already_processed.add('number')
+            outfile.write(' number="%s"' % self.gds_format_integer(self.number, input_name='number'))
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='line', fromsubclass_=False, pretty_print=True):
+        pass
+    def exportLiteral(self, outfile, level, name_='line'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+        showIndent(outfile, level)
+        outfile.write('valueOf_ = """%s""",\n' % (self.valueOf_,))
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        if self.number is not None and 'number' not in already_processed:
+            already_processed.add('number')
+            showIndent(outfile, level)
+            outfile.write('number=%d,\n' % (self.number,))
+    def exportLiteralChildren(self, outfile, level, name_):
+        pass
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        self.valueOf_ = get_all_text_(node)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('number', node)
+        if value is not None and 'number' not in already_processed:
+            already_processed.add('number')
+            try:
+                self.number = int(value)
+            except ValueError, exp:
+                raise_parse_error(node, 'Bad integer attribute: %s' % exp)
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        pass
+# end class line
+
+
+GDSClassesMapping = {
+}
+
+
+USAGE_TEXT = """
+Usage: python <Parser>.py [ -s ] <in_xml_file>
+"""
+
+
+def usage():
+    print USAGE_TEXT
+    sys.exit(1)
+
+
+def get_root_tag(node):
+    tag = Tag_pattern_.match(node.tag).groups()[-1]
+    rootClass = GDSClassesMapping.get(tag)
+    if rootClass is None:
+        rootClass = globals().get(tag)
+    return tag, rootClass
+
+
+def parse(inFileName):
+    doc = parsexml_(inFileName)
+    rootNode = doc.getroot()
+    rootTag, rootClass = get_root_tag(rootNode)
+    if rootClass is None:
+        rootTag = 'net'
+        rootClass = net
+    rootObj = rootClass.factory()
+    rootObj.build(rootNode)
+    # Enable Python to collect the space used by the DOM.
+    doc = None
+    sys.stdout.write('<?xml version="1.0" ?>\n')
+    rootObj.export(
+        sys.stdout, 0, name_=rootTag,
+        namespacedef_='',
+        pretty_print=True)
+    return rootObj
+
+
+def parseEtree(inFileName):
+    doc = parsexml_(inFileName)
+    rootNode = doc.getroot()
+    rootTag, rootClass = get_root_tag(rootNode)
+    if rootClass is None:
+        rootTag = 'net'
+        rootClass = net
+    rootObj = rootClass.factory()
+    rootObj.build(rootNode)
+    # Enable Python to collect the space used by the DOM.
+    doc = None
+    mapping = {}
+    rootElement = rootObj.to_etree(None, name_=rootTag, mapping_=mapping)
+    reverse_mapping = rootObj.gds_reverse_node_mapping(mapping)
+    content = etree_.tostring(
+        rootElement, pretty_print=True,
+        xml_declaration=True, encoding="utf-8")
+    sys.stdout.write(content)
+    sys.stdout.write('\n')
+    return rootObj, rootElement, mapping, reverse_mapping
+
+
+def parseString(inString):
+    from StringIO import StringIO
+    doc = parsexml_(StringIO(inString))
+    rootNode = doc.getroot()
+    roots = get_root_tag(rootNode)
+    rootClass = roots[1]
+    if rootClass is None:
+        rootClass = net
+    rootObj = rootClass.factory()
+    rootObj.build(rootNode)
+    # Enable Python to collect the space used by the DOM.
+    doc = None
+    sys.stdout.write('<?xml version="1.0" ?>\n')
+    rootObj.export(
+        sys.stdout, 0, name_="net",
+        namespacedef_='')
+    return rootObj
+
+
+def parseLiteral(inFileName):
+    doc = parsexml_(inFileName)
+    rootNode = doc.getroot()
+    rootTag, rootClass = get_root_tag(rootNode)
+    if rootClass is None:
+        rootTag = 'net'
+        rootClass = net
+    rootObj = rootClass.factory()
+    rootObj.build(rootNode)
+    # Enable Python to collect the space used by the DOM.
+    doc = None
+    sys.stdout.write('#from NetPayload import *\n\n')
+    sys.stdout.write('import NetPayload as model_\n\n')
+    sys.stdout.write('rootObj = model_.rootTag(\n')
+    rootObj.exportLiteral(sys.stdout, 0, name_=rootTag)
+    sys.stdout.write(')\n')
+    return rootObj
+
+
+def main():
+    args = sys.argv[1:]
+    if len(args) == 1:
+        parse(args[0])
+    else:
+        usage()
+
+
+if __name__ == '__main__':
+    #import pdb; pdb.set_trace()
+    main()
+
+
+__all__ = [
+    "comment",
+    "line",
+    "net",
+    "netBlock",
+    "netBlocks",
+    "originASes",
+    "pocLinkRef",
+    "pocLinks",
+    "type_",
+    "version"
+]

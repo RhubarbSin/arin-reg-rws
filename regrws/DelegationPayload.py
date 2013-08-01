@@ -1,520 +1,1377 @@
-# ./DelegationPayload.py
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# PyXB bindings for NM:514f13e3f1b2b4088cde1fa16b1c0c6121fb4d3d
-# Generated 2013-07-11 15:18:35.262335 by PyXB version 1.2.2
-# Namespace http://www.arin.net/regrws/core/v1
 
-import pyxb
-import pyxb.binding
-import pyxb.binding.saxer
-import StringIO
-import pyxb.utils.utility
-import pyxb.utils.domutils
+#
+# Generated Thu Aug  1 12:21:21 2013 by generateDS.py version 2.10a.
+#
+
 import sys
-
-# Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:ae9d8a23-ea5e-11e2-a9fb-10ddb19be936')
-
-# Version of PyXB used to generate the bindings
-_PyXBVersion = '1.2.2'
-# Generated bindings are not compatible across PyXB versions
-if pyxb.__version__ != _PyXBVersion:
-    raise pyxb.PyXBVersionError(_PyXBVersion)
-
-# Import bindings for namespaces imported into schema
-import pyxb.binding.datatypes
-
-# NOTE: All namespace declarations are reserved within the binding
-Namespace = pyxb.namespace.NamespaceForURI(u'http://www.arin.net/regrws/core/v1', create_if_missing=True)
-Namespace.configureCategories(['typeBinding', 'elementBinding'])
-
-def CreateFromDocument (xml_text, default_namespace=None, location_base=None):
-    """Parse the given XML and use the document element to create a
-    Python instance.
-    
-    @kw default_namespace The L{pyxb.Namespace} instance to use as the
-    default namespace where there is no default namespace in scope.
-    If unspecified or C{None}, the namespace of the module containing
-    this function will be used.
-
-    @keyword location_base: An object to be recorded as the base of all
-    L{pyxb.utils.utility.Location} instances associated with events and
-    objects handled by the parser.  You might pass the URI from which
-    the document was obtained.
-    """
-
-    if pyxb.XMLStyle_saxer != pyxb._XMLStyle:
-        dom = pyxb.utils.domutils.StringToDOM(xml_text)
-        return CreateFromDOM(dom.documentElement)
-    if default_namespace is None:
-        default_namespace = Namespace.fallbackNamespace()
-    saxer = pyxb.binding.saxer.make_parser(fallback_namespace=default_namespace, location_base=location_base)
-    handler = saxer.getContentHandler()
-    saxer.parse(StringIO.StringIO(xml_text))
-    instance = handler.rootObject()
-    return instance
-
-def CreateFromDOM (node, default_namespace=None):
-    """Create a Python instance from the given DOM node.
-    The node tag must correspond to an element declaration in this module.
-
-    @deprecated: Forcing use of DOM interface is unnecessary; use L{CreateFromDocument}."""
-    if default_namespace is None:
-        default_namespace = Namespace.fallbackNamespace()
-    return pyxb.binding.basis.element.AnyCreateFromDOM(node, default_namespace)
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 4, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}name uses Python identifier name
-    __name = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'name'), 'name', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1name', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 23, 2), )
-
-    
-    name = property(__name.value, __name.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}nameservers uses Python identifier nameservers
-    __nameservers = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'nameservers'), 'nameservers', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1nameservers', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 24, 2), )
-
-    
-    nameservers = property(__nameservers.value, __nameservers.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}delegationKeys uses Python identifier delegationKeys
-    __delegationKeys = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'delegationKeys'), 'delegationKeys', '__httpwww_arin_netregrwscorev1_CTD_ANON_httpwww_arin_netregrwscorev1delegationKeys', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 31, 2), )
-
-    
-    delegationKeys = property(__delegationKeys.value, __delegationKeys.set, None, None)
-
-    _HasWildcardElement = True
-    _ElementMap.update({
-        __name.name() : __name,
-        __nameservers.name() : __nameservers,
-        __delegationKeys.name() : __delegationKeys
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON_ (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 14, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}algorithm uses Python identifier algorithm
-    __algorithm = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'algorithm'), 'algorithm', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1algorithm', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 43, 2), )
-
-    
-    algorithm = property(__algorithm.value, __algorithm.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}digest uses Python identifier digest
-    __digest = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'digest'), 'digest', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1digest', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 52, 2), )
-
-    
-    digest = property(__digest.value, __digest.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}digestType uses Python identifier digestType
-    __digestType = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'digestType'), 'digestType', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1digestType', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 53, 2), )
-
-    
-    digestType = property(__digestType.value, __digestType.set, None, None)
-
-    
-    # Element {http://www.arin.net/regrws/core/v1}keyTag uses Python identifier keyTag
-    __keyTag = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'keyTag'), 'keyTag', '__httpwww_arin_netregrwscorev1_CTD_ANON__httpwww_arin_netregrwscorev1keyTag', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 62, 2), )
-
-    
-    keyTag = property(__keyTag.value, __keyTag.set, None, None)
-
-    _ElementMap.update({
-        __algorithm.name() : __algorithm,
-        __digest.name() : __digest,
-        __digestType.name() : __digestType,
-        __keyTag.name() : __keyTag
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON_2 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 25, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}nameserver uses Python identifier nameserver
-    __nameserver = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'nameserver'), 'nameserver', '__httpwww_arin_netregrwscorev1_CTD_ANON_2_httpwww_arin_netregrwscorev1nameserver', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 63, 2), )
-
-    
-    nameserver = property(__nameserver.value, __nameserver.set, None, None)
-
-    _ElementMap.update({
-        __nameserver.name() : __nameserver
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type ELEMENT_ONLY
-class CTD_ANON_3 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type ELEMENT_ONLY"""
-    _TypeDefinition = None
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_ELEMENT_ONLY
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 32, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.anyType
-    
-    # Element {http://www.arin.net/regrws/core/v1}delegationKey uses Python identifier delegationKey
-    __delegationKey = pyxb.binding.content.ElementDeclaration(pyxb.namespace.ExpandedName(Namespace, u'delegationKey'), 'delegationKey', '__httpwww_arin_netregrwscorev1_CTD_ANON_3_httpwww_arin_netregrwscorev1delegationKey', True, pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 13, 2), )
-
-    
-    delegationKey = property(__delegationKey.value, __delegationKey.set, None, None)
-
-    _ElementMap.update({
-        __delegationKey.name() : __delegationKey
-    })
-    _AttributeMap.update({
-        
-    })
-
-
-
-# Complex type [anonymous] with content type SIMPLE
-class CTD_ANON_4 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type SIMPLE"""
-    _TypeDefinition = pyxb.binding.datatypes.string
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_SIMPLE
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 44, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.string
-    
-    # Attribute name uses Python identifier name
-    __name = pyxb.binding.content.AttributeUse(pyxb.namespace.ExpandedName(None, u'name'), 'name', '__httpwww_arin_netregrwscorev1_CTD_ANON_4_name', pyxb.binding.datatypes.string)
-    __name._DeclarationLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 47, 10)
-    __name._UseLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 47, 10)
-    
-    name = property(__name.value, __name.set, None, None)
-
-    _ElementMap.update({
-        
-    })
-    _AttributeMap.update({
-        __name.name() : __name
-    })
-
-
-
-# Complex type [anonymous] with content type SIMPLE
-class CTD_ANON_5 (pyxb.binding.basis.complexTypeDefinition):
-    """Complex type [anonymous] with content type SIMPLE"""
-    _TypeDefinition = pyxb.binding.datatypes.string
-    _ContentTypeTag = pyxb.binding.basis.complexTypeDefinition._CT_SIMPLE
-    _Abstract = False
-    _ExpandedName = None
-    _XSDLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 54, 4)
-    _ElementMap = {}
-    _AttributeMap = {}
-    # Base type is pyxb.binding.datatypes.string
-    
-    # Attribute name uses Python identifier name
-    __name = pyxb.binding.content.AttributeUse(pyxb.namespace.ExpandedName(None, u'name'), 'name', '__httpwww_arin_netregrwscorev1_CTD_ANON_5_name', pyxb.binding.datatypes.string)
-    __name._DeclarationLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 57, 10)
-    __name._UseLocation = pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 57, 10)
-    
-    name = property(__name.value, __name.set, None, None)
-
-    _ElementMap.update({
-        
-    })
-    _AttributeMap.update({
-        __name.name() : __name
-    })
-
-
-
-name = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'name'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 23, 2))
-Namespace.addCategoryObject('elementBinding', name.name().localName(), name)
-
-digest = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'digest'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 52, 2))
-Namespace.addCategoryObject('elementBinding', digest.name().localName(), digest)
-
-keyTag = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'keyTag'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 62, 2))
-Namespace.addCategoryObject('elementBinding', keyTag.name().localName(), keyTag)
-
-nameserver = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'nameserver'), pyxb.binding.datatypes.string, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 63, 2))
-Namespace.addCategoryObject('elementBinding', nameserver.name().localName(), nameserver)
-
-delegation = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'delegation'), CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 3, 2))
-Namespace.addCategoryObject('elementBinding', delegation.name().localName(), delegation)
-
-delegationKey = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'delegationKey'), CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 13, 2))
-Namespace.addCategoryObject('elementBinding', delegationKey.name().localName(), delegationKey)
-
-nameservers = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'nameservers'), CTD_ANON_2, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 24, 2))
-Namespace.addCategoryObject('elementBinding', nameservers.name().localName(), nameservers)
-
-delegationKeys = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'delegationKeys'), CTD_ANON_3, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 31, 2))
-Namespace.addCategoryObject('elementBinding', delegationKeys.name().localName(), delegationKeys)
-
-algorithm = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'algorithm'), CTD_ANON_4, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 43, 2))
-Namespace.addCategoryObject('elementBinding', algorithm.name().localName(), algorithm)
-
-digestType = pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'digestType'), CTD_ANON_5, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 53, 2))
-Namespace.addCategoryObject('elementBinding', digestType.name().localName(), digestType)
-
-
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'name'), pyxb.binding.datatypes.string, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 23, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'nameservers'), CTD_ANON_2, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 24, 2)))
-
-CTD_ANON._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'delegationKeys'), CTD_ANON_3, scope=CTD_ANON, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 31, 2)))
-
-def _BuildAutomaton ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton
-    del _BuildAutomaton
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 5, 6))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'name')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 6, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'nameservers')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 7, 8))
-    st_1 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_1)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'delegationKeys')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 8, 8))
-    st_2 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_2)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.WildcardUse(pyxb.binding.content.Wildcard(process_contents=pyxb.binding.content.Wildcard.PC_skip, namespace_constraint=pyxb.binding.content.Wildcard.NC_any), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 40, 6))
-    st_3 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_3)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_1._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_2._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_3._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON._Automaton = _BuildAutomaton()
-
-
-
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'algorithm'), CTD_ANON_4, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 43, 2)))
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'digest'), pyxb.binding.datatypes.string, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 52, 2)))
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'digestType'), CTD_ANON_5, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 53, 2)))
-
-CTD_ANON_._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'keyTag'), pyxb.binding.datatypes.string, scope=CTD_ANON_, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 62, 2)))
-
-def _BuildAutomaton_ ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_
-    del _BuildAutomaton_
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 15, 6))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'algorithm')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 16, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'digest')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 17, 8))
-    st_1 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_1)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'digestType')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 18, 8))
-    st_2 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_2)
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'keyTag')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 19, 8))
-    st_3 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_3)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_1._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_2._set_transitionSet(transitions)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_1, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_2, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    transitions.append(fac.Transition(st_3, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_3._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON_._Automaton = _BuildAutomaton_()
-
-
-
-
-CTD_ANON_2._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'nameserver'), pyxb.binding.datatypes.string, scope=CTD_ANON_2, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 63, 2)))
-
-def _BuildAutomaton_2 ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_2
-    del _BuildAutomaton_2
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 27, 8))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_2._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'nameserver')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 27, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON_2._Automaton = _BuildAutomaton_2()
-
-
-
-
-CTD_ANON_3._AddElement(pyxb.binding.basis.element(pyxb.namespace.ExpandedName(Namespace, u'delegationKey'), CTD_ANON_, scope=CTD_ANON_3, location=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 13, 2)))
-
-def _BuildAutomaton_3 ():
-    # Remove this helper function from the namespace after it is invoked
-    global _BuildAutomaton_3
-    del _BuildAutomaton_3
-    import pyxb.utils.fac as fac
-
-    counters = set()
-    cc_0 = fac.CounterCondition(min=0L, max=None, metadata=pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 34, 8))
-    counters.add(cc_0)
-    states = []
-    final_update = set()
-    final_update.add(fac.UpdateInstruction(cc_0, False))
-    symbol = pyxb.binding.content.ElementUse(CTD_ANON_3._UseForTag(pyxb.namespace.ExpandedName(Namespace, u'delegationKey')), pyxb.utils.utility.Location('/Users/blb/Downloads/regrws-rnc/DelegationPayload.xsd', 34, 8))
-    st_0 = fac.State(symbol, is_initial=True, final_update=final_update, is_unordered_catenation=False)
-    states.append(st_0)
-    transitions = []
-    transitions.append(fac.Transition(st_0, [
-        fac.UpdateInstruction(cc_0, True) ]))
-    st_0._set_transitionSet(transitions)
-    return fac.Automaton(states, counters, True, containing_state=None)
-CTD_ANON_3._Automaton = _BuildAutomaton_3()
-
+import getopt
+import re as re_
+import base64
+import datetime as datetime_
+
+etree_ = None
+Verbose_import_ = False
+(
+    XMLParser_import_none, XMLParser_import_lxml,
+    XMLParser_import_elementtree
+) = range(3)
+XMLParser_import_library = None
+try:
+    # lxml
+    from lxml import etree as etree_
+    XMLParser_import_library = XMLParser_import_lxml
+    if Verbose_import_:
+        print("running with lxml.etree")
+except ImportError:
+    try:
+        # cElementTree from Python 2.5+
+        import xml.etree.cElementTree as etree_
+        XMLParser_import_library = XMLParser_import_elementtree
+        if Verbose_import_:
+            print("running with cElementTree on Python 2.5+")
+    except ImportError:
+        try:
+            # ElementTree from Python 2.5+
+            import xml.etree.ElementTree as etree_
+            XMLParser_import_library = XMLParser_import_elementtree
+            if Verbose_import_:
+                print("running with ElementTree on Python 2.5+")
+        except ImportError:
+            try:
+                # normal cElementTree install
+                import cElementTree as etree_
+                XMLParser_import_library = XMLParser_import_elementtree
+                if Verbose_import_:
+                    print("running with cElementTree")
+            except ImportError:
+                try:
+                    # normal ElementTree install
+                    import elementtree.ElementTree as etree_
+                    XMLParser_import_library = XMLParser_import_elementtree
+                    if Verbose_import_:
+                        print("running with ElementTree")
+                except ImportError:
+                    raise ImportError(
+                        "Failed to import ElementTree from any known place")
+
+
+def parsexml_(*args, **kwargs):
+    if (XMLParser_import_library == XMLParser_import_lxml and
+            'parser' not in kwargs):
+        # Use the lxml ElementTree compatible parser so that, e.g.,
+        #   we ignore comments.
+        kwargs['parser'] = etree_.ETCompatXMLParser()
+    doc = etree_.parse(*args, **kwargs)
+    return doc
+
+#
+# User methods
+#
+# Calls to the methods in these classes are generated by generateDS.py.
+# You can replace these methods by re-implementing the following class
+#   in a module named generatedssuper.py.
+
+try:
+    from generatedssuper import GeneratedsSuper
+except ImportError, exp:
+
+    class GeneratedsSuper(object):
+        tzoff_pattern = re_.compile(r'(\+|-)((0\d|1[0-3]):[0-5]\d|14:00)$')
+        class _FixedOffsetTZ(datetime_.tzinfo):
+            def __init__(self, offset, name):
+                self.__offset = datetime_.timedelta(minutes=offset)
+                self.__name = name
+            def utcoffset(self, dt):
+                return self.__offset
+            def tzname(self, dt):
+                return self.__name
+            def dst(self, dt):
+                return None
+        def gds_format_string(self, input_data, input_name=''):
+            return input_data
+        def gds_validate_string(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_base64(self, input_data, input_name=''):
+            return base64.b64encode(input_data)
+        def gds_validate_base64(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_integer(self, input_data, input_name=''):
+            return '%d' % input_data
+        def gds_validate_integer(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_integer_list(self, input_data, input_name=''):
+            return '%s' % input_data
+        def gds_validate_integer_list(self, input_data, node, input_name=''):
+            values = input_data.split()
+            for value in values:
+                try:
+                    float(value)
+                except (TypeError, ValueError):
+                    raise_parse_error(node, 'Requires sequence of integers')
+            return input_data
+        def gds_format_float(self, input_data, input_name=''):
+            return '%f' % input_data
+        def gds_validate_float(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_float_list(self, input_data, input_name=''):
+            return '%s' % input_data
+        def gds_validate_float_list(self, input_data, node, input_name=''):
+            values = input_data.split()
+            for value in values:
+                try:
+                    float(value)
+                except (TypeError, ValueError):
+                    raise_parse_error(node, 'Requires sequence of floats')
+            return input_data
+        def gds_format_double(self, input_data, input_name=''):
+            return '%e' % input_data
+        def gds_validate_double(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_double_list(self, input_data, input_name=''):
+            return '%s' % input_data
+        def gds_validate_double_list(self, input_data, node, input_name=''):
+            values = input_data.split()
+            for value in values:
+                try:
+                    float(value)
+                except (TypeError, ValueError):
+                    raise_parse_error(node, 'Requires sequence of doubles')
+            return input_data
+        def gds_format_boolean(self, input_data, input_name=''):
+            return ('%s' % input_data).lower()
+        def gds_validate_boolean(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_boolean_list(self, input_data, input_name=''):
+            return '%s' % input_data
+        def gds_validate_boolean_list(self, input_data, node, input_name=''):
+            values = input_data.split()
+            for value in values:
+                if value not in ('true', '1', 'false', '0', ):
+                    raise_parse_error(
+                        node,
+                        'Requires sequence of booleans '
+                        '("true", "1", "false", "0")')
+            return input_data
+        def gds_validate_datetime(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_datetime(self, input_data, input_name=''):
+            if input_data.microsecond == 0:
+                _svalue = '%04d-%02d-%02dT%02d:%02d:%02d' % (
+                    input_data.year,
+                    input_data.month,
+                    input_data.day,
+                    input_data.hour,
+                    input_data.minute,
+                    input_data.second,
+                )
+            else:
+                _svalue = '%04d-%02d-%02dT%02d:%02d:%02d.%s' % (
+                    input_data.year,
+                    input_data.month,
+                    input_data.day,
+                    input_data.hour,
+                    input_data.minute,
+                    input_data.second,
+                    ('%f' % (float(input_data.microsecond) / 1000000))[2:],
+                )
+            if input_data.tzinfo is not None:
+                tzoff = input_data.tzinfo.utcoffset(input_data)
+                if tzoff is not None:
+                    total_seconds = tzoff.seconds + (86400 * tzoff.days)
+                    if total_seconds == 0:
+                        _svalue += 'Z'
+                    else:
+                        if total_seconds < 0:
+                            _svalue += '-'
+                            total_seconds *= -1
+                        else:
+                            _svalue += '+'
+                        hours = total_seconds // 3600
+                        minutes = (total_seconds - (hours * 3600)) // 60
+                        _svalue += '{0:02d}:{1:02d}'.format(hours, minutes)
+            return _svalue
+        @classmethod
+        def gds_parse_datetime(cls, input_data):
+            tz = None
+            if input_data[-1] == 'Z':
+                tz = GeneratedsSuper._FixedOffsetTZ(0, 'GMT')
+                input_data = input_data[:-1]
+            else:
+                results = GeneratedsSuper.tzoff_pattern.search(input_data)
+                if results is not None:
+                    tzoff_parts = results.group(2).split(':')
+                    tzoff = int(tzoff_parts[0]) * 60 + int(tzoff_parts[1])
+                    if results.group(1) == '-':
+                        tzoff *= -1
+                    tz = GeneratedsSuper._FixedOffsetTZ(
+                        tzoff, results.group(0))
+                    input_data = input_data[:-6]
+            if len(input_data.split('.')) > 1:
+                dt = datetime_.datetime.strptime(
+                    input_data, '%Y-%m-%dT%H:%M:%S.%f')
+            else:
+                dt = datetime_.datetime.strptime(
+                    input_data, '%Y-%m-%dT%H:%M:%S')
+            dt = dt.replace(tzinfo=tz)
+            return dt
+        def gds_validate_date(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_date(self, input_data, input_name=''):
+            _svalue = '%04d-%02d-%02d' % (
+                input_data.year,
+                input_data.month,
+                input_data.day,
+            )
+            try:
+                if input_data.tzinfo is not None:
+                    tzoff = input_data.tzinfo.utcoffset(input_data)
+                    if tzoff is not None:
+                        total_seconds = tzoff.seconds + (86400 * tzoff.days)
+                        if total_seconds == 0:
+                            _svalue += 'Z'
+                        else:
+                            if total_seconds < 0:
+                                _svalue += '-'
+                                total_seconds *= -1
+                            else:
+                                _svalue += '+'
+                            hours = total_seconds // 3600
+                            minutes = (total_seconds - (hours * 3600)) // 60
+                            _svalue += '{0:02d}:{1:02d}'.format(hours, minutes)
+            except AttributeError:
+                pass
+            return _svalue
+        @classmethod
+        def gds_parse_date(cls, input_data):
+            tz = None
+            if input_data[-1] == 'Z':
+                tz = GeneratedsSuper._FixedOffsetTZ(0, 'GMT')
+                input_data = input_data[:-1]
+            else:
+                results = GeneratedsSuper.tzoff_pattern.search(input_data)
+                if results is not None:
+                    tzoff_parts = results.group(2).split(':')
+                    tzoff = int(tzoff_parts[0]) * 60 + int(tzoff_parts[1])
+                    if results.group(1) == '-':
+                        tzoff *= -1
+                    tz = GeneratedsSuper._FixedOffsetTZ(
+                        tzoff, results.group(0))
+                    input_data = input_data[:-6]
+            dt = datetime_.datetime.strptime(input_data, '%Y-%m-%d')
+            dt = dt.replace(tzinfo=tz)
+            return dt.date()
+        def gds_validate_time(self, input_data, node, input_name=''):
+            return input_data
+        def gds_format_time(self, input_data, input_name=''):
+            if input_data.microsecond == 0:
+                _svalue = '%02d:%02d:%02d' % (
+                    input_data.hour,
+                    input_data.minute,
+                    input_data.second,
+                )
+            else:
+                _svalue = '%02d:%02d:%02d.%s' % (
+                    input_data.hour,
+                    input_data.minute,
+                    input_data.second,
+                    ('%f' % (float(input_data.microsecond) / 1000000))[2:],
+                )
+            if input_data.tzinfo is not None:
+                tzoff = input_data.tzinfo.utcoffset(input_data)
+                if tzoff is not None:
+                    total_seconds = tzoff.seconds + (86400 * tzoff.days)
+                    if total_seconds == 0:
+                        _svalue += 'Z'
+                    else:
+                        if total_seconds < 0:
+                            _svalue += '-'
+                            total_seconds *= -1
+                        else:
+                            _svalue += '+'
+                        hours = total_seconds // 3600
+                        minutes = (total_seconds - (hours * 3600)) // 60
+                        _svalue += '{0:02d}:{1:02d}'.format(hours, minutes)
+            return _svalue
+        @classmethod
+        def gds_parse_time(cls, input_data):
+            tz = None
+            if input_data[-1] == 'Z':
+                tz = GeneratedsSuper._FixedOffsetTZ(0, 'GMT')
+                input_data = input_data[:-1]
+            else:
+                results = GeneratedsSuper.tzoff_pattern.search(input_data)
+                if results is not None:
+                    tzoff_parts = results.group(2).split(':')
+                    tzoff = int(tzoff_parts[0]) * 60 + int(tzoff_parts[1])
+                    if results.group(1) == '-':
+                        tzoff *= -1
+                    tz = GeneratedsSuper._FixedOffsetTZ(
+                        tzoff, results.group(0))
+                    input_data = input_data[:-6]
+            if len(input_data.split('.')) > 1:
+                dt = datetime_.datetime.strptime(input_data, '%H:%M:%S.%f')
+            else:
+                dt = datetime_.datetime.strptime(input_data, '%H:%M:%S')
+            dt = dt.replace(tzinfo=tz)
+            return dt.time()
+        def gds_str_lower(self, instring):
+            return instring.lower()
+        def get_path_(self, node):
+            path_list = []
+            self.get_path_list_(node, path_list)
+            path_list.reverse()
+            path = '/'.join(path_list)
+            return path
+        Tag_strip_pattern_ = re_.compile(r'\{.*\}')
+        def get_path_list_(self, node, path_list):
+            if node is None:
+                return
+            tag = GeneratedsSuper.Tag_strip_pattern_.sub('', node.tag)
+            if tag:
+                path_list.append(tag)
+            self.get_path_list_(node.getparent(), path_list)
+        def get_class_obj_(self, node, default_class=None):
+            class_obj1 = default_class
+            if 'xsi' in node.nsmap:
+                classname = node.get('{%s}type' % node.nsmap['xsi'])
+                if classname is not None:
+                    names = classname.split(':')
+                    if len(names) == 2:
+                        classname = names[1]
+                    class_obj2 = globals().get(classname)
+                    if class_obj2 is not None:
+                        class_obj1 = class_obj2
+            return class_obj1
+        def gds_build_any(self, node, type_name=None):
+            return None
+        @classmethod
+        def gds_reverse_node_mapping(cls, mapping):
+            return dict(((v, k) for k, v in mapping.iteritems()))
+
+
+#
+# If you have installed IPython you can uncomment and use the following.
+# IPython is available from http://ipython.scipy.org/.
+#
+
+## from IPython.Shell import IPShellEmbed
+## args = ''
+## ipshell = IPShellEmbed(args,
+##     banner = 'Dropping into IPython',
+##     exit_msg = 'Leaving Interpreter, back to program.')
+
+# Then use the following line where and when you want to drop into the
+# IPython shell:
+#    ipshell('<some message> -- Entering ipshell.\nHit Ctrl-D to exit')
+
+#
+# Globals
+#
+
+ExternalEncoding = 'ascii'
+Tag_pattern_ = re_.compile(r'({.*})?(.*)')
+String_cleanup_pat_ = re_.compile(r"[\n\r\s]+")
+Namespace_extract_pat_ = re_.compile(r'{(.*)}(.*)')
+
+#
+# Support/utility functions.
+#
+
+
+def showIndent(outfile, level, pretty_print=True):
+    if pretty_print:
+        for idx in range(level):
+            outfile.write('    ')
+
+
+def quote_xml(inStr):
+    if not inStr:
+        return ''
+    s1 = (isinstance(inStr, basestring) and inStr or
+          '%s' % inStr)
+    s1 = s1.replace('&', '&amp;')
+    s1 = s1.replace('<', '&lt;')
+    s1 = s1.replace('>', '&gt;')
+    return s1
+
+
+def quote_attrib(inStr):
+    s1 = (isinstance(inStr, basestring) and inStr or
+          '%s' % inStr)
+    s1 = s1.replace('&', '&amp;')
+    s1 = s1.replace('<', '&lt;')
+    s1 = s1.replace('>', '&gt;')
+    if '"' in s1:
+        if "'" in s1:
+            s1 = '"%s"' % s1.replace('"', "&quot;")
+        else:
+            s1 = "'%s'" % s1
+    else:
+        s1 = '"%s"' % s1
+    return s1
+
+
+def quote_python(inStr):
+    s1 = inStr
+    if s1.find("'") == -1:
+        if s1.find('\n') == -1:
+            return "'%s'" % s1
+        else:
+            return "'''%s'''" % s1
+    else:
+        if s1.find('"') != -1:
+            s1 = s1.replace('"', '\\"')
+        if s1.find('\n') == -1:
+            return '"%s"' % s1
+        else:
+            return '"""%s"""' % s1
+
+
+def get_all_text_(node):
+    if node.text is not None:
+        text = node.text
+    else:
+        text = ''
+    for child in node:
+        if child.tail is not None:
+            text += child.tail
+    return text
+
+
+def find_attr_value_(attr_name, node):
+    attrs = node.attrib
+    attr_parts = attr_name.split(':')
+    value = None
+    if len(attr_parts) == 1:
+        value = attrs.get(attr_name)
+    elif len(attr_parts) == 2:
+        prefix, name = attr_parts
+        namespace = node.nsmap.get(prefix)
+        if namespace is not None:
+            value = attrs.get('{%s}%s' % (namespace, name, ))
+    return value
+
+
+class GDSParseError(Exception):
+    pass
+
+
+def raise_parse_error(node, msg):
+    if XMLParser_import_library == XMLParser_import_lxml:
+        msg = '%s (element %s/line %d)' % (
+            msg, node.tag, node.sourceline, )
+    else:
+        msg = '%s (element %s)' % (msg, node.tag, )
+    raise GDSParseError(msg)
+
+
+class MixedContainer:
+    # Constants for category:
+    CategoryNone = 0
+    CategoryText = 1
+    CategorySimple = 2
+    CategoryComplex = 3
+    # Constants for content_type:
+    TypeNone = 0
+    TypeText = 1
+    TypeString = 2
+    TypeInteger = 3
+    TypeFloat = 4
+    TypeDecimal = 5
+    TypeDouble = 6
+    TypeBoolean = 7
+    TypeBase64 = 8
+    def __init__(self, category, content_type, name, value):
+        self.category = category
+        self.content_type = content_type
+        self.name = name
+        self.value = value
+    def getCategory(self):
+        return self.category
+    def getContenttype(self, content_type):
+        return self.content_type
+    def getValue(self):
+        return self.value
+    def getName(self):
+        return self.name
+    def export(self, outfile, level, name, namespace, pretty_print=True):
+        if self.category == MixedContainer.CategoryText:
+            # Prevent exporting empty content as empty lines.
+            if self.value.strip():
+                outfile.write(self.value)
+        elif self.category == MixedContainer.CategorySimple:
+            self.exportSimple(outfile, level, name)
+        else:    # category == MixedContainer.CategoryComplex
+            self.value.export(outfile, level, namespace, name, pretty_print)
+    def exportSimple(self, outfile, level, name):
+        if self.content_type == MixedContainer.TypeString:
+            outfile.write('<%s>%s</%s>' % (
+                self.name, self.value, self.name))
+        elif self.content_type == MixedContainer.TypeInteger or \
+                self.content_type == MixedContainer.TypeBoolean:
+            outfile.write('<%s>%d</%s>' % (
+                self.name, self.value, self.name))
+        elif self.content_type == MixedContainer.TypeFloat or \
+                self.content_type == MixedContainer.TypeDecimal:
+            outfile.write('<%s>%f</%s>' % (
+                self.name, self.value, self.name))
+        elif self.content_type == MixedContainer.TypeDouble:
+            outfile.write('<%s>%g</%s>' % (
+                self.name, self.value, self.name))
+        elif self.content_type == MixedContainer.TypeBase64:
+            outfile.write('<%s>%s</%s>' % (
+                self.name, base64.b64encode(self.value), self.name))
+    def to_etree(self, element):
+        if self.category == MixedContainer.CategoryText:
+            # Prevent exporting empty content as empty lines.
+            if self.value.strip():
+                if len(element) > 0:
+                    if element[-1].tail is None:
+                        element[-1].tail = self.value
+                    else:
+                        element[-1].tail += self.value
+                else:
+                    if element.text is None:
+                        element.text = self.value
+                    else:
+                        element.text += self.value
+        elif self.category == MixedContainer.CategorySimple:
+            subelement = etree_.SubElement(element, '%s' % self.name)
+            subelement.text = self.to_etree_simple()
+        else:    # category == MixedContainer.CategoryComplex
+            self.value.to_etree(element)
+    def to_etree_simple(self):
+        if self.content_type == MixedContainer.TypeString:
+            text = self.value
+        elif (self.content_type == MixedContainer.TypeInteger or
+                self.content_type == MixedContainer.TypeBoolean):
+            text = '%d' % self.value
+        elif (self.content_type == MixedContainer.TypeFloat or
+                self.content_type == MixedContainer.TypeDecimal):
+            text = '%f' % self.value
+        elif self.content_type == MixedContainer.TypeDouble:
+            text = '%g' % self.value
+        elif self.content_type == MixedContainer.TypeBase64:
+            text = '%s' % base64.b64encode(self.value)
+        return text
+    def exportLiteral(self, outfile, level, name):
+        if self.category == MixedContainer.CategoryText:
+            showIndent(outfile, level)
+            outfile.write(
+                'model_.MixedContainer(%d, %d, "%s", "%s"),\n' % (
+                    self.category, self.content_type, self.name, self.value))
+        elif self.category == MixedContainer.CategorySimple:
+            showIndent(outfile, level)
+            outfile.write(
+                'model_.MixedContainer(%d, %d, "%s", "%s"),\n' % (
+                    self.category, self.content_type, self.name, self.value))
+        else:    # category == MixedContainer.CategoryComplex
+            showIndent(outfile, level)
+            outfile.write(
+                'model_.MixedContainer(%d, %d, "%s",\n' % (
+                    self.category, self.content_type, self.name,))
+            self.value.exportLiteral(outfile, level + 1)
+            showIndent(outfile, level)
+            outfile.write(')\n')
+
+
+class MemberSpec_(object):
+    def __init__(self, name='', data_type='', container=0):
+        self.name = name
+        self.data_type = data_type
+        self.container = container
+    def set_name(self, name): self.name = name
+    def get_name(self): return self.name
+    def set_data_type(self, data_type): self.data_type = data_type
+    def get_data_type_chain(self): return self.data_type
+    def get_data_type(self):
+        if isinstance(self.data_type, list):
+            if len(self.data_type) > 0:
+                return self.data_type[-1]
+            else:
+                return 'xs:string'
+        else:
+            return self.data_type
+    def set_container(self, container): self.container = container
+    def get_container(self): return self.container
+
+
+def _cast(typ, value):
+    if typ is None or value is None:
+        return value
+    return typ(value)
+
+#
+# Data representation classes.
+#
+
+
+class delegation(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, name=None, nameservers=None, delegationKeys=None, anytypeobjs_=None):
+        if name is None:
+            self.name = []
+        else:
+            self.name = name
+        if nameservers is None:
+            self.nameservers = []
+        else:
+            self.nameservers = nameservers
+        if delegationKeys is None:
+            self.delegationKeys = []
+        else:
+            self.delegationKeys = delegationKeys
+        self.anytypeobjs_ = anytypeobjs_
+    def factory(*args_, **kwargs_):
+        if delegation.subclass:
+            return delegation.subclass(*args_, **kwargs_)
+        else:
+            return delegation(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_name(self): return self.name
+    def set_name(self, name): self.name = name
+    def add_name(self, value): self.name.append(value)
+    def insert_name(self, index, value): self.name[index] = value
+    def get_nameservers(self): return self.nameservers
+    def set_nameservers(self, nameservers): self.nameservers = nameservers
+    def add_nameservers(self, value): self.nameservers.append(value)
+    def insert_nameservers(self, index, value): self.nameservers[index] = value
+    def get_delegationKeys(self): return self.delegationKeys
+    def set_delegationKeys(self, delegationKeys): self.delegationKeys = delegationKeys
+    def add_delegationKeys(self, value): self.delegationKeys.append(value)
+    def insert_delegationKeys(self, index, value): self.delegationKeys[index] = value
+    def get_anytypeobjs_(self): return self.anytypeobjs_
+    def set_anytypeobjs_(self, anytypeobjs_): self.anytypeobjs_ = anytypeobjs_
+    def hasContent_(self):
+        if (
+            self.name or
+            self.nameservers or
+            self.delegationKeys or
+            self.anytypeobjs_ is not None
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='delegation', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='delegation')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='delegation'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='delegation', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for name_ in self.name:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_format_string(quote_xml(name_).encode(ExternalEncoding), input_name='name'), namespace_, eol_))
+        for nameservers_ in self.nameservers:
+            nameservers_.export(outfile, level, namespace_, name_='nameservers', pretty_print=pretty_print)
+        for delegationKeys_ in self.delegationKeys:
+            delegationKeys_.export(outfile, level, namespace_, name_='delegationKeys', pretty_print=pretty_print)
+        if self.anytypeobjs_ is not None:
+            self.anytypeobjs_.export(outfile, level, namespace_, pretty_print=pretty_print)
+    def exportLiteral(self, outfile, level, name_='delegation'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('name=[\n')
+        level += 1
+        for name_ in self.name:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(name_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('nameservers=[\n')
+        level += 1
+        for nameservers_ in self.nameservers:
+            showIndent(outfile, level)
+            outfile.write('model_.nameservers(\n')
+            nameservers_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('delegationKeys=[\n')
+        level += 1
+        for delegationKeys_ in self.delegationKeys:
+            showIndent(outfile, level)
+            outfile.write('model_.delegationKeys(\n')
+            delegationKeys_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        if self.anytypeobjs_ is not None:
+            showIndent(outfile, level)
+            outfile.write('anytypeobjs_=model_.anytypeobjs_(\n')
+            self.anytypeobjs_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'name':
+            name_ = child_.text
+            name_ = self.gds_validate_string(name_, node, 'name')
+            self.name.append(name_)
+        elif nodeName_ == 'nameservers':
+            obj_ = nameservers.factory()
+            obj_.build(child_)
+            self.nameservers.append(obj_)
+        elif nodeName_ == 'delegationKeys':
+            obj_ = delegationKeys.factory()
+            obj_.build(child_)
+            self.delegationKeys.append(obj_)
+        else:
+            obj_ = self.gds_build_any(child_, 'delegation')
+            if obj_ is not None:
+                self.set_anytypeobjs_(obj_)
+# end class delegation
+
+
+class delegationKey(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, algorithm=None, digest=None, digestType=None, keyTag=None):
+        if algorithm is None:
+            self.algorithm = []
+        else:
+            self.algorithm = algorithm
+        if digest is None:
+            self.digest = []
+        else:
+            self.digest = digest
+        if digestType is None:
+            self.digestType = []
+        else:
+            self.digestType = digestType
+        if keyTag is None:
+            self.keyTag = []
+        else:
+            self.keyTag = keyTag
+    def factory(*args_, **kwargs_):
+        if delegationKey.subclass:
+            return delegationKey.subclass(*args_, **kwargs_)
+        else:
+            return delegationKey(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_algorithm(self): return self.algorithm
+    def set_algorithm(self, algorithm): self.algorithm = algorithm
+    def add_algorithm(self, value): self.algorithm.append(value)
+    def insert_algorithm(self, index, value): self.algorithm[index] = value
+    def get_digest(self): return self.digest
+    def set_digest(self, digest): self.digest = digest
+    def add_digest(self, value): self.digest.append(value)
+    def insert_digest(self, index, value): self.digest[index] = value
+    def get_digestType(self): return self.digestType
+    def set_digestType(self, digestType): self.digestType = digestType
+    def add_digestType(self, value): self.digestType.append(value)
+    def insert_digestType(self, index, value): self.digestType[index] = value
+    def get_keyTag(self): return self.keyTag
+    def set_keyTag(self, keyTag): self.keyTag = keyTag
+    def add_keyTag(self, value): self.keyTag.append(value)
+    def insert_keyTag(self, index, value): self.keyTag[index] = value
+    def hasContent_(self):
+        if (
+            self.algorithm or
+            self.digest or
+            self.digestType or
+            self.keyTag
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='delegationKey', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='delegationKey')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='delegationKey'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='delegationKey', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for algorithm_ in self.algorithm:
+            algorithm_.export(outfile, level, namespace_, name_='algorithm', pretty_print=pretty_print)
+        for digest_ in self.digest:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sdigest>%s</%sdigest>%s' % (namespace_, self.gds_format_string(quote_xml(digest_).encode(ExternalEncoding), input_name='digest'), namespace_, eol_))
+        for digestType_ in self.digestType:
+            digestType_.export(outfile, level, namespace_, name_='digestType', pretty_print=pretty_print)
+        for keyTag_ in self.keyTag:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%skeyTag>%s</%skeyTag>%s' % (namespace_, self.gds_format_string(quote_xml(keyTag_).encode(ExternalEncoding), input_name='keyTag'), namespace_, eol_))
+    def exportLiteral(self, outfile, level, name_='delegationKey'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('algorithm=[\n')
+        level += 1
+        for algorithm_ in self.algorithm:
+            showIndent(outfile, level)
+            outfile.write('model_.algorithm(\n')
+            algorithm_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('digest=[\n')
+        level += 1
+        for digest_ in self.digest:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(digest_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('digestType=[\n')
+        level += 1
+        for digestType_ in self.digestType:
+            showIndent(outfile, level)
+            outfile.write('model_.digestType(\n')
+            digestType_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+        showIndent(outfile, level)
+        outfile.write('keyTag=[\n')
+        level += 1
+        for keyTag_ in self.keyTag:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(keyTag_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'algorithm':
+            obj_ = algorithm.factory()
+            obj_.build(child_)
+            self.algorithm.append(obj_)
+        elif nodeName_ == 'digest':
+            digest_ = child_.text
+            digest_ = self.gds_validate_string(digest_, node, 'digest')
+            self.digest.append(digest_)
+        elif nodeName_ == 'digestType':
+            obj_ = digestType.factory()
+            obj_.build(child_)
+            self.digestType.append(obj_)
+        elif nodeName_ == 'keyTag':
+            keyTag_ = child_.text
+            keyTag_ = self.gds_validate_string(keyTag_, node, 'keyTag')
+            self.keyTag.append(keyTag_)
+# end class delegationKey
+
+
+class nameservers(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, nameserver=None):
+        if nameserver is None:
+            self.nameserver = []
+        else:
+            self.nameserver = nameserver
+    def factory(*args_, **kwargs_):
+        if nameservers.subclass:
+            return nameservers.subclass(*args_, **kwargs_)
+        else:
+            return nameservers(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_nameserver(self): return self.nameserver
+    def set_nameserver(self, nameserver): self.nameserver = nameserver
+    def add_nameserver(self, value): self.nameserver.append(value)
+    def insert_nameserver(self, index, value): self.nameserver[index] = value
+    def hasContent_(self):
+        if (
+            self.nameserver
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='nameservers', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='nameservers')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='nameservers'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='nameservers', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for nameserver_ in self.nameserver:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%snameserver>%s</%snameserver>%s' % (namespace_, self.gds_format_string(quote_xml(nameserver_).encode(ExternalEncoding), input_name='nameserver'), namespace_, eol_))
+    def exportLiteral(self, outfile, level, name_='nameservers'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('nameserver=[\n')
+        level += 1
+        for nameserver_ in self.nameserver:
+            showIndent(outfile, level)
+            outfile.write('%s,\n' % quote_python(nameserver_).encode(ExternalEncoding))
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'nameserver':
+            nameserver_ = child_.text
+            nameserver_ = self.gds_validate_string(nameserver_, node, 'nameserver')
+            self.nameserver.append(nameserver_)
+# end class nameservers
+
+
+class delegationKeys(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, delegationKey=None):
+        if delegationKey is None:
+            self.delegationKey = []
+        else:
+            self.delegationKey = delegationKey
+    def factory(*args_, **kwargs_):
+        if delegationKeys.subclass:
+            return delegationKeys.subclass(*args_, **kwargs_)
+        else:
+            return delegationKeys(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_delegationKey(self): return self.delegationKey
+    def set_delegationKey(self, delegationKey): self.delegationKey = delegationKey
+    def add_delegationKey(self, value): self.delegationKey.append(value)
+    def insert_delegationKey(self, index, value): self.delegationKey[index] = value
+    def hasContent_(self):
+        if (
+            self.delegationKey
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='delegationKeys', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='delegationKeys')
+        if self.hasContent_():
+            outfile.write('>%s' % (eol_, ))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            showIndent(outfile, level, pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='delegationKeys'):
+        pass
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='delegationKeys', fromsubclass_=False, pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        for delegationKey_ in self.delegationKey:
+            delegationKey_.export(outfile, level, namespace_, name_='delegationKey', pretty_print=pretty_print)
+    def exportLiteral(self, outfile, level, name_='delegationKeys'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        pass
+    def exportLiteralChildren(self, outfile, level, name_):
+        showIndent(outfile, level)
+        outfile.write('delegationKey=[\n')
+        level += 1
+        for delegationKey_ in self.delegationKey:
+            showIndent(outfile, level)
+            outfile.write('model_.delegationKey(\n')
+            delegationKey_.exportLiteral(outfile, level)
+            showIndent(outfile, level)
+            outfile.write('),\n')
+        level -= 1
+        showIndent(outfile, level)
+        outfile.write('],\n')
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        pass
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        if nodeName_ == 'delegationKey':
+            obj_ = delegationKey.factory()
+            obj_.build(child_)
+            self.delegationKey.append(obj_)
+# end class delegationKeys
+
+
+class algorithm(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, name=None, valueOf_=None):
+        self.name = _cast(None, name)
+        self.valueOf_ = valueOf_
+    def factory(*args_, **kwargs_):
+        if algorithm.subclass:
+            return algorithm.subclass(*args_, **kwargs_)
+        else:
+            return algorithm(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_name(self): return self.name
+    def set_name(self, name): self.name = name
+    def get_valueOf_(self): return self.valueOf_
+    def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
+    def hasContent_(self):
+        if (
+            self.valueOf_
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='algorithm', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='algorithm')
+        if self.hasContent_():
+            outfile.write('>')
+            outfile.write(str(self.valueOf_).encode(ExternalEncoding))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='algorithm'):
+        if self.name is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            outfile.write(' name=%s' % (self.gds_format_string(quote_attrib(self.name).encode(ExternalEncoding), input_name='name'), ))
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='algorithm', fromsubclass_=False, pretty_print=True):
+        pass
+    def exportLiteral(self, outfile, level, name_='algorithm'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+        showIndent(outfile, level)
+        outfile.write('valueOf_ = """%s""",\n' % (self.valueOf_,))
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        if self.name is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            showIndent(outfile, level)
+            outfile.write('name="%s",\n' % (self.name,))
+    def exportLiteralChildren(self, outfile, level, name_):
+        pass
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        self.valueOf_ = get_all_text_(node)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('name', node)
+        if value is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            self.name = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        pass
+# end class algorithm
+
+
+class digestType(GeneratedsSuper):
+    subclass = None
+    superclass = None
+    def __init__(self, name=None, valueOf_=None):
+        self.name = _cast(None, name)
+        self.valueOf_ = valueOf_
+    def factory(*args_, **kwargs_):
+        if digestType.subclass:
+            return digestType.subclass(*args_, **kwargs_)
+        else:
+            return digestType(*args_, **kwargs_)
+    factory = staticmethod(factory)
+    def get_name(self): return self.name
+    def set_name(self, name): self.name = name
+    def get_valueOf_(self): return self.valueOf_
+    def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
+    def hasContent_(self):
+        if (
+            self.valueOf_
+        ):
+            return True
+        else:
+            return False
+    def export(self, outfile, level, namespace_='v1:', name_='digestType', namespacedef_='', pretty_print=True):
+        if pretty_print:
+            eol_ = '\n'
+        else:
+            eol_ = ''
+        showIndent(outfile, level, pretty_print)
+        outfile.write('<%s%s%s' % (namespace_, name_, namespacedef_ and ' ' + namespacedef_ or '', ))
+        already_processed = set()
+        self.exportAttributes(outfile, level, already_processed, namespace_, name_='digestType')
+        if self.hasContent_():
+            outfile.write('>')
+            outfile.write(str(self.valueOf_).encode(ExternalEncoding))
+            self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+            outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
+        else:
+            outfile.write('/>%s' % (eol_, ))
+    def exportAttributes(self, outfile, level, already_processed, namespace_='v1:', name_='digestType'):
+        if self.name is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            outfile.write(' name=%s' % (self.gds_format_string(quote_attrib(self.name).encode(ExternalEncoding), input_name='name'), ))
+    def exportChildren(self, outfile, level, namespace_='v1:', name_='digestType', fromsubclass_=False, pretty_print=True):
+        pass
+    def exportLiteral(self, outfile, level, name_='digestType'):
+        level += 1
+        already_processed = set()
+        self.exportLiteralAttributes(outfile, level, already_processed, name_)
+        if self.hasContent_():
+            self.exportLiteralChildren(outfile, level, name_)
+        showIndent(outfile, level)
+        outfile.write('valueOf_ = """%s""",\n' % (self.valueOf_,))
+    def exportLiteralAttributes(self, outfile, level, already_processed, name_):
+        if self.name is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            showIndent(outfile, level)
+            outfile.write('name="%s",\n' % (self.name,))
+    def exportLiteralChildren(self, outfile, level, name_):
+        pass
+    def build(self, node):
+        already_processed = set()
+        self.buildAttributes(node, node.attrib, already_processed)
+        self.valueOf_ = get_all_text_(node)
+        for child in node:
+            nodeName_ = Tag_pattern_.match(child.tag).groups()[-1]
+            self.buildChildren(child, node, nodeName_)
+    def buildAttributes(self, node, attrs, already_processed):
+        value = find_attr_value_('name', node)
+        if value is not None and 'name' not in already_processed:
+            already_processed.add('name')
+            self.name = value
+    def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
+        pass
+# end class digestType
+
+
+GDSClassesMapping = {
+}
+
+
+USAGE_TEXT = """
+Usage: python <Parser>.py [ -s ] <in_xml_file>
+"""
+
+
+def usage():
+    print USAGE_TEXT
+    sys.exit(1)
+
+
+def get_root_tag(node):
+    tag = Tag_pattern_.match(node.tag).groups()[-1]
+    rootClass = GDSClassesMapping.get(tag)
+    if rootClass is None:
+        rootClass = globals().get(tag)
+    return tag, rootClass
+
+
+def parse(inFileName):
+    doc = parsexml_(inFileName)
+    rootNode = doc.getroot()
+    rootTag, rootClass = get_root_tag(rootNode)
+    if rootClass is None:
+        rootTag = 'delegation'
+        rootClass = delegation
+    rootObj = rootClass.factory()
+    rootObj.build(rootNode)
+    # Enable Python to collect the space used by the DOM.
+    doc = None
+    sys.stdout.write('<?xml version="1.0" ?>\n')
+    rootObj.export(
+        sys.stdout, 0, name_=rootTag,
+        namespacedef_='',
+        pretty_print=True)
+    return rootObj
+
+
+def parseEtree(inFileName):
+    doc = parsexml_(inFileName)
+    rootNode = doc.getroot()
+    rootTag, rootClass = get_root_tag(rootNode)
+    if rootClass is None:
+        rootTag = 'delegation'
+        rootClass = delegation
+    rootObj = rootClass.factory()
+    rootObj.build(rootNode)
+    # Enable Python to collect the space used by the DOM.
+    doc = None
+    mapping = {}
+    rootElement = rootObj.to_etree(None, name_=rootTag, mapping_=mapping)
+    reverse_mapping = rootObj.gds_reverse_node_mapping(mapping)
+    content = etree_.tostring(
+        rootElement, pretty_print=True,
+        xml_declaration=True, encoding="utf-8")
+    sys.stdout.write(content)
+    sys.stdout.write('\n')
+    return rootObj, rootElement, mapping, reverse_mapping
+
+
+def parseString(inString):
+    from StringIO import StringIO
+    doc = parsexml_(StringIO(inString))
+    rootNode = doc.getroot()
+    roots = get_root_tag(rootNode)
+    rootClass = roots[1]
+    if rootClass is None:
+        rootClass = delegation
+    rootObj = rootClass.factory()
+    rootObj.build(rootNode)
+    # Enable Python to collect the space used by the DOM.
+    doc = None
+    sys.stdout.write('<?xml version="1.0" ?>\n')
+    rootObj.export(
+        sys.stdout, 0, name_="delegation",
+        namespacedef_='')
+    return rootObj
+
+
+def parseLiteral(inFileName):
+    doc = parsexml_(inFileName)
+    rootNode = doc.getroot()
+    rootTag, rootClass = get_root_tag(rootNode)
+    if rootClass is None:
+        rootTag = 'delegation'
+        rootClass = delegation
+    rootObj = rootClass.factory()
+    rootObj.build(rootNode)
+    # Enable Python to collect the space used by the DOM.
+    doc = None
+    sys.stdout.write('#from DelegationPayload import *\n\n')
+    sys.stdout.write('import DelegationPayload as model_\n\n')
+    sys.stdout.write('rootObj = model_.rootTag(\n')
+    rootObj.exportLiteral(sys.stdout, 0, name_=rootTag)
+    sys.stdout.write(')\n')
+    return rootObj
+
+
+def main():
+    args = sys.argv[1:]
+    if len(args) == 1:
+        parse(args[0])
+    else:
+        usage()
+
+
+if __name__ == '__main__':
+    #import pdb; pdb.set_trace()
+    main()
+
+
+__all__ = [
+    "algorithm",
+    "delegation",
+    "delegationKey",
+    "delegationKeys",
+    "digestType",
+    "nameservers"
+]
