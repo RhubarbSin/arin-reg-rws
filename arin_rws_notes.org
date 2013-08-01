@@ -20,8 +20,10 @@
    2. Net - Delete
    3. Org - Get
    4. Org - Delete
-   5. Delegation - Get
-   6. Delegation - Modify
+   5. POC - Get
+   6. POC - Delete
+   7. Delegation - Get
+   8. Delegation - Modify
 
 ** reassign
    1. Net - Get
@@ -44,6 +46,7 @@
   - Delegation
   - POC
   - Org
+  - Error
 
 * generate w3c xml schema from relax ng compact schema
   1. modify rnc files that refer to dateTime but don't define it (ApiKeyPayload.rnc)
