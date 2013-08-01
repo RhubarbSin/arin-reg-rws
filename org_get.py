@@ -2,7 +2,6 @@
 
 import sys
 import urllib2
-from BaseHTTPServer import BaseHTTPRequestHandler
 
 from apikey import APIKEY
 from regrws import OrgPayload, ErrorPayload
