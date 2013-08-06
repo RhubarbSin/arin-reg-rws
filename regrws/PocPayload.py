@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 #
-# Generated Thu Aug  1 12:21:22 2013 by generateDS.py version 2.10a.
+# Generated Tue Aug  6 14:52:51 2013 by generateDS.py version 2.10a.
 #
 
 import sys
@@ -2059,7 +2059,7 @@ def parse(inFileName):
     sys.stdout.write('<?xml version="1.0" ?>\n')
     rootObj.export(
         sys.stdout, 0, name_=rootTag,
-        namespacedef_='',
+        namespacedef_='xmlns="http://www.arin.net/regrws/core/v1"',
         pretty_print=True)
     return rootObj
 
@@ -2101,7 +2101,7 @@ def parseString(inString):
     sys.stdout.write('<?xml version="1.0" ?>\n')
     rootObj.export(
         sys.stdout, 0, name_="phone",
-        namespacedef_='')
+        namespacedef_='xmlns="http://www.arin.net/regrws/core/v1"')
     return rootObj
 
 
