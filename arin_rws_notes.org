@@ -58,7 +58,7 @@
   : pyxbgen -u OrgPayload.xsd -m OrgPayload
 
 * generate generateDS files
-  : for f in CustomerPayload.xsd NetPayload.xsd Delegation.xsd Payload.xsd PocPayload.xsd OrgPayload.xsd ErrorPayload.xsd ; do generateDS.py -o $(basename $f xsd)py $f; done
+  : for f in CustomerPayload.xsd NetPayload.xsd DelegationPayload.xsd PocPayload.xsd OrgPayload.xsd ErrorPayload.xsd TicketedRequestPayload.xsd; do generateDS.py -a '' --namespacedef='xmlns="http://www.arin.net/regrws/core/v1"' -o $(basename $f xsd)py $f; done
 
 * rws advantages over e-mail templates
   1. rDNS delegation
