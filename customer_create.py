@@ -2,7 +2,6 @@
 
 import sys
 from StringIO import StringIO
-from BaseHTTPServer import BaseHTTPRequestHandler
 
 import requests
 
