@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import sys
-from StringIO import StringIO
 
 import requests
 
