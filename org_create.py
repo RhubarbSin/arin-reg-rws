@@ -10,11 +10,12 @@ from regrws import OrgPayload, ErrorPayload
 
 NAMESPACEDEF = 'xmlns="http://www.arin.net/regrws/core/v1"'
 
-if len(sys.argv) != 2:
-    print 'Usage: %s POCHANDLE' % sys.argv[0]
+if len(sys.argv) != 3:
+    print 'Usage: %s NETHANDLE POCHANDLE' % sys.argv[0]
     sys.exit(2)
 
-pochandle = sys.argv[1]
+nethandle = sys.argv[1]
+pochandle = sys.argv[2]
 
 iso3166_1 = OrgPayload.iso3166_1(code2=['US'],
                                  code3=['USA'],
@@ -41,8 +42,7 @@ org.export(stringio, 0, pretty_print=False,
 xml = stringio.getvalue()
 stringio.close()
 
-parentnethandle = 'NET-206-220-184-0-1'
-url = 'https://reg.arin.net/rest/net/%s/org' % parentnethandle
+url = 'https://reg.arin.net/rest/net/%s/org' % nethandle
 qargs = {'apikey': APIKEY}
 headers = {'content-type': 'application/xml'}
 try:
