@@ -44,6 +44,8 @@
   - POC
   - Org
   - Error
+  - Ticket
+  - Ticketed Request
 
 * generate w3c xml schema from relax ng compact schema
   1. modify rnc files that refer to dateTime but don't define it (ApiKeyPayload.rnc)
