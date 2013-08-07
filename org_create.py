@@ -11,7 +11,7 @@ from regrws import OrgPayload, ErrorPayload
 NAMESPACEDEF = 'xmlns="http://www.arin.net/regrws/core/v1"'
 
 if len(sys.argv) != 2:
-    print 'Usage: %s ORGHANDLE' % sys.argv[0]
+    print 'Usage: %s POCHANDLE' % sys.argv[0]
     sys.exit(2)
 
 pochandle = sys.argv[1]
