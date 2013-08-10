@@ -1,10 +1,18 @@
+"""Classes supporting calls to ARIN's Registration RESTful Web Service
+(Reg-RWS) via the Python Requests package.
+
+https://www.arin.net/resources/restful-interfaces.html
+https://www.arin.net/resources/restfulmethods.html
+https://www.arin.net/resources/restfulpayloads.html
+"""
+
 from httplib import HTTPSConnection
 
 import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3 import PoolManager, HTTPSConnectionPool
 
-import PocPayload
+import PocPayload, ErrorPayload
 
 class MyAdapter(HTTPAdapter):
 
@@ -56,23 +64,40 @@ class MyHTTPSConnectionPool(HTTPSConnectionPool):
 
 class Session(requests.Session):
 
+    """Class for Requests Sessions that make calls to ARIN Reg-RWS
+    methods.
+    """
+
     def __init__(self, api_key, src_addr=None):
         super(Session, self).__init__()
-        self.params = {'apikey': api_key}
-        self.mount('https://', MyAdapter(src_addr=src_addr))
+        self.params = {'apikey': api_key}  # all calls need API key
+        if src_addr:  # MyAdapter supports source address
+            self.mount('https://', MyAdapter(src_addr=src_addr))
 
 class RegRwsException(Exception):
+
+    """Trivial subclass for exceptions in regrws."""
 
     def __init__(self, *args):
         super(RegRwsException, self).__init__(*args)
 
 class Method(object):
 
-    """Base class for classes that implement ARIN Reg-RWS RESTful calls."""
+    """Base class for calls to ARIN Reg-RWS RESTful methods."""
 
-    def call(self, session):
+    def __init__(self, session, query_type):
+        self.query_method = getattr(session, query_type)
+
+    def call(self):
+        """This method is overridden by subclasses that need to
+        provide extra keyword arguments to self._call().
+        """
+
+        return self._call()
+
+    def _call(self, **kwargs):
         try:
-            r = session.get(self.url)
+            r = self.query_method(self.url, **kwargs)
         except requests.exceptions.RequestException as e:
             raise RegRwsException(*e.args)
         self._check_status(r)
@@ -80,14 +105,37 @@ class Method(object):
 
     def _check_status(self, response):
         if response.status_code != requests.codes.ok:
-            errorpayload = ErrorPayload.parseString(response.content)
+            error_payload = ErrorPayload.parseString(response.content)
             raise RegRwsException(response.status_code,
-                                  errorpayload.message[0])
+                                  error_payload.message[0])
 
 class PocGet(Method):
 
     url = 'https://reg.arin.net/rest/poc/'
     payload = PocPayload
 
-    def __init__(self, poc_handle):
+    def __init__(self, session, poc_handle):
+        super(PocGet, self).__init__(session, 'get')
+        self.url += poc_handle
+
+class PocCreate(Method):
+
+    url = 'https://reg.arin.net/rest/poc;makeLink=true'
+    payload = PocPayload
+
+    def __init__(self, session):
+        super(PocCreate, self).__init__(session, 'post')
+
+    def call(self, data):
+        headers = {'content-type': 'application/xml'}
+        kwargs = {'headers': headers, 'data': data}
+        return self._call(**kwargs)
+
+class PocDelete(Method):
+
+    url = 'https://reg.arin.net/rest/poc/'
+    payload = PocPayload
+
+    def __init__(self, session, poc_handle):
+        super(PocDelete, self).__init__(session, 'delete')
         self.url += poc_handle

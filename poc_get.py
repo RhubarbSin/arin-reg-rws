@@ -1,33 +1,45 @@
 #!/usr/bin/env python
 
 import sys
+import argparse
 
-from apikey import APIKEY
 from regrws import restful, PocPayload, ErrorPayload
+try:
+    from apikey import APIKEY
+except ImportError:
+    APIKEY = None
 
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print 'Usage: %s POCHANDLE' % sys.argv[0]
-        sys.exit(2)
+# parsing of arguments
+epilog = 'API key can be omitted if APIKEY is defined in apikey.py'
+parser = argparse.ArgumentParser(epilog=epilog)
+parser.add_argument('-k', '--key', help='ARIN API key',
+                    required=False if APIKEY else True, dest='api_key')
+parser.add_argument('-s', '--source-address', help='Source IP address')
+parser.add_argument('handle', metavar='HANDLE')
+args = parser.parse_args()
+if args.api_key:
+    APIKEY = args.api_key
 
-    method = restful.PocGet(sys.argv[1])
-    # session = restful.Session(APIKEY)
-    session = restful.Session(APIKEY, '66.181.160.152')
-    pocpayload = method.call(session)
+# the main action
+session = restful.Session(APIKEY, args.source_address)
+method = restful.PocGet(session, args.handle)
+poc_payload = method.call()
 
-    name = ''
-    if pocpayload.firstName:
-        name += pocpayload.firstName[0]
-    if pocpayload.middleName:
-        name += pocpayload.middleName[0]
-    if pocpayload.lastName:
-        name += pocpayload.lastName[0]
-    print name
-    for email in pocpayload.emails[0].email:
-        print email
-        print pocpayload.companyName[0]
-    for line in pocpayload.streetAddress[0].line:
-        print line.valueOf_
-        print '''%s, %s %s
-%s''' % (pocpayload.city[0], pocpayload.iso3166_2[0], pocpayload.postalCode[0],
-         pocpayload.iso3166_1[0].name[0])
+# the rest just displays some values from the payload
+name = ''
+if poc_payload.firstName:
+    name += poc_payload.firstName[0] + ' '
+if poc_payload.middleName:
+    name += poc_payload.middleName[0] + ' '
+if poc_payload.lastName:
+    name += poc_payload.lastName[0]
+
+print name
+for email in poc_payload.emails[0].email:
+    print email
+    print poc_payload.companyName[0]
+for line in poc_payload.streetAddress[0].line:
+    print line.valueOf_
+    print '''%s, %s %s
+%s''' % (poc_payload.city[0], poc_payload.iso3166_2[0],
+         poc_payload.postalCode[0], poc_payload.iso3166_1[0].name[0])

@@ -60,18 +60,30 @@
   : pyxbgen -u OrgPayload.xsd -m OrgPayload
 
 * generate generateDS files
-  : for f in CustomerPayload.xsd NetPayload.xsd DelegationPayload.xsd PocPayload.xsd OrgPayload.xsd ErrorPayload.xsd TicketedRequestPayload.xsd; do generateDS.py -a '' --namespacedef='xmlns="http://www.arin.net/regrws/core/v1"' -o $(basename $f xsd)py $f; done
+  : for f in CustomerPayload.xsd NetPayload.xsd DelegationPayload.xsd PocPayload.xsd OrgPayload.xsd ErrorPayload.xsd TicketedRequestPayload.xsd; do generateDS.py -a '' --namespacedef='xmlns="http://www.arin.net/regrws/core/v1"' -o $(basename $f xsd)py -s my$(basename $f xsd)py $f; done
 
 * rws advantages over e-mail templates
   1. rDNS delegation
   2. direct, automatic error detection
 
 * testing & evaluation issues
-  - whois query
-  - create instances in python
+  - net get reallocated
+  - reassign/reallocate
 
-* arinrws package
-** whois pkg
-** reg pkg
-*** payload pkg
-*** submittor module
+* README
+  - generateDS module names
+  - HTTPS caveat (with source address)
+  - python 2.7 (argparse, HTTPConnection)
+  - not python 3.x
+
+* agenda
+  - [ ] argparse
+  - [ ] check for apikey.py
+  - [ ] input from template
+    + source ip :: -s
+    + api key :: -k
+    + handle :: positional arg
+    + template file :: positional arg
+  - [ ] test restful error handling
+  - [ ] delegation
+  - [ ] valueOf_

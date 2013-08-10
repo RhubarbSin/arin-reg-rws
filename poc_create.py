@@ -6,7 +6,7 @@ from StringIO import StringIO
 import requests
 
 from apikey import APIKEY
-from regrws import PocPayload, ErrorPayload
+from regrws import restful, PocPayload, ErrorPayload
 
 NAMESPACEDEF = 'xmlns="http://www.arin.net/regrws/core/v1"'
 
@@ -36,17 +36,6 @@ poc.export(stringio, 0, pretty_print=False,
 xml = stringio.getvalue()
 stringio.close()
 
-url = 'https://reg.arin.net/rest/poc;makeLink=true'
-qargs = {'apikey': APIKEY}
-headers = {'content-type': 'application/xml'}
-try:
-    r = requests.post(url, params=qargs, data=xml, headers=headers)
-except requests.exceptions.RequestException as e:
-    print 'ERROR:', e[0]
-    sys.exit(1)
-if r.status_code != requests.codes.ok:
-    errorpayload = ErrorPayload.parseString(r.content)
-    print r.status_code, errorpayload.message[0]
-    sys.exit(1)
-else:
-    pocpayload = PocPayload.parseString(r.content)
+session = restful.Session(APIKEY, '66.181.160.152')
+method = restful.PocCreate(session)
+pocpayload = method.call(xml)
