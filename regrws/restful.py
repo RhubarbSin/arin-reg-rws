@@ -79,26 +79,26 @@ class Session(requests.Session):
 
 class RegRwsError(Exception):
 
-    """Trivial subclass for exceptions in regrws."""
+    """Trivial subclass for exceptions in regrws package."""
 
     def __init__(self, *args):
         super(RegRwsError, self).__init__(*args)
 
 class Method(object):
 
-    """Base class for calls to ARIN Reg-RWS RESTful methods."""
+    """Base class for calls to ARIN Reg-RWS RESTful methods
+    (subclassed in regrws.method package).
+    """
 
     def __init__(self, session, query_type):
         self.query_method = getattr(session, query_type)
 
-    def call(self):
-        """This method is overridden by subclasses that need to
-        provide extra keyword arguments to self._call().
-        """
-
-        return self._call()
-
-    def _call(self, **kwargs):
+    def call(self, payload=None):
+        if payload:
+            headers = {'content-type': 'application/xml'}
+            kwargs = {'headers': headers, 'data': self._export_to_xml(payload)}
+        else:
+            kwargs = {}
         try:
             r = self.query_method(self.url, **kwargs)
         except requests.exceptions.RequestException as e:

@@ -3,11 +3,13 @@ from __future__ import absolute_import
 from regrws import restful
 from regrws.payload import poc
 
-class Method(restful.Method):
+class _Method(restful.Method):
 
-    payload = poc
+    """Base class for calls to POC-related RESTful methods."""
 
-class Get(Method):
+    payload = poc  # payload module for this module's classes
+
+class Get(_Method):
 
     url = 'https://reg.arin.net/rest/poc/'
 
@@ -15,19 +17,14 @@ class Get(Method):
         super(Get, self).__init__(session, 'get')
         self.url += handle
 
-class Create(Method):
+class Create(_Method):
 
     url = 'https://reg.arin.net/rest/poc;makeLink=true'
 
     def __init__(self, session):
         super(Create, self).__init__(session, 'post')
 
-    def call(self, payload):
-        headers = {'content-type': 'application/xml'}
-        kwargs = {'headers': headers, 'data': self._export_to_xml(payload)}
-        return self._call(**kwargs)
-
-class Delete(Method):
+class Delete(_Method):
 
     url = 'https://reg.arin.net/rest/poc/'
 
