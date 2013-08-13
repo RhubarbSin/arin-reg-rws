@@ -12,7 +12,9 @@ import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3 import PoolManager, HTTPSConnectionPool
 
-import PocPayload, ErrorPayload
+from regrws.payload import error as errorpayload
+
+NAMESPACEDEF = 'xmlns="http://www.arin.net/regrws/core/v1"'
 
 class MyAdapter(HTTPAdapter):
 
@@ -74,12 +76,12 @@ class Session(requests.Session):
         if src_addr:  # MyAdapter supports source address
             self.mount('https://', MyAdapter(src_addr=src_addr))
 
-class RegRwsException(Exception):
+class RegRwsError(Exception):
 
     """Trivial subclass for exceptions in regrws."""
 
     def __init__(self, *args):
-        super(RegRwsException, self).__init__(*args)
+        super(RegRwsError, self).__init__(*args)
 
 class Method(object):
 
@@ -99,43 +101,16 @@ class Method(object):
         try:
             r = self.query_method(self.url, **kwargs)
         except requests.exceptions.RequestException as e:
-            raise RegRwsException(*e.args)
+            raise RegRwsError(*e.args)
         self._check_status(r)
         return self.payload.parseString(r.content)
 
     def _check_status(self, response):
         if response.status_code != requests.codes.ok:
-            error_payload = ErrorPayload.parseString(response.content)
-            raise RegRwsException(response.status_code,
-                                  error_payload.message[0])
+            payload = errorpayload.parseString(response.content)
+            args = [response.status_code, payload.message[0]]
+            if payload.components[0].hasContent_():
+                for c in payload.components[0].component:
+                    args.append('%s: %s' % (c.name[0], c.message[0]))
+            raise RegRwsError(*args)
 
-class PocGet(Method):
-
-    url = 'https://reg.arin.net/rest/poc/'
-    payload = PocPayload
-
-    def __init__(self, session, poc_handle):
-        super(PocGet, self).__init__(session, 'get')
-        self.url += poc_handle
-
-class PocCreate(Method):
-
-    url = 'https://reg.arin.net/rest/poc;makeLink=true'
-    payload = PocPayload
-
-    def __init__(self, session):
-        super(PocCreate, self).__init__(session, 'post')
-
-    def call(self, data):
-        headers = {'content-type': 'application/xml'}
-        kwargs = {'headers': headers, 'data': data}
-        return self._call(**kwargs)
-
-class PocDelete(Method):
-
-    url = 'https://reg.arin.net/rest/poc/'
-    payload = PocPayload
-
-    def __init__(self, session, poc_handle):
-        super(PocDelete, self).__init__(session, 'delete')
-        self.url += poc_handle

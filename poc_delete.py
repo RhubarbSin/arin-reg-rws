@@ -1,31 +1,28 @@
 #!/usr/bin/env python
 
 import sys
+import argparse
 
-import requests
+from regrws import restful
+from regrws.method import poc as pocmethod
+try:
+    from apikey import APIKEY
+except ImportError:
+    APIKEY = None
 
-from apikey import APIKEY
-from regrws import restful, PocPayload, ErrorPayload
+epilog = 'API key can be omitted if APIKEY is defined in apikey.py'
+parser = argparse.ArgumentParser(epilog=epilog)
+parser.add_argument('-k', '--key', help='ARIN API key',
+                    required=False if APIKEY else True, dest='api_key')
+parser.add_argument('-s', '--source-address', help='Source IP address')
+parser.add_argument('handle', metavar='HANDLE')
+args = parser.parse_args()
+if args.api_key:
+    APIKEY = args.api_key
 
-if len(sys.argv) != 2:
-    print 'Usage: %s POCHANDLE' % sys.argv[0]
-    sys.exit(2)
-
-session = restful.Session(APIKEY, '66.181.160.152')
-method = restful.PocDelete(session, sys.argv[1])
-pocpayload = method.call()
-
-# pochandle = sys.argv[1]
-# url = 'https://reg.arin.net/rest/poc/%s' % pochandle
-# qargs = {'apikey': APIKEY}
-# try:
-#     r = requests.delete(url, params=qargs)
-# except requests.exceptions.RequestException as e:
-#     print 'ERROR:', e[0]
-#     sys.exit(1)
-# if r.status_code != requests.codes.ok:
-#     errorpayload = ErrorPayload.parseString(r.content)
-#     print r.status_code, errorpayload.message[0]
-#     sys.exit(1)
-# else:
-#     pocpayload = PocPayload.parseString(r.content)
+session = restful.Session(APIKEY, args.source_address)
+method = pocmethod.Delete(session, args.handle)
+try:
+    pocpayload = method.call()
+except restful.RegRwsError as exception:
+    print exception.args

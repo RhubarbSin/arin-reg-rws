@@ -73,8 +73,10 @@
 * README
   - generateDS module names
   - HTTPS caveat (with source address)
-  - python 2.7 (argparse, HTTPConnection)
+  - dependencies
+    + python 2.7 (argparse, HTTPConnection)
   - not python 3.x
+  - can't include early commits because of api key
 
 * agenda
   - [ ] argparse
@@ -82,8 +84,15 @@
   - [ ] input from template
     + source ip :: -s
     + api key :: -k
-    + handle :: positional arg
-    + template file :: positional arg
+    + handle :: positional arg (get, delete)
+    + template file :: positional arg (create)
   - [ ] test restful error handling
   - [ ] delegation
   - [ ] valueOf_
+  - [ ] why is poc get payload displayed as phone?
+  - [ ] normalize input/output payload identifiers
+  - [ ] merge each set of resource programs into one
+  - [ ] review imports (e.g. no need to import requests, sys?)
+  - [ ] regrws as separate package?
+  - [ ] template parsing module
+  - [ ] import only regrws to aid understanding of hierarchy
