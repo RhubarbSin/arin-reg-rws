@@ -22,9 +22,9 @@ class Create(Method):
     def __init__(self, session):
         super(Create, self).__init__(session, 'post')
 
-    def call(self, data):
+    def call(self, payload):
         headers = {'content-type': 'application/xml'}
-        kwargs = {'headers': headers, 'data': data}
+        kwargs = {'headers': headers, 'data': self._export_to_xml(payload)}
         return self._call(**kwargs)
 
 class Delete(Method):

@@ -7,6 +7,7 @@ https://www.arin.net/resources/restfulpayloads.html
 """
 
 from httplib import HTTPSConnection
+from StringIO import StringIO
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -105,10 +106,18 @@ class Method(object):
         self._check_status(r)
         return self.payload.parseString(r.content)
 
+    def _export_to_xml(self, payload):
+        stringio = StringIO()
+        payload.export(stringio, 0, pretty_print=False, namespace_='',
+                          namespacedef_=NAMESPACEDEF)
+        xml = stringio.getvalue()
+        stringio.close()
+        return xml
+
     def _check_status(self, response):
         if response.status_code != requests.codes.ok:
             payload = errorpayload.parseString(response.content)
-            args = [response.status_code, payload.message[0]]
+            args = ['%s: %s' % (response.status_code, payload.message[0])]
             if payload.components[0].hasContent_():
                 for c in payload.components[0].component:
                     args.append('%s: %s' % (c.name[0], c.message[0]))
