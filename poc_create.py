@@ -4,7 +4,7 @@
 import sys
 import argparse
 
-from regrws import restful
+import regrws
 import regrws.template.poc
 import regrws.method.poc
 try:
@@ -25,9 +25,9 @@ if args.api_key:
 with open(args.template_file, 'r') as fh:
     payload_in = regrws.template.poc.parse_lines(fh.readlines())
 
-session = restful.Session(APIKEY, args.source_address)
+session = regrws.restful.Session(APIKEY, args.source_address)
 method = regrws.method.poc.Create(session)
 try:
     payload_out = method.call(payload_in)
-except restful.RegRwsError as exception:
+except regrws.restful.RegRwsError as exception:
     print exception.args

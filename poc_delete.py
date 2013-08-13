@@ -3,8 +3,8 @@
 import sys
 import argparse
 
-from regrws import restful
-from regrws.method import poc as pocmethod
+import regrws
+import regrws.method.poc
 try:
     from apikey import APIKEY
 except ImportError:
@@ -20,9 +20,9 @@ args = parser.parse_args()
 if args.api_key:
     APIKEY = args.api_key
 
-session = restful.Session(APIKEY, args.source_address)
-method = pocmethod.Delete(session, args.handle)
+session = regrws.restful.Session(APIKEY, args.source_address)
+method = regrws.method.poc.Delete(session, args.handle)
 try:
-    pocpayload = method.call()
-except restful.RegRwsError as exception:
+    payload_out = method.call()
+except regrws.restful.RegRwsError as exception:
     print exception.args

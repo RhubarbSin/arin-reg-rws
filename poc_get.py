@@ -3,8 +3,8 @@
 import sys
 import argparse
 
-from regrws import restful
-from regrws.method import poc as pocmethod
+import regrws
+import regrws.method.poc
 try:
     from apikey import APIKEY
 except ImportError:
@@ -22,29 +22,29 @@ if args.api_key:
     APIKEY = args.api_key
 
 # the main action
-session = restful.Session(APIKEY, args.source_address)
-method = pocmethod.Get(session, args.handle)
+session = regrws.restful.Session(APIKEY, args.source_address)
+method = regrws.method.poc.Get(session, args.handle)
 try:
-    poc_payload = method.call()
-except restful.RegRwsError as exception:
+    payload_out = method.call()
+except regrws.restful.RegRwsError as exception:
     print exception.args
 
 # the rest just displays some values from the payload
 else:
     name = ''
-    if poc_payload.firstName:
-        name += poc_payload.firstName[0] + ' '
-    if poc_payload.middleName:
-        name += poc_payload.middleName[0] + ' '
-    if poc_payload.lastName:
-        name += poc_payload.lastName[0]
+    if payload_out.firstName:
+        name += payload_out.firstName[0] + ' '
+    if payload_out.middleName:
+        name += payload_out.middleName[0] + ' '
+    if payload_out.lastName:
+        name += payload_out.lastName[0]
 
     print name
-    for email in poc_payload.emails[0].email:
+    for email in payload_out.emails[0].email:
         print email
-    print poc_payload.companyName[0]
-    for line in poc_payload.streetAddress[0].line:
+    print payload_out.companyName[0]
+    for line in payload_out.streetAddress[0].line:
         print line.valueOf_
     print '''%s, %s %s
-    %s''' % (poc_payload.city[0], poc_payload.iso3166_2[0],
-             poc_payload.postalCode[0], poc_payload.iso3166_1[0].name[0])
+    %s''' % (payload_out.city[0], payload_out.iso3166_2[0],
+             payload_out.postalCode[0], payload_out.iso3166_1[0].name[0])
