@@ -1,58 +1,34 @@
 #!/usr/bin/env python
 
 import sys
-from StringIO import StringIO
+import argparse
 
-import requests
-
-from apikey import APIKEY
-from regrws import OrgPayload, ErrorPayload
-
-NAMESPACEDEF = 'xmlns="http://www.arin.net/regrws/core/v1"'
-
-if len(sys.argv) != 3:
-    print 'Usage: %s NETHANDLE POCHANDLE' % sys.argv[0]
-    sys.exit(2)
-
-nethandle = sys.argv[1]
-pochandle = sys.argv[2]
-
-iso3166_1 = OrgPayload.iso3166_1(code2=['US'],
-                                 code3=['USA'],
-                                 name=['UNITED STATES'],
-                                 e164=['1'])
-streetAddress = OrgPayload.streetAddress([OrgPayload.line(1, '742 Evergreen Terrace')])
-pocLinks = OrgPayload.pocLinks([OrgPayload.pocLinkRef('T', pochandle, 'Tech'),
-                                OrgPayload.pocLinkRef('AD', pochandle, 'Admin'),
-                                OrgPayload.pocLinkRef('AB', pochandle, 'Abuse')])
-org = OrgPayload.org(city=['Springfield'],
-                     iso3166_1=[iso3166_1],
-                     orgName=['Simpson Family'],
-                     dbaName=['DBA Simpson Family Farms'],
-                     taxId=['A Tax ID'],
-                     postalCode=['90210'],
-                     streetAddress=[streetAddress],
-                     iso3166_2=['OR'],
-                     pocLinks=[pocLinks])
-
-stringio = StringIO()
-org.export(stringio, 0, pretty_print=False,
-           namespace_='',
-           namespacedef_=NAMESPACEDEF)
-xml = stringio.getvalue()
-stringio.close()
-
-url = 'https://reg.arin.net/rest/net/%s/org' % nethandle
-qargs = {'apikey': APIKEY}
-headers = {'content-type': 'application/xml'}
+import regrws
+import regrws.template.org
+import regrws.method.org
 try:
-    r = requests.post(url, params=qargs, data=xml, headers=headers)
-except requests.exceptions.RequestException as e:
-    print 'ERROR:', e[0]
-    sys.exit(1)
-if r.status_code != requests.codes.ok:
-    errorpayload = ErrorPayload.parseString(r.content)
-    print r.status_code, errorpayload.message[0]
-    sys.exit(1)
-else:
-    orgpayload = OrgPayload.parseString(r.content)
+    from apikey import APIKEY
+except ImportError:
+    APIKEY = None
+
+description = 'Create ARIN recipient ORG from template'
+epilog = 'API key can be omitted if APIKEY is defined in apikey.py'
+arg_parser = argparse.ArgumentParser(description=description, epilog=epilog)
+arg_parser.add_argument('-k', '--key', help='ARIN API key',
+                        required=False if APIKEY else True, dest='api_key')
+arg_parser.add_argument('-s', '--source-address', help='Source IP address')
+arg_parser.add_argument('net_handle', metavar='NET_HANDLE')
+arg_parser.add_argument('template_file', metavar='TEMPLATE_FILE')
+args = arg_parser.parse_args()
+if args.api_key:
+    APIKEY = args.api_key
+
+with open(args.template_file, 'r') as fh:
+    payload_in = regrws.template.org.parse_lines(fh.readlines())
+
+session = regrws.restful.Session(APIKEY, args.source_address)
+method = regrws.method.org.Create(session, args.net_handle)
+try:
+    payload_out = method.call(payload_in)
+except regrws.restful.RegRwsError as exception:
+    print exception.args

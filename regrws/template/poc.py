@@ -4,6 +4,7 @@ import re
 import pycountry
 
 from regrws.payload import poc
+from regrws.template.exception import ParseError
 
 def parse_lines(template_contents):
     """Return a POC payload from a list of template lines."""
@@ -15,6 +16,7 @@ def parse_lines(template_contents):
     emails = poc.emails()
     phones = poc.phones()
     phone_office = None
+
     for line in template_contents:
         if not template_re.match(line):
             continue
@@ -22,6 +24,7 @@ def parse_lines(template_contents):
         value = value.strip()
         if not value:
             continue
+
         if name == '03. Contact Type (P or R)':
             if value == 'P':
                 payload.contactType = ['PERSON']
@@ -39,8 +42,7 @@ def parse_lines(template_contents):
             payload.companyName = [value]
         elif name == '08. Address':
             addr_count += 1
-            addr = poc.line(addr_count, value)
-            street_address.add_line(addr)
+            street_address.add_line(poc.line(addr_count, value))
         elif name == '09. City':
             payload.city = [value]
         elif name == '10. State/Province':

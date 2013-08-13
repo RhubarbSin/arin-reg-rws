@@ -15,13 +15,13 @@ parser = argparse.ArgumentParser(epilog=epilog)
 parser.add_argument('-k', '--key', help='ARIN API key',
                     required=False if APIKEY else True, dest='api_key')
 parser.add_argument('-s', '--source-address', help='Source IP address')
-parser.add_argument('handle', metavar='HANDLE')
+parser.add_argument('poc_handle', metavar='POC_HANDLE')
 args = parser.parse_args()
 if args.api_key:
     APIKEY = args.api_key
 
 session = regrws.restful.Session(APIKEY, args.source_address)
-method = regrws.method.poc.Delete(session, args.handle)
+method = regrws.method.poc.Delete(session, args.poc_handle)
 try:
     payload_out = method.call()
 except regrws.restful.RegRwsError as exception:

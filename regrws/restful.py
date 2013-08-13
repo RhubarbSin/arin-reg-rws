@@ -13,7 +13,7 @@ import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3 import PoolManager, HTTPSConnectionPool
 
-from regrws.payload import error as errorpayload
+from regrws.payload import error
 
 NAMESPACEDEF = 'xmlns="http://www.arin.net/regrws/core/v1"'
 
@@ -116,10 +116,11 @@ class Method(object):
 
     def _check_status(self, response):
         if response.status_code != requests.codes.ok:
-            payload = errorpayload.parseString(response.content)
+            payload = error.parseString(response.content)
             args = ['%s: %s' % (response.status_code, payload.message[0])]
             if payload.components[0].hasContent_():
-                for c in payload.components[0].component:
-                    args.append('%s: %s' % (c.name[0], c.message[0]))
+                args.extend(['%s: %s' % (c.name[0], c.message[0])
+                             for c in payload.components[0].component])
+            if payload.additionalInfo[0].hasContent_():
+                args.extend([m for m in payload.additionalInfo[0].message])
             raise RegRwsError(*args)
-

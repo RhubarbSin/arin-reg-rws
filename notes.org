@@ -80,6 +80,7 @@
 
 * agenda
   - [ ] argparse
+    - description
   - [ ] check for apikey.py
   - [ ] input from template
     + source ip :: -s
@@ -96,3 +97,6 @@
   - [ ] regrws as separate package?
   - [ ] template parsing module
   - [ ] import only regrws to aid understanding of hierarchy
+  - [ ] ParseError for country code
+  - [ ] poc template comments
+  - [ ] just alpha2 country code?
