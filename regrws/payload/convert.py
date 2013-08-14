@@ -17,7 +17,14 @@ class PayloadFromDict(object):
                 'Office Phone Number Extension': '_office_extension',
                 'E-mail Address': '_email_address',
                 'Mobile': '_phone_mobile',
-                'Fax': '_phone_fax', 'Public Comments': '_comment'}
+                'Fax': '_phone_fax', 'Public Comments': '_comment',
+                'Org Address': '_address',
+                'Org City': '_city',
+                'Country Code': '_country_code',
+                'Admin POC Handle': '_poc_admin',
+                'Tech POC Handle': '_poc_tech',
+                'Abuse POC Handle': '_poc_abuse',
+                'NOC POC Handle': '_poc_noc'}
     # map of dict keys to payload's simple list attributes
     _attr = {'Last Name or Role Account': 'lastName',
              'First Name': 'firstName',
@@ -25,10 +32,19 @@ class PayloadFromDict(object):
              'Company Name': 'companyName',
              'City': 'city',
              'State/Province': 'iso3166_2',
-             'Postal Code': 'postalCode'}
+             'Postal Code': 'postalCode',
+             "Organization's Legal Name": 'orgName'
+             "Organization's D/B/A": 'dbaName',
+             'Business Tax ID Number (DO NOT LIST SSN)': 'taxId',
+             'Org State/Province': 'iso3166_2',
+             'Org Postal Code': 'postalCode'}
     # dict keys to ignore (not used in payload)
-    _ignore = ('API Key', 'Registration Action (N,M, or R)',
-               'Existing POC Handle')
+    _ignore = ('API Key',
+               'Registration Action (N,M, or R)',
+               'Registration Action (N,M, or R)',
+               'Existing POC Handle',
+               'Existing OrgID',
+               'Referral Server')
 
     def __init__(self, source, target):
         """Return a PayloadFromDict object that will convert the
@@ -105,6 +121,12 @@ class PayloadFromDict(object):
         type_ = [self.module.type_(code=[type_code])]
         self.payload.phones[0].add_phone(self.module.phone(number=value,
                                                            type_=type_))
+
+    def _poc_admin(self, value):
+        self._poc(value, 'AD')
+
+    def _poc(self, value, function):
+        pass
 
     def _office_extension(self, value):
         for phone in self.payload.phones[0].phone:
