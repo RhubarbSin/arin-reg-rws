@@ -98,6 +98,6 @@
   - [ ] import only regrws to aid understanding of hierarchy
   - [ ] ParseError for country code
   - [ ] just alpha2 country code?
-  - [ ] poc template comments
+  - [X] poc template comments
   - [ ] error logging
   - [ ] DictFromTemplate instead of DictFromTemplateFile

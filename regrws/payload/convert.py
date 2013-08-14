@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import pycountry
 
 import regrws.payload
-from regrws.restful import RegRwsError
+import regrws.restful
 
 class PayloadFromDict(object):
 
@@ -17,7 +17,7 @@ class PayloadFromDict(object):
                'Office Phone Number Extension': '_office_extension',
                'E-mail Address': '_email_address',
                'Mobile': '_phone_mobile',
-               'Fax': '_phone_fax'}
+               'Fax': '_phone_fax', 'Public Comments': '_comment'}
     # map of dict keys to payload's simple list attributes
     simple = {'Last Name or Role Account': 'lastName',
               'First Name': 'firstName',
@@ -28,7 +28,7 @@ class PayloadFromDict(object):
               'Postal Code': 'postalCode'}
     # dict keys to ignore (not used in payload)
     ignore = ('API Key', 'Registration Action (N,M, or R)',
-              'Existing POC Handle', 'Public Comments')
+              'Existing POC Handle')
 
     def __init__(self, source, target):
         """Return a PayloadFromDict object that will convert the
@@ -71,9 +71,15 @@ class PayloadFromDict(object):
     def _address(self, value):
         if not self.payload.streetAddress:
             self.payload.streetAddress = [self.module.streetAddress()]
-        for count, line in enumerate(value, 1):
+        for count, line in enumerate(value):
             self.payload.streetAddress[0].add_line(self.module.line(count,
                                                                     line))
+
+    def _comment(self, value):
+        if not self.payload.comment:
+            self.payload.comment = [self.module.comment()]
+        for count, line in enumerate(value):
+            self.payload.comment[0].add_line(self.module.line(count, line))
 
     def _country_code(self, value):
         country = pycountry.countries.get(alpha2=value[0])
@@ -110,9 +116,9 @@ class PayloadFromDict(object):
             self.payload.emails[0].add_email(email)
 
     def _verify_attribute(self, attr):
-        # Input dict should not contain keys that do not correspond to
-        # input payload class's data attributes (except for those in
+        # source dict should not contain keys that do not correspond to
+        # input target class's data attributes (except for those in
         # the ignore list).
         if getattr(self.payload, attr, None) is None:
-            raise RegRwsError('%s does not have attribute %s' %
-                              (self.payload.__class__, attr))
+            raise restful.RegRwsError('%s does not have attribute %s' %
+                                      (self.payload.__class__, attr))

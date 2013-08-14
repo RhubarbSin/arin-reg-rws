@@ -3,7 +3,6 @@
 import sys
 import argparse
 
-# import regrws
 import regrws.template
 import regrws.template.poc
 import regrws.payload.poc
@@ -25,9 +24,9 @@ if args.api_key:
     APIKEY = args.api_key
 
 parser = regrws.template.DictFromTemplateFile(args.template_file)
-c = regrws.payload.PayloadFromDict(parser.run(), regrws.payload.poc.poc)
-payload_in = c.run()
-payload_in.export(sys.stdout, 0)
+converter = regrws.payload.PayloadFromDict(parser.run(),
+                                           regrws.payload.poc.poc)
+payload_in = converter.run()
 
 session = regrws.restful.Session(APIKEY, args.source_address)
 method = regrws.method.poc.Create(session)
