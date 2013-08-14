@@ -23,8 +23,8 @@ args = arg_parser.parse_args()
 if args.api_key:
     APIKEY = args.api_key
 
-converter_t = regrws.template.DictFromTemplateFile(args.template_file)
-payload_in = regrws.template.poc.payload_from_dict(converter_t.run())
+converter = regrws.template.DictFromTemplateFile(args.template_file)
+payload_in = regrws.template.poc.payload_from_dict(converter.run())
 payload_in.export(sys.stdout, 0)
 sys.exit()
 
