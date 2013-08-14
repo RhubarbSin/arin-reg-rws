@@ -10,29 +10,31 @@ class PayloadFromDict(object):
     """Method object for converting a dict to a payload."""
 
     # map of dict keys to handler method names
-    handler = {'Contact Type (P or R)': '_contact_type',
-               'Address': '_address',
-               'Country Code': '_country_code',
-               'Office Phone Number': '_phone_office',
-               'Office Phone Number Extension': '_office_extension',
-               'E-mail Address': '_email_address',
-               'Mobile': '_phone_mobile',
-               'Fax': '_phone_fax', 'Public Comments': '_comment'}
+    _handler = {'Contact Type (P or R)': '_contact_type',
+                'Address': '_address',
+                'Country Code': '_country_code',
+                'Office Phone Number': '_phone_office',
+                'Office Phone Number Extension': '_office_extension',
+                'E-mail Address': '_email_address',
+                'Mobile': '_phone_mobile',
+                'Fax': '_phone_fax', 'Public Comments': '_comment'}
     # map of dict keys to payload's simple list attributes
-    simple = {'Last Name or Role Account': 'lastName',
-              'First Name': 'firstName',
-              'Middle Name': 'middleName',
-              'Company Name': 'companyName',
-              'City': 'city',
-              'State/Province': 'iso3166_2',
-              'Postal Code': 'postalCode'}
+    _attr = {'Last Name or Role Account': 'lastName',
+             'First Name': 'firstName',
+             'Middle Name': 'middleName',
+             'Company Name': 'companyName',
+             'City': 'city',
+             'State/Province': 'iso3166_2',
+             'Postal Code': 'postalCode'}
     # dict keys to ignore (not used in payload)
-    ignore = ('API Key', 'Registration Action (N,M, or R)',
-              'Existing POC Handle')
+    _ignore = ('API Key', 'Registration Action (N,M, or R)',
+               'Existing POC Handle')
 
     def __init__(self, source, target):
         """Return a PayloadFromDict object that will convert the
         source dict to a payload of the target class.
+
+        All values of dict items are expected to be lists.
         """
 
         self.source = source
@@ -44,13 +46,13 @@ class PayloadFromDict(object):
         """Return payload built from dict."""
 
         for key, value in self.source.iteritems():
-            if key in self.handler:
+            if key in self._handler:
                 # call the corresponding handler
-                method = getattr(self, self.handler[key])
+                method = getattr(self, self._handler[key])
                 method(value)
-            elif key in self.simple:
-                self._assign(self.simple[key], value)
-            elif key in self.ignore:
+            elif key in self._attr:
+                self._assign(self._attr[key], value)
+            elif key in self._ignore:
                 continue
             else:
                 raise RegRwsError('%s has no attribute corresponding to key %s' % (self.payload.__class__, key))
