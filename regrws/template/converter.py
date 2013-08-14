@@ -11,7 +11,11 @@ class DictFromTemplateFile(object):
         self.parsed_template = {}
 
     def run(self):
-        """Return dict containing parsed contents of template file."""
+        """Return dict containing parsed contents of template file.
+
+        All dict item values are lists because template field labels
+        (used for dict keys) can be repeated.
+        """
 
         with open(self.filename, 'r') as fh:
             for line in fh:
@@ -26,8 +30,6 @@ class DictFromTemplateFile(object):
         key = m.group(1).strip()
         value = m.group(2).strip()
         if key in self.parsed_template:
-            if isinstance(self.parsed_template[key], str):
-                self.parsed_template[key] = [self.parsed_template[key]]
             self.parsed_template[key].append(value)
         else:
-            self.parsed_template[key] = value
+            self.parsed_template[key] = [value]

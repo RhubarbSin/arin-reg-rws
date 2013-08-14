@@ -44,20 +44,23 @@ class PayloadFromDict(object):
                 method = getattr(self, self.handler[key])
                 method(value)
             elif key in self.simple:
-                # assign value to attribute if payload has that attribute
-                self._verify_attribute(self.simple[key])
-                setattr(self.payload, self.simple[key], [value])
+                self._assign(self.simple[key], value)
             elif key in self.ignore:
                 continue
             else:
                 raise RegRwsError('%s has no attribute corresponding to key %s' % (self.payload.__class__, key))
         return self.payload
 
+    def _assign(self, attr, value):
+        # assign value to attribute if payload has that attribute
+        self._verify_attribute(attr)
+        setattr(self.payload, attr, value)
+
     def _contact_type(self, value):
         self._verify_attribute('contactType')
-        if value == 'P':
+        if value == ['P']:
             self.payload.contactType = ['PERSON']
-        elif value == 'R':
+        elif value == ['R']:
             self.payload.contactType = ['ROLE']
 
     def _address(self, value):
