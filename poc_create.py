@@ -3,9 +3,10 @@
 import sys
 import argparse
 
-import regrws
+# import regrws
 import regrws.template
 import regrws.template.poc
+import regrws.payload.poc
 import regrws.method.poc
 try:
     from apikey import APIKEY
@@ -23,10 +24,10 @@ args = arg_parser.parse_args()
 if args.api_key:
     APIKEY = args.api_key
 
-converter = regrws.template.DictFromTemplateFile(args.template_file)
-payload_in = regrws.template.poc.payload_from_dict(converter.run())
+parser = regrws.template.DictFromTemplateFile(args.template_file)
+c = regrws.payload.PayloadFromDict(parser.run(), regrws.payload.poc.poc)
+payload_in = c.run()
 payload_in.export(sys.stdout, 0)
-sys.exit()
 
 session = regrws.restful.Session(APIKEY, args.source_address)
 method = regrws.method.poc.Create(session)

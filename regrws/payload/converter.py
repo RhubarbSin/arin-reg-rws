@@ -13,11 +13,11 @@ class PayloadFromDict(object):
     handler = {'Contact Type (P or R)': '_contact_type',
                'Address': '_address',
                'Country Code': '_country_code',
-               'Office Phone Number': '_office_phone_number',
+               'Office Phone Number': '_phone_office',
                'Office Phone Number Extension': '_office_extension',
                'E-mail Address': '_email_address',
-               'Mobile': '_mobile',
-               'Fax': '_fax'}
+               'Mobile': '_phone_mobile',
+               'Fax': '_phone_fax'}
     # map of dict keys to payload's simple list attributes
     simple = {'Last Name or Role Account': 'lastName',
               'First Name': 'firstName',
@@ -31,8 +31,13 @@ class PayloadFromDict(object):
               'Existing POC Handle', 'Public Comments')
 
     def __init__(self, source, target):
+        """Return a PayloadFromDict object that will convert the
+        source dict to a payload of the target class.
+        """
+
         self.source = source
-        self.module = target.__module__
+        # this relies on payload module names matching payload class names
+        self.module = getattr(regrws.payload, target.__module__.split('.')[-1])
         self.payload = target()
 
     def run(self):
@@ -64,39 +69,50 @@ class PayloadFromDict(object):
             self.payload.contactType = ['ROLE']
 
     def _address(self, value):
-        pass
-        # if isinstance(value, str):
-        #     street_address.add_line(poc.line(1, value))
-        # else:
-        #     for count, item in enumerate(value, 1):
-        #         street_address.add_line(poc.line(count, item))
+        if not self.payload.streetAddress:
+            self.payload.streetAddress = [self.module.streetAddress()]
+        for count, line in enumerate(value, 1):
+            self.payload.streetAddress[0].add_line(self.module.line(count,
+                                                                    line))
 
     def _country_code(self, value):
-        pass
-        # country = pycountry.countries.get(alpha2=value)
-        # iso3166_1 = poc.iso3166_1(code2=[country.alpha2],
-        #                           code3=[country.alpha3],
-        #                           name=[country.name])
-        # payload.iso3166_1 = [iso3166_1]
+        country = pycountry.countries.get(alpha2=value[0])
+        iso3166_1 = self.module.iso3166_1(code2=[country.alpha2],
+                                          code3=[country.alpha3],
+                                          name=[country.name])
+        self.payload.iso3166_1 = [iso3166_1]
 
-    def _office_phone_number(self, value):
-        pass
+    def _phone_office(self, value):
+        self._phone(value, 'O')
+
+    def _phone_mobile(self, value):
+        self._phone(value, 'M')
+
+    def _phone_fax(self, value):
+        self._phone(value, 'F')
+
+    def _phone(self, value, type_code):
+        if not self.payload.phones:
+            self.payload.phones = [self.module.phones()]
+        type_ = [self.module.type_(code=[type_code])]
+        self.payload.phones[0].add_phone(self.module.phone(number=value,
+                                                           type_=type_))
 
     def _office_extension(self, value):
-        pass
+        for phone in self.payload.phones[0].phone:
+            if phone.type_[0].code[0] == 'O':
+                phone.extension = value
 
     def _email_address(self, value):
-        pass
-
-    def _mobile(self, value):
-        pass
-
-    def _fax(self, value):
-        pass
+        if not self.payload.emails:
+            self.payload.emails = [self.module.emails()]
+        for email in value:
+            self.payload.emails[0].add_email(email)
 
     def _verify_attribute(self, attr):
         # Input dict should not contain keys that do not correspond to
-        # input payload class's data attributes.
+        # input payload class's data attributes (except for those in
+        # the ignore list).
         if getattr(self.payload, attr, None) is None:
             raise RegRwsError('%s does not have attribute %s' %
                               (self.payload.__class__, attr))

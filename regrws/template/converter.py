@@ -7,6 +7,7 @@ class DictFromTemplateFile(object):
     _regex = re.compile(r'\d\d\.(.*):(.*)')
 
     def __init__(self, filename):
+
         self.filename = filename
         self.parsed_template = {}
 

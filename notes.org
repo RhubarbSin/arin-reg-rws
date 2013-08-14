@@ -81,22 +81,23 @@
 * agenda
   - [ ] argparse
     - description
-  - [ ] check for apikey.py
-  - [ ] input from template
+  - [X] check for apikey.py
+  - [X] input from template
     + source ip :: -s
     + api key :: -k
     + handle :: positional arg (get, delete)
     + template file :: positional arg (create)
-  - [ ] test restful error handling
+  - [X] test restful error handling
   - [ ] delegation
-  - [ ] valueOf_
+  - [X] valueOf_
   - [ ] why is poc get payload displayed as phone?
   - [ ] normalize input/output payload identifiers
   - [ ] merge each set of resource programs into one
   - [ ] review imports (e.g. no need to import requests, sys?)
-  - [ ] regrws as separate package?
   - [ ] template parsing module
   - [ ] import only regrws to aid understanding of hierarchy
   - [ ] ParseError for country code
-  - [ ] poc template comments
   - [ ] just alpha2 country code?
+  - [ ] poc template comments
+  - [ ] error logging
+  - [ ] DictFromTemplate instead of DictFromTemplateFile
