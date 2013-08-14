@@ -4,7 +4,6 @@ import re
 import pycountry
 
 from regrws.payload import org
-from regrws.template.exception import ParseError
 
 def parse_lines(template_contents):
     """Return an ORG payload from a list of template lines."""

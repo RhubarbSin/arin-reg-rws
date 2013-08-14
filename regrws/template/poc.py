@@ -3,7 +3,6 @@ from __future__ import absolute_import
 import pycountry
 
 from regrws.payload import poc
-from regrws.template.exception import ParseError
 
 def payload_from_dict(template_input):
     """Return a POC payload from a dict of template input."""
@@ -13,8 +12,6 @@ def payload_from_dict(template_input):
             payload.contactType = ['PERSON']
         elif value == 'R':
             payload.contactType = ['ROLE']
-        else:
-            raise ParseError('Invalid value for Contact Type')
 
     def address():
         if isinstance(value, str):
