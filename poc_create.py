@@ -4,6 +4,7 @@ import sys
 import argparse
 
 import regrws
+import regrws.template
 import regrws.template.poc
 import regrws.method.poc
 try:
@@ -22,8 +23,9 @@ args = arg_parser.parse_args()
 if args.api_key:
     APIKEY = args.api_key
 
-with open(args.template_file, 'r') as fh:
-    payload_in = regrws.template.poc.parse_lines(fh.readlines())
+payload_in = regrws.template.poc.payload_from_dict(regrws.template.dict_from_template_file(args.template_file))
+payload_in.export(sys.stdout, 0)
+sys.exit()
 
 session = regrws.restful.Session(APIKEY, args.source_address)
 method = regrws.method.poc.Create(session)
