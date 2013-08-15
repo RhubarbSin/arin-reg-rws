@@ -3,7 +3,7 @@
 import sys
 import argparse
 
-import regrws.template
+import regrws.convert
 import regrws.payload.poc
 import regrws.method.poc
 try:
@@ -24,7 +24,7 @@ if args.api_key:
 
 with open(args.template_file, 'r') as fh:
     template = fh.readlines()
-parser = regrws.template.DictFromTemplate(template)
+parser = regrws.convert.DictFromTemplate(template)
 converter = regrws.payload.PayloadFromDict(parser.run(),
                                            regrws.payload.poc.poc)
 payload_in = converter.run()
