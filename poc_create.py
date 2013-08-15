@@ -22,7 +22,9 @@ args = arg_parser.parse_args()
 if args.api_key:
     APIKEY = args.api_key
 
-parser = regrws.template.DictFromTemplateFile(args.template_file)
+with open(args.template_file, 'r') as fh:
+    template = fh.readlines()
+parser = regrws.template.DictFromTemplate(template)
 converter = regrws.payload.PayloadFromDict(parser.run(),
                                            regrws.payload.poc.poc)
 payload_in = converter.run()

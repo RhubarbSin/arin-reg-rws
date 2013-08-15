@@ -1,1 +1,1 @@
-from convert import DictFromTemplateFile
+from convert import DictFromTemplate

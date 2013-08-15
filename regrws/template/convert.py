@@ -1,33 +1,34 @@
 import re
 
-class DictFromTemplateFile(object):
+class DictFromTemplate(object):
 
     """Method object for converting a template to a dict."""
 
     _regex = re.compile(r'\d\d\.(.*):(.*)')
 
-    def __init__(self, filename):
+    def __init__(self, template):
+        """Return a DictFromTemplate object that will convert the
+        template string to a dict.
+        """
 
-        self.filename = filename
+        self.template = template
         self.parsed_template = {}
 
     def run(self):
-        """Return dict containing parsed contents of template file.
+        """Return dict containing parsed contents of template string.
 
         All dict item values are lists because template field labels
         (used for dict keys) can be repeated.
         """
 
-        with open(self.filename, 'r') as fh:
-            for line in fh:
-                match = self._regex.match(line)
-                if match:
-                    self._process(match)
+        for line in self.template:
+            match = self._regex.match(line)
+            if match:
+                self._process(match)
         return self.parsed_template
 
     def _process(self, m):
-        # Create/modify dict item, assigning value as list instead of
-        # str if key is encountered more than once.
+        # Create/modify dict item
         key = m.group(1).strip()
         value = m.group(2).strip()
         if key in self.parsed_template:
