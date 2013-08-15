@@ -6,7 +6,7 @@ import regrws.restful
 
 class DictFromTemplate(object):
 
-    """Method object for converting a template to a dict."""
+    """Class for method object for converting a template to a dict."""
 
     _regex = re.compile(r'\d\d\.(.*):(.*)')
 
@@ -59,10 +59,18 @@ class _PayloadFromDict(object):
         All values of dict items are expected to be lists.
         """
 
+        self._verify_class_dicts()
         self.source = source
         # this relies on payload module names matching payload class names
         self.module = getattr(regrws.payload, target.__module__.split('.')[-1])
         self.payload = target()
+
+    def _verify_class_dicts(self):
+        # ensure at least one required class dict is not empty
+        if not (self._handler or self._attr):
+            msg = '_handler or _attr must be populated in derived classes'
+            # not the most appropriate exception
+            raise NotImplementedError(msg)
 
     def run(self):
         """Return payload built from dict."""
