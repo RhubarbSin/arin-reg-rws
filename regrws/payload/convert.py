@@ -17,10 +17,10 @@ class PayloadFromDict(object):
                 'Office Phone Number Extension': '_office_extension',
                 'E-mail Address': '_email_address',
                 'Mobile': '_phone_mobile',
-                'Fax': '_phone_fax', 'Public Comments': '_comment',
+                'Fax': '_phone_fax',
+                'Public Comments': '_comment',
                 'Org Address': '_address',
-                'Org City': '_city',
-                'Country Code': '_country_code',
+                'Org Country Code': '_country_code',
                 'Admin POC Handle': '_poc_admin',
                 'Tech POC Handle': '_poc_tech',
                 'Abuse POC Handle': '_poc_abuse',
@@ -33,18 +33,19 @@ class PayloadFromDict(object):
              'City': 'city',
              'State/Province': 'iso3166_2',
              'Postal Code': 'postalCode',
-             "Organization's Legal Name": 'orgName'
+             "Organization's Legal Name": 'orgName',
              "Organization's D/B/A": 'dbaName',
              'Business Tax ID Number (DO NOT LIST SSN)': 'taxId',
+             'Org City': 'city',
              'Org State/Province': 'iso3166_2',
              'Org Postal Code': 'postalCode'}
     # dict keys to ignore (not used in payload)
     _ignore = ('API Key',
                'Registration Action (N,M, or R)',
-               'Registration Action (N,M, or R)',
                'Existing POC Handle',
                'Existing OrgID',
-               'Referral Server')
+               'Referral Server',
+               'Additional Information')
 
     def __init__(self, source, target):
         """Return a PayloadFromDict object that will convert the
@@ -71,7 +72,7 @@ class PayloadFromDict(object):
             elif key in self._ignore:
                 continue
             else:
-                raise RegRwsError('%s has no attribute corresponding to key %s' % (self.payload.__class__, key))
+                raise regrws.restful.RegRwsError('%s has no attribute corresponding to key %s' % (self.payload.__class__, key))
         return self.payload
 
     def _assign(self, attr, value):
@@ -125,6 +126,15 @@ class PayloadFromDict(object):
     def _poc_admin(self, value):
         self._poc(value, 'AD')
 
+    def _poc_tech(self, value):
+        self._poc(value, 'T')
+
+    def _poc_abuse(self, value):
+        self._poc(value, 'AB')
+
+    def _poc_noc(self, value):
+        self._poc(value, 'N')
+
     def _poc(self, value, function):
         pass
 
@@ -144,5 +154,5 @@ class PayloadFromDict(object):
         # input target class's data attributes (except for those in
         # the ignore list).
         if getattr(self.payload, attr, None) is None:
-            raise restful.RegRwsError('%s does not have attribute %s' %
-                                      (self.payload.__class__, attr))
+            raise regrws.restful.RegRwsError('%s does not have attribute %s' %
+                                             (self.payload.__class__, attr))

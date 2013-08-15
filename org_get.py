@@ -16,14 +16,14 @@ parser = argparse.ArgumentParser(epilog=epilog)
 parser.add_argument('-k', '--key', help='ARIN API key',
                     required=False if APIKEY else True, dest='api_key')
 parser.add_argument('-s', '--source-address', help='Source IP address')
-parser.add_argument('handle', metavar='ORG_HANDLE')
+parser.add_argument('org_handle', metavar='ORG_HANDLE')
 args = parser.parse_args()
 if args.api_key:
     APIKEY = args.api_key
 
 # the main action
 session = regrws.restful.Session(APIKEY, args.source_address)
-method = regrws.method.org.Get(session, args.handle)
+method = regrws.method.org.Get(session, args.org_handle)
 try:
     payload_out = method.call()
 except regrws.restful.RegRwsError as exception:
@@ -49,5 +49,3 @@ Registration date: %s
     print '\nAssociated POCs:'
     for poc_link_ref in payload_out.pocLinks[0].pocLinkRef:
         print poc_link_ref.description, poc_link_ref.handle
-
-payload_out.exportLiteral(sys.stdout, 0)

@@ -3,8 +3,8 @@
 import sys
 import argparse
 
-import regrws
-import regrws.template.org
+import regrws.template
+import regrws.payload.org
 import regrws.method.org
 try:
     from apikey import APIKEY
@@ -23,8 +23,13 @@ args = arg_parser.parse_args()
 if args.api_key:
     APIKEY = args.api_key
 
-with open(args.template_file, 'r') as fh:
-    payload_in = regrws.template.org.parse_lines(fh.readlines())
+parser = regrws.template.DictFromTemplateFile(args.template_file)
+converter = regrws.payload.PayloadFromDict(parser.run(),
+                                           regrws.payload.org.org)
+payload_in = converter.run()
+
+payload_in.export(sys.stdout, 0)
+sys.exit()
 
 session = regrws.restful.Session(APIKEY, args.source_address)
 method = regrws.method.org.Create(session, args.net_handle)

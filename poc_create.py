@@ -4,7 +4,6 @@ import sys
 import argparse
 
 import regrws.template
-import regrws.template.poc
 import regrws.payload.poc
 import regrws.method.poc
 try:
