@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-import pycountry
-
 import regrws.payload
 import regrws.restful
 
@@ -101,10 +99,7 @@ class PayloadFromDict(object):
             self.payload.comment[0].add_line(self.module.line(count, line))
 
     def _country_code(self, value):
-        country = pycountry.countries.get(alpha2=value[0])
-        iso3166_1 = self.module.iso3166_1(code2=[country.alpha2],
-                                          code3=[country.alpha3],
-                                          name=[country.name])
+        iso3166_1 = self.module.iso3166_1(code2=value)
         self.payload.iso3166_1 = [iso3166_1]
 
     def _phone_office(self, value):
