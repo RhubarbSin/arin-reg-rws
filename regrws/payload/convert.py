@@ -136,7 +136,10 @@ class PayloadFromDict(object):
         self._poc(value, 'N')
 
     def _poc(self, value, function):
-        pass
+        if not self.payload.pocLinks:
+            self.payload.pocLinks = [self.module.pocLinks()]
+        self.payload.pocLinks[0].add_pocLinkRef(self.module.pocLinkRef(function,
+                                                                       value[0]))
 
     def _office_extension(self, value):
         for phone in self.payload.phones[0].phone:

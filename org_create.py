@@ -28,9 +28,6 @@ converter = regrws.payload.PayloadFromDict(parser.run(),
                                            regrws.payload.org.org)
 payload_in = converter.run()
 
-payload_in.export(sys.stdout, 0)
-sys.exit()
-
 session = regrws.restful.Session(APIKEY, args.source_address)
 method = regrws.method.org.Create(session, args.net_handle)
 try:
