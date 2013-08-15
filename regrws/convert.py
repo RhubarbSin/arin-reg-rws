@@ -22,7 +22,8 @@ class DictFromTemplate(object):
         """Return dict containing parsed contents of template string.
 
         All dict item values are lists because template field labels
-        (used for dict keys) can be repeated.
+        (used for dict keys) can be repeated. The returned dict is
+        suitable for use with PayloadFromTemplateDict.
         """
 
         for line in self.template:
@@ -40,47 +41,16 @@ class DictFromTemplate(object):
         else:
             self.parsed_template[key] = [value]
 
-class PayloadFromDict(object):
+class _PayloadFromDict(object):
 
-    """Method object for converting a dict to a payload."""
+    """Abstract class for method object for converting a dict to a
+    payload.
+    """
 
-    # map of dict keys to handler method names
-    _handler = {'Contact Type (P or R)': '_contact_type',
-                'Address': '_address',
-                'Country Code': '_country_code',
-                'Office Phone Number': '_phone_office',
-                'Office Phone Number Extension': '_office_extension',
-                'E-mail Address': '_email_address',
-                'Mobile': '_phone_mobile',
-                'Fax': '_phone_fax',
-                'Public Comments': '_comment',
-                'Org Address': '_address',
-                'Org Country Code': '_country_code',
-                'Admin POC Handle': '_poc_admin',
-                'Tech POC Handle': '_poc_tech',
-                'Abuse POC Handle': '_poc_abuse',
-                'NOC POC Handle': '_poc_noc'}
-    # map of dict keys to payload's simple list attributes
-    _attr = {'Last Name or Role Account': 'lastName',
-             'First Name': 'firstName',
-             'Middle Name': 'middleName',
-             'Company Name': 'companyName',
-             'City': 'city',
-             'State/Province': 'iso3166_2',
-             'Postal Code': 'postalCode',
-             "Organization's Legal Name": 'orgName',
-             "Organization's D/B/A": 'dbaName',
-             'Business Tax ID Number (DO NOT LIST SSN)': 'taxId',
-             'Org City': 'city',
-             'Org State/Province': 'iso3166_2',
-             'Org Postal Code': 'postalCode'}
-    # dict keys to ignore (not used in payload)
-    _ignore = ('API Key',
-               'Registration Action (N,M, or R)',
-               'Existing POC Handle',
-               'Existing OrgID',
-               'Referral Server',
-               'Additional Information')
+    # The following class attributes are overridden in subclasses.
+    _handler = {}  # map of dict keys to handler method names
+    _attr = {}  # map of dict keys to payload's simple list attributes
+    _ignore = ()  # dict keys to ignore (not used in payload)
 
     def __init__(self, source, target):
         """Return a PayloadFromDict object that will convert the
@@ -191,3 +161,45 @@ class PayloadFromDict(object):
         if getattr(self.payload, attr, None) is None:
             raise regrws.restful.RegRwsError('%s does not have attribute %s' %
                                              (self.payload.__class__, attr))
+
+class PayloadFromTemplateDict(_PayloadFromDict):
+
+    """Method object for converting a template dict to a payload."""
+
+    # map of dict keys to handler method names
+    _handler = {'Contact Type (P or R)': '_contact_type',
+                'Address': '_address',
+                'Country Code': '_country_code',
+                'Office Phone Number': '_phone_office',
+                'Office Phone Number Extension': '_office_extension',
+                'E-mail Address': '_email_address',
+                'Mobile': '_phone_mobile',
+                'Fax': '_phone_fax',
+                'Public Comments': '_comment',
+                'Org Address': '_address',
+                'Org Country Code': '_country_code',
+                'Admin POC Handle': '_poc_admin',
+                'Tech POC Handle': '_poc_tech',
+                'Abuse POC Handle': '_poc_abuse',
+                'NOC POC Handle': '_poc_noc'}
+    # map of dict keys to payload's simple list attributes
+    _attr = {'Last Name or Role Account': 'lastName',
+             'First Name': 'firstName',
+             'Middle Name': 'middleName',
+             'Company Name': 'companyName',
+             'City': 'city',
+             'State/Province': 'iso3166_2',
+             'Postal Code': 'postalCode',
+             "Organization's Legal Name": 'orgName',
+             "Organization's D/B/A": 'dbaName',
+             'Business Tax ID Number (DO NOT LIST SSN)': 'taxId',
+             'Org City': 'city',
+             'Org State/Province': 'iso3166_2',
+             'Org Postal Code': 'postalCode'}
+    # dict keys to ignore (not used in payload)
+    _ignore = ('API Key',
+               'Registration Action (N,M, or R)',
+               'Existing POC Handle',
+               'Existing OrgID',
+               'Referral Server',
+               'Additional Information')

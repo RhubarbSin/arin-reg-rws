@@ -81,6 +81,7 @@
 * agenda
   - [ ] argparse
     - description
+  - [ ] merge each set of resource programs into one
   - [X] check for apikey.py
   - [X] input from template
     + source ip :: -s
@@ -91,13 +92,12 @@
   - [ ] delegation
   - [X] valueOf_
   - [ ] why is poc get payload displayed as phone?
-  - [ ] normalize input/output payload identifiers
-  - [ ] merge each set of resource programs into one
   - [ ] review imports (e.g. no need to import requests, sys?)
-  - [ ] template parsing module
-  - [ ] import only regrws to aid understanding of hierarchy
-  - [ ] ParseError for country code
-  - [ ] just alpha2 country code?
+  - [X] template parsing module
+  - [X] just alpha2 country code?
   - [X] poc template comments
-  - [ ] error logging
-  - [ ] DictFromTemplate instead of DictFromTemplateFile
+  - [ ] regrws logging
+  - [X] DictFromTemplate instead of DictFromTemplateFile
+  - [X] subclass PayloadFromDict
+  - [ ] PayloadError for no matching attribute in PayloadFromDict?
+  - [ ] normalize input/output payload identifiers

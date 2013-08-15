@@ -28,8 +28,8 @@ if args.api_key:
 with open(args.template_file, 'r') as fh:
     template = fh.readlines()
 parser = regrws.convert.DictFromTemplate(template)
-converter = regrws.convert.PayloadFromDict(parser.run(),
-                                           regrws.payload.org.org)
+converter = regrws.convert.PayloadFromTemplateDict(parser.run(),
+                                                   regrws.payload.org.org)
 payload_in = converter.run()
 
 if args.test:
