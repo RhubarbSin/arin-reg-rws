@@ -99,5 +99,4 @@
   - [ ] regrws logging
   - [X] DictFromTemplate instead of DictFromTemplateFile
   - [X] subclass PayloadFromDict
-  - [ ] PayloadError for no matching attribute in PayloadFromDict?
   - [ ] normalize input/output payload identifiers
