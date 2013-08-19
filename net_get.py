@@ -8,7 +8,7 @@ import requests
 
 from apikey import APIKEY
 from whoisrws import network
-from regrws import NetPayload, ErrorPayload
+from regrws.payload import net as NetPayload, error as ErrorPayload
 
 if len(sys.argv) != 2:
     print 'Usage: %s CIDR' % sys.argv[0]
