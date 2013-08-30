@@ -10,8 +10,8 @@ from StringIO import StringIO
 
 import requests
 
-from regrws.payload import error
-from regrws.myrequests import MyAdapter
+from rws.reg.payload import error
+from rws.myrequests import MyAdapter
 
 _NAMESPACEDEF = 'xmlns="http://www.arin.net/regrws/core/v1"'
 
@@ -21,24 +21,23 @@ class Session(requests.Session):
     methods.
     """
 
-    def __init__(self, api_key, src_addr=None):
+    def __init__(self, api_key=None, src_addr=None):
         super(Session, self).__init__()
-        self.params = {'apikey': api_key}  # all calls need API key
+        if api_key:
+            self.params = {'apikey': api_key}  # all Reg-RWS calls need API key
         if src_addr:  # MyAdapter supports source address
             self.mount('https://', MyAdapter(src_addr=src_addr))
 
-class RegRwsError(Exception):
+class RwsError(Exception):
 
-    """Trivial subclass for exceptions in regrws package."""
+    """Trivial subclass for exceptions in rws package."""
 
     def __init__(self, *args):
-        super(RegRwsError, self).__init__(*args)
+        super(RwsError, self).__init__(*args)
 
 class Method(object):
 
-    """Base class for calls to ARIN Reg-RWS RESTful methods
-    (subclassed in regrws.method package).
-    """
+    """Base class for calls to ARIN RWS RESTful methods."""
 
     def __init__(self, session, query_type):
         self.query_method = getattr(session, query_type)
@@ -52,14 +51,14 @@ class Method(object):
         try:
             r = self.query_method(self.url, **kwargs)
         except requests.exceptions.RequestException as e:
-            raise RegRwsError(*e.args)
+            raise RwsError(*e.args)
         self._check_status(r)
         return self.payload.parseString(r.content)
 
     def _export_to_xml(self, payload):
         stringio = StringIO()
         payload.export(stringio, 0, pretty_print=False, namespace_='',
-                          namespacedef_=_NAMESPACEDEF)
+                       namespacedef_=_NAMESPACEDEF)
         xml = stringio.getvalue()
         stringio.close()
         return xml

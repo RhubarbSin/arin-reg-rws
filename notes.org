@@ -70,15 +70,18 @@
   - net get reallocated
   - reassign/reallocate
 
-* README
-  - generateDS module names
-  - HTTPS caveat (with source address)
-  - dependencies
-    + python 2.7 (argparse, HTTPConnection)
-  - not python 3.x
-  - can't include early commits because of api key
-
+* publishing
+** package
+** README
+   - generateDS module names
+   - how to extend
+   - HTTPS caveat (with source address)
+   - dependencies
+     + python 2.7 (argparse, HTTPConnection)
+   - not python 3.x
+   - can't include early commits because of api key
 * agenda
+  - [ ] unit tests
   - [ ] argparse
     - description
   - [ ] merge each set of resource programs into one
@@ -100,3 +103,25 @@
   - [X] DictFromTemplate instead of DictFromTemplateFile
   - [X] subclass PayloadFromDict
   - [ ] normalize input/output payload identifiers
+  - [ ] relabel Cancel button as Remove
+
+* swip
+  - history mechanism
+  - db schema
+  - subnet swip
+  - manage swip
+    + requests
+    + upload csv file
+
+* arin-rws
+** rws
+   + myrequests
+   + restful
+*** reg
+    + convert
+**** method
+**** payload
+**** template
+*** whois
+    + method
+**** payload

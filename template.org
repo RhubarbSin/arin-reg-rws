@@ -1,0 +1,33 @@
+Template: ARIN-ORG-5.1
+** As of September 2011
+** Detailed instructions are located below the template.
+
+00. API Key:
+
+01. Registration Action (N,M, or R):
+
+** IF REQUESTING A NEW ORG ID, LEAVE FIELD 02. BLANK
+02. Existing OrgID:
+
+03. Organization's Legal Name: Foobar Internet
+04. Organization's D/B/A: Simpson Family
+05. Business Tax ID Number (DO NOT LIST SSN): 12345
+06. Org Address: 742 Evergreen Terrace
+06. Org Address: Suite 666
+07. Org City: Springfield
+08. Org State/Province: OR
+09. Org Postal Code: 90210
+10. Org Country Code: US
+11. Admin POC Handle: ADMIN4787-ARIN
+12. Tech POC Handle: ADMIN4787-ARIN
+13. Abuse POC Handle: ADMIN4787-ARIN
+
+** OPTIONAL POC HANDLE
+14. NOC POC Handle: ADMIN4787-ARIN
+
+** OTHER OPTIONAL FIELDS
+15. Referral Server:
+16. Public Comments:
+17. Additional Information:
+
+END OF TEMPLATE
