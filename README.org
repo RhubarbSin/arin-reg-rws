@@ -1,3 +1,5 @@
 #+TITLE: Python Code for using ARIN's Registration RESTful Web Service
 
 This code is incomplete but includes some possibly helpful examples of its use.
+
+To try it, define your ARIN API key in the file =apikey.py=.
