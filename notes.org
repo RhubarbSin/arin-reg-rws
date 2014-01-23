@@ -87,7 +87,7 @@
   - [X] test restful error handling
   - [ ] delegation
   - [X] valueOf_
-  - [ ] why is poc get payload displayed as phone?
+  - [ ] why is poc payload displayed as phone?
   - [ ] review imports (e.g. no need to import requests, sys?)
   - [X] template parsing module
   - [X] just alpha2 country code?

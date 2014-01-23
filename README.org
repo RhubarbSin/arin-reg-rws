@@ -2,4 +2,8 @@
 
 This code is incomplete but includes some possibly helpful examples of its use.
 
-To try it, define your ARIN API key in the file =apikey.py=.
+The included examples can read ARIN's Version 5 e-mail templates for testing purposes; they call =regrws.convert.DictFromTemplate()= to create a an object that can create a dictionary from the contents of the template file and pass that object to =regrws.convert.PayloadFromTemplateDict()= along with the payload class from the appropriate payload module. Calling the =run()= method on the returned object then returns the ARIN's XML payload as the response to the request.
+
+To try the examples, define your ARIN API key in the file =apikey.py= or on the command line.
+
+The procedure for converting the ARIN XML templates into payload modules is documented in the notes file.

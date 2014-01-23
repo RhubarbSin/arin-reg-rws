@@ -1,0 +1,34 @@
+Template: ARIN-POC-5.0
+**  As of March 2011
+**  Detailed instructions are located below the template.
+
+00. API Key:
+
+01. Registration Action (N,M, or R):
+
+02. Existing POC Handle:
+** Skip field 02. if generating a new handle
+
+03. Contact Type (P or R): R
+04. Last Name or Role Account: Admin
+05. First Name: 
+06. Middle Name:
+07. Company Name: Foobar Internet
+08. Address: 742 Evergreen Terrace
+08. Address: Suite 666
+09. City: Springfield
+10. State/Province: OR
+11. Postal Code: 90210
+12. Country Code: US
+13. Office Phone Number: +1.404.246.7890
+14. Office Phone Number Extension: 6666
+15. E-mail Address: homer@simpson.org
+
+** OPTIONAL PHONE NUMBERS
+16. Mobile: +1.404.246.7891
+17. Fax: +1.404.246.7892
+
+** OTHER OPTIONAL FIELDS
+18. Public Comments: a public comment
+
+END OF TEMPLATE
