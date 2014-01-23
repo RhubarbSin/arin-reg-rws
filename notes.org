@@ -67,7 +67,6 @@
   - reassign/reallocate
 
 * README
-  - generateDS module names
   - HTTPS caveat (with source address)
   - dependencies
     + python 2.7 (argparse, HTTPConnection)
