@@ -55,10 +55,6 @@
   3. convert rng files to xsd
      : for i in *.rng; do java -jar ~/Downloads/trang-20091111/trang.jar $i $(basename $i .rng).xsd; done
 
-* generate PyXB binding classes
-  for each payload needed:
-  : pyxbgen -u OrgPayload.xsd -m OrgPayload
-
 * generate generateDS files
   : for f in CustomerPayload.xsd NetPayload.xsd DelegationPayload.xsd PocPayload.xsd OrgPayload.xsd ErrorPayload.xsd TicketedRequestPayload.xsd; do generateDS.py -a '' --namespacedef='xmlns="http://www.arin.net/regrws/core/v1"' -o $(basename $f xsd)py -s my$(basename $f xsd)py $f; done
 
