@@ -3,7 +3,6 @@
 #
 # Generated Tue Aug  6 14:52:52 2013 by generateDS.py version 2.10a.
 #
-#
 # Copyright (C) 2011,2012,2013 American Registry for Internet Numbers
 #
 # Permission to use, copy, modify, and/or distribute this software for any
