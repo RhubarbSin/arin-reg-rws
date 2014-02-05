@@ -2,7 +2,7 @@
 
 This code is incomplete but includes some possibly helpful examples of its use.
 
-The included examples can read ARIN's Version 5 e-mail templates for testing purposes; they call =regrws.convert.DictFromTemplate()= to create a an object that can create a dictionary from the contents of the template file and pass that object to =regrws.convert.PayloadFromTemplateDict()= along with the payload class from the appropriate payload module. Calling the =run()= method on the returned object then returns the ARIN's XML payload as the response to the request.
+The included examples can read ARIN's Version 5 e-mail templates for testing purposes; they call =regrws.convert.DictFromTemplate()= to create an object that can create a dictionary from the contents of the template file and pass that object to =regrws.convert.PayloadFromTemplateDict()= along with the payload class from the appropriate payload module. Calling the =run()= method on the returned object then returns the ARIN XML payload as the response to the request. =PayloadFromTemplateDict= was created for testing and development purposes; the ultimate intent was to create a =PayloadFromDatabaseDict= class to pull the necessary data from a database so the code could be integrated into a larger project.
 
 To try the examples, define your ARIN API key in the file =apikey.py= or on the command line.
 
