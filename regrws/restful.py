@@ -59,7 +59,7 @@ class Method(object):
     def _export_to_xml(self, payload):
         stringio = StringIO()
         payload.export(stringio, 0, pretty_print=False, namespace_='',
-                          namespacedef_=_NAMESPACEDEF)
+                       namespacedef_=_NAMESPACEDEF)
         xml = stringio.getvalue()
         stringio.close()
         return xml
